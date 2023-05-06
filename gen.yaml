@@ -1,0 +1,13 @@
+configVersion: 1.0.0
+generation:
+  comments:
+    disableComments: false
+    omitDescriptionIfSummaryPresent: false
+  baseServerURL: ""
+  sdkClassName: test-1
+  singleTagPerOp: false
+  tagNamespacingDisabled: false
+  telemetryEnabled: false
+go:
+  version: 0.0.1
+  packageName: test-1
