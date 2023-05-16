@@ -34,7 +34,6 @@ func newAutomationRule(defaultClient, securityClient HTTPClient, serverURL, lang
 }
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Delete Automation Rule from an Environment.
-
 func (s *automationRule) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)
@@ -75,7 +74,6 @@ func (s *automationRule) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx contex
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRules - List all Automation Rules in an Environment.
-
 func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules", request, nil)
@@ -124,7 +122,6 @@ func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Get a specific Automation Rule for an Environment.
-
 func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)
@@ -174,7 +171,6 @@ func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.C
 
 // PostOrgsOrgIDAppsAppIDEnvsEnvIDRules - Create a new Automation Rule for an Environment.
 // Items marked as deprecated are still supported (however not recommended) for use and are incompatible with properties of the latest api version. In particular an error is raised if  `images_filter` (deprecated) and `artefacts_filter` are used in the same payload. The same is true for `exclude_images_filter` (deprecated) and `exclude_artefacts_filter`. `match` and `update_to` are still supported but will trigger an error if combined with `match_ref`.
-
 func (s *automationRule) PostOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDRulesRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDRulesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules", request, nil)
@@ -244,7 +240,6 @@ func (s *automationRule) PostOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Contex
 
 // PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Update an existing Automation Rule for an Environment.
 // Items marked as deprecated are still supported (however not recommended) for use and are incompatible with properties of the latest api version. In particular an error is raised if  `images_filter` (deprecated) and `artefacts_filter` are used in the same payload. The same is true for `exclude_images_filter` (deprecated) and `exclude_artefacts_filter`. `match` and `update_to` are still supported but will trigger an error if combined with `match_ref`.
-
 func (s *automationRule) PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)

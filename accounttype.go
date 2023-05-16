@@ -34,7 +34,6 @@ func newAccountType(defaultClient, securityClient HTTPClient, serverURL, languag
 }
 
 // GetOrgsOrgIDResourcesAccountTypes - List Resource Account Types available to the organization.
-
 func (s *accountType) GetOrgsOrgIDResourcesAccountTypes(ctx context.Context, request operations.GetOrgsOrgIDResourcesAccountTypesRequest) (*operations.GetOrgsOrgIDResourcesAccountTypesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/account-types", request, nil)

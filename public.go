@@ -37,7 +37,6 @@ func newPublic(defaultClient, securityClient HTTPClient, serverURL, language, sd
 // Deleting an Application will also delete everything associated with it. This includes Environments, Deployment history on those Environments, and any shared values and secrets associated.
 //
 // _Deletions are currently irreversible._
-
 func (s *public) DeleteOrgsOrgIDAppsAppID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}", request, nil)
@@ -93,7 +92,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppID(ctx context.Context, request operation
 // Deleting an Environment will also delete the Deployment history of the Environment.
 //
 // _Deletions are currently irreversible._
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}", request, nil)
@@ -144,7 +142,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvID(ctx context.Context, request 
 }
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID - Delete Active Resources.
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources/{type}/{resId}", request, nil)
@@ -189,7 +186,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID(ctx context
 }
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Delete Automation Rule from an Environment.
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)
@@ -231,7 +227,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Contex
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues - Delete all Shared Value for an Environment
 // All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
@@ -271,7 +266,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, re
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Delete Shared Value for an Environment
 // The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
@@ -322,7 +316,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context,
 }
 
 // DeleteOrgsOrgIDAppsAppIDJobs - Deletes all Jobs for the Application
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDJobs(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDJobsRequest) (*operations.DeleteOrgsOrgIDAppsAppIDJobsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/jobs", request, nil)
@@ -361,7 +354,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDJobs(ctx context.Context, request opera
 }
 
 // DeleteOrgsOrgIDAppsAppIDUsersUserID - Remove the role of a User on an Application
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
@@ -413,7 +405,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, reques
 
 // DeleteOrgsOrgIDAppsAppIDValues - Delete all Shared Value for an App
 // All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDValuesRequest) (*operations.DeleteOrgsOrgIDAppsAppIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
@@ -453,7 +444,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDValues(ctx context.Context, request ope
 
 // DeleteOrgsOrgIDAppsAppIDValuesKey - Delete Shared Value for an Application
 // The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.DeleteOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)
@@ -504,7 +494,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request 
 }
 
 // DeleteOrgsOrgIDAppsAppIDWebhooksJobID - Delete a Webhook
-
 func (s *public) DeleteOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDWebhooksJobIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDWebhooksJobIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks/{jobId}", request, nil)
@@ -546,7 +535,6 @@ func (s *public) DeleteOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, requ
 
 // DeleteOrgsOrgIDArtefactsArtefactID - Delete Artefact and all related Artefact Versions
 // The specified Artefact and its Artefact Versions will be permanently deleted. Only Administrators can delete an Artefact.
-
 func (s *public) DeleteOrgsOrgIDArtefactsArtefactID(ctx context.Context, request operations.DeleteOrgsOrgIDArtefactsArtefactIDRequest) (*operations.DeleteOrgsOrgIDArtefactsArtefactIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}", request, nil)
@@ -598,7 +586,6 @@ func (s *public) DeleteOrgsOrgIDArtefactsArtefactID(ctx context.Context, request
 
 // DeleteOrgsOrgIDEnvTypesEnvTypeID - Deletes an Environment Type
 // Deletes a specific Environment Type from an Organization. If there are Environments with this Type in the Organization, the operation will fail.
-
 func (s *public) DeleteOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, request operations.DeleteOrgsOrgIDEnvTypesEnvTypeIDRequest) (*operations.DeleteOrgsOrgIDEnvTypesEnvTypeIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envTypeId}", request, nil)
@@ -668,7 +655,6 @@ func (s *public) DeleteOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, request o
 }
 
 // DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID - Remove the role of a User on an Environment Type
-
 func (s *public) DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
@@ -720,7 +706,6 @@ func (s *public) DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, 
 
 // DeleteOrgsOrgIDRegistriesRegID - Deletes an existing registry record and all associated credentials and secrets.
 // _Deletions are currently irreversible._
-
 func (s *public) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.DeleteOrgsOrgIDRegistriesRegIDRequest) (*operations.DeleteOrgsOrgIDRegistriesRegIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
@@ -780,7 +765,6 @@ func (s *public) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request ope
 // The request can take an optional `force` query parameter. If set to `true`, the current Resource Definition is **marked as** pending deletion and will be deleted (purged) as soon as no existing Active Resources reference it. With the next deployment matching criteria for Resources will be re-evaluated, and current Active Resources for the target environment would be either linked to another matching Resource Definition or decommissioned and created using the new or default Resource Definition (when available).
 //
 // The Resource Definition that has been marked for deletion cannot be used to provision new resources.
-
 func (s *public) DeleteOrgsOrgIDResourcesDefsDefID(ctx context.Context, request operations.DeleteOrgsOrgIDResourcesDefsDefIDRequest) (*operations.DeleteOrgsOrgIDResourcesDefsDefIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}", request, nil)
@@ -850,7 +834,6 @@ func (s *public) DeleteOrgsOrgIDResourcesDefsDefID(ctx context.Context, request 
 // If there **are** Active Resources that would match to a different Resource Definition, the request fails with HTTP status code 409 (Conflict). The response content will list all of affected Active Resources and their new matches.
 //
 // The request can take an optional `force` query parameter. If set to `true`, the Matching Criteria is deleted immediately. Referenced Active Resources would match to a different Resource Definition during the next deployment in the target environment.
-
 func (s *public) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID(ctx context.Context, request operations.DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaIDRequest) (*operations.DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/criteria/{criteriaId}", request, nil)
@@ -924,7 +907,6 @@ func (s *public) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID(ctx context
 }
 
 // DeleteOrgsOrgIDResourcesDriversDriverID - Delete a Resources Driver.
-
 func (s *public) DeleteOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.DeleteOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.DeleteOrgsOrgIDResourcesDriversDriverIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)
@@ -973,7 +955,6 @@ func (s *public) DeleteOrgsOrgIDResourcesDriversDriverID(ctx context.Context, re
 }
 
 // DeleteOrgsOrgIDUsersUserID - Remove the role of a User on an Organization
-
 func (s *public) DeleteOrgsOrgIDUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDUsersUserIDRequest) (*operations.DeleteOrgsOrgIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
@@ -1024,7 +1005,6 @@ func (s *public) DeleteOrgsOrgIDUsersUserID(ctx context.Context, request operati
 }
 
 // DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion - Delete a Workload Profile Version
-
 func (s *public) DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion(ctx context.Context, request operations.DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersionRequest) (*operations.DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersionResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileId}/versions/{version}", request, nil)
@@ -1076,7 +1056,6 @@ func (s *public) DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion(ctx con
 // This will also delete all versions of a workload profile.
 //
 // It is not possible to delete profiles of other organizations.
-
 func (s *public) DeleteOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Context, request operations.DeleteOrgsOrgIDWorkloadProfilesProfileQidRequest) (*operations.DeleteOrgsOrgIDWorkloadProfilesProfileQidResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}", request, nil)
@@ -1125,7 +1104,6 @@ func (s *public) DeleteOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Context, 
 }
 
 // DeleteTokensTokenID - DEPRECATED
-
 func (s *public) DeleteTokensTokenID(ctx context.Context, request operations.DeleteTokensTokenIDRequest) (*operations.DeleteTokensTokenIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/tokens/{tokenId}", request, nil)
@@ -1164,7 +1142,6 @@ func (s *public) DeleteTokensTokenID(ctx context.Context, request operations.Del
 }
 
 // GetDelta - Fetch an existing Delta
-
 func (s *public) GetDelta(ctx context.Context, request operations.GetDeltaRequest) (*operations.GetDeltaResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
@@ -1223,7 +1200,6 @@ func (s *public) GetDelta(ctx context.Context, request operations.GetDeltaReques
 }
 
 // GetSets - Get all Deployment Sets
-
 func (s *public) GetSets(ctx context.Context, request operations.GetSetsRequest) (*operations.GetSetsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets", request, nil)
@@ -1282,7 +1258,6 @@ func (s *public) GetSets(ctx context.Context, request operations.GetSetsRequest)
 }
 
 // GetCurrentUser - Gets the extended profile of the current user
-
 func (s *public) GetCurrentUser(ctx context.Context) (*operations.GetCurrentUserResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/current-user"
@@ -1330,7 +1305,6 @@ func (s *public) GetCurrentUser(ctx context.Context) (*operations.GetCurrentUser
 }
 
 // GetOrgs - List active organizations the user has access to.
-
 func (s *public) GetOrgs(ctx context.Context) (*operations.GetOrgsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/orgs"
@@ -1378,7 +1352,6 @@ func (s *public) GetOrgs(ctx context.Context) (*operations.GetOrgsResponse, erro
 }
 
 // GetOrgsOrgID - Get the specified Organization.
-
 func (s *public) GetOrgsOrgID(ctx context.Context, request operations.GetOrgsOrgIDRequest) (*operations.GetOrgsOrgIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}", request, nil)
@@ -1442,7 +1415,6 @@ func (s *public) GetOrgsOrgID(ctx context.Context, request operations.GetOrgsOrg
 
 // GetOrgsOrgIDApps - List all Applications in an Organization.
 // Listing or lists of all Applications that exist within a specific Organization.
-
 func (s *public) GetOrgsOrgIDApps(ctx context.Context, request operations.GetOrgsOrgIDAppsRequest) (*operations.GetOrgsOrgIDAppsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps", request, nil)
@@ -1491,7 +1463,6 @@ func (s *public) GetOrgsOrgIDApps(ctx context.Context, request operations.GetOrg
 
 // GetOrgsOrgIDAppsAppID - Get an existing Application
 // Gets a specific Application in the specified Organization by ID.
-
 func (s *public) GetOrgsOrgIDAppsAppID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDRequest) (*operations.GetOrgsOrgIDAppsAppIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}", request, nil)
@@ -1549,7 +1520,6 @@ func (s *public) GetOrgsOrgIDAppsAppID(ctx context.Context, request operations.G
 }
 
 // GetOrgsOrgIDAppsAppIDDeltas - List Deltas in an Application
-
 func (s *public) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDDeltasRequest) (*operations.GetOrgsOrgIDAppsAppIDDeltasResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas", request, nil)
@@ -1602,7 +1572,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operat
 
 // GetOrgsOrgIDAppsAppIDEnvs - List all Environments.
 // Lists all of the Environments in the Application.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvs(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs", request, nil)
@@ -1651,7 +1620,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvs(ctx context.Context, request operatio
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvID - Get a specific Environment.
 // Gets a specific Environment in an Application.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}", request, nil)
@@ -1710,7 +1678,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvID(ctx context.Context, request ope
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys - List Deployments in an Environment.
 // List all of the Deployments that have been carried out in the current Environment. Deployments are returned with the newest first.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys", request, nil)
@@ -1769,7 +1736,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, requ
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID - Get a specific Deployment.
 // Gets a specific Deployment in an Application and an Environment.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys/{deployId}", request, nil)
@@ -1827,7 +1793,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID(ctx context.Conte
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors - List errors that occurred in a Deployment.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrorsRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrorsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys/{deployId}/errors", request, nil)
@@ -1875,7 +1840,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors(ctx context
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDResources - List Active Resources provisioned in an environment.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDResources(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDResourcesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDResourcesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources", request, nil)
@@ -1933,7 +1897,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDResources(ctx context.Context, re
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRules - List all Automation Rules in an Environment.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules", request, nil)
@@ -1982,7 +1945,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context, reques
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Get a specific Automation Rule for an Environment.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)
@@ -2031,7 +1993,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, 
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime - Get Runtime information about the environment.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime", request, nil)
@@ -2083,7 +2044,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime(ctx context.Context, requ
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions - List Value Set Versions in an Environment of an App
 // A new Value Set Version is created on every modification of a Value inside the an Environment of an App. In case this environment has no overrides the response is the same as the App level endpoint.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions", request, nil)
@@ -2135,7 +2095,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions(ctx context.Cont
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID - Get a single Value Set Version in an Environment of an App
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}", request, nil)
@@ -2194,7 +2153,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValues - List Shared Values in an Environment
 // The returned values will be the base Application values with the Environment overrides where applicable. The `source` field will specify the level from which the value is from.
-
 func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
@@ -2242,7 +2200,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, reque
 }
 
 // GetOrgsOrgIDAppsAppIDRuntime - Get Runtime information about specific environments.
-
 func (s *public) GetOrgsOrgIDAppsAppIDRuntime(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDRuntimeRequest) (*operations.GetOrgsOrgIDAppsAppIDRuntimeResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/runtime", request, nil)
@@ -2297,7 +2254,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDRuntime(ctx context.Context, request opera
 }
 
 // GetOrgsOrgIDAppsAppIDSetsSetID - Get a Deployment Set
-
 func (s *public) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDSetsSetIDRequest) (*operations.GetOrgsOrgIDAppsAppIDSetsSetIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}", request, nil)
@@ -2360,7 +2316,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request ope
 }
 
 // GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID - Get the difference between 2 Deployment Sets
-
 func (s *public) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetIDRequest) (*operations.GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}/diff/{sourceSetId}", request, nil)
@@ -2419,7 +2374,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Conte
 }
 
 // GetOrgsOrgIDAppsAppIDUsers - List Users with roles in an App
-
 func (s *public) GetOrgsOrgIDAppsAppIDUsers(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDUsersRequest) (*operations.GetOrgsOrgIDAppsAppIDUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users", request, nil)
@@ -2468,7 +2422,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDUsers(ctx context.Context, request operati
 }
 
 // GetOrgsOrgIDAppsAppIDUsersUserID - Get the role of a User on an Application
-
 func (s *public) GetOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.GetOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
@@ -2528,7 +2481,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request o
 
 // GetOrgsOrgIDAppsAppIDValueSetVersions - List Value Set Versions in the App
 // A new Value Set Version is created on every modification of a Value inside the app.
-
 func (s *public) GetOrgsOrgIDAppsAppIDValueSetVersions(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValueSetVersionsRequest) (*operations.GetOrgsOrgIDAppsAppIDValueSetVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions", request, nil)
@@ -2580,7 +2532,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDValueSetVersions(ctx context.Context, requ
 }
 
 // GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID - Get a single Value Set Version from the App
-
 func (s *public) GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRequest) (*operations.GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}", request, nil)
@@ -2639,7 +2590,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID(ctx cont
 
 // GetOrgsOrgIDAppsAppIDValues - List Shared Values in an Application
 // The returned values will be the "base" values for the Application. The overridden value for the Environment can be retrieved via the `/orgs/{orgId}/apps/{appId}/envs/{envId}/values` endpoint.
-
 func (s *public) GetOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValuesRequest) (*operations.GetOrgsOrgIDAppsAppIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
@@ -2687,7 +2637,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDValues(ctx context.Context, request operat
 }
 
 // GetOrgsOrgIDAppsAppIDWebhooks - List Webhooks
-
 func (s *public) GetOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDWebhooksRequest) (*operations.GetOrgsOrgIDAppsAppIDWebhooksResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks", request, nil)
@@ -2735,7 +2684,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request oper
 }
 
 // GetOrgsOrgIDAppsAppIDWebhooksJobID - Get a Webhook
-
 func (s *public) GetOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDWebhooksJobIDRequest) (*operations.GetOrgsOrgIDAppsAppIDWebhooksJobIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks/{jobId}", request, nil)
@@ -2785,7 +2733,6 @@ func (s *public) GetOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request
 
 // GetOrgsOrgIDArtefactVersions - List all Artefacts Versions.
 // Returns the Artefact Versions registered with your organization. If no elements are found, an empty list is returned.
-
 func (s *public) GetOrgsOrgIDArtefactVersions(ctx context.Context, request operations.GetOrgsOrgIDArtefactVersionsRequest) (*operations.GetOrgsOrgIDArtefactVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions", request, nil)
@@ -2848,7 +2795,6 @@ func (s *public) GetOrgsOrgIDArtefactVersions(ctx context.Context, request opera
 
 // GetOrgsOrgIDArtefactVersionsArtefactVersionID - Get an Artefacts Versions.
 // Returns a specific Artefact Version.
-
 func (s *public) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx context.Context, request operations.GetOrgsOrgIDArtefactVersionsArtefactVersionIDRequest) (*operations.GetOrgsOrgIDArtefactVersionsArtefactVersionIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions/{artefactVersionId}", request, nil)
@@ -2909,7 +2855,6 @@ func (s *public) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx context.Conte
 
 // GetOrgsOrgIDArtefacts - List all Artefacts.
 // Returns the Artefacts registered with your organization. If no elements are found, an empty list is returned.
-
 func (s *public) GetOrgsOrgIDArtefacts(ctx context.Context, request operations.GetOrgsOrgIDArtefactsRequest) (*operations.GetOrgsOrgIDArtefactsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts", request, nil)
@@ -2962,7 +2907,6 @@ func (s *public) GetOrgsOrgIDArtefacts(ctx context.Context, request operations.G
 
 // GetOrgsOrgIDArtefactsArtefactIDVersions - List all Artefact Versions of an Artefact.
 // Returns the Artefact Versions of a specified Artefact registered with your organization. If no elements are found, an empty list is returned.
-
 func (s *public) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Context, request operations.GetOrgsOrgIDArtefactsArtefactIDVersionsRequest) (*operations.GetOrgsOrgIDArtefactsArtefactIDVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}/versions", request, nil)
@@ -3027,7 +2971,6 @@ func (s *public) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Context, re
 
 // GetOrgsOrgIDEnvTypes - List all Environment Types
 // Lists all Environment Types in an Organization.
-
 func (s *public) GetOrgsOrgIDEnvTypes(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesRequest) (*operations.GetOrgsOrgIDEnvTypesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types", request, nil)
@@ -3076,7 +3019,6 @@ func (s *public) GetOrgsOrgIDEnvTypes(ctx context.Context, request operations.Ge
 
 // GetOrgsOrgIDEnvTypesEnvTypeID - Get an Environment Type
 // Gets a specific Environment Type within an Organization.
-
 func (s *public) GetOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesEnvTypeIDRequest) (*operations.GetOrgsOrgIDEnvTypesEnvTypeIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envTypeId}", request, nil)
@@ -3134,7 +3076,6 @@ func (s *public) GetOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, request oper
 }
 
 // GetOrgsOrgIDEnvTypesEnvTypeUsersUserID - Get the role of a User on an Environment Type
-
 func (s *public) GetOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.GetOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
@@ -3193,7 +3134,6 @@ func (s *public) GetOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, req
 }
 
 // GetOrgsOrgIDEvents - List Events
-
 func (s *public) GetOrgsOrgIDEvents(ctx context.Context, request operations.GetOrgsOrgIDEventsRequest) (*operations.GetOrgsOrgIDEventsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/events", request, nil)
@@ -3244,7 +3184,6 @@ func (s *public) GetOrgsOrgIDEvents(ctx context.Context, request operations.GetO
 // DEPRECATED: This endpoint exists for historical compatibility and should not be used. Please use the [Artefact API](https://api-docs.humanitec.com/#tag/Artefact) instead.
 //
 // Lists all of the Container Images registered for this organization.
-
 func (s *public) GetOrgsOrgIDImages(ctx context.Context, request operations.GetOrgsOrgIDImagesRequest) (*operations.GetOrgsOrgIDImagesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images", request, nil)
@@ -3297,7 +3236,6 @@ func (s *public) GetOrgsOrgIDImages(ctx context.Context, request operations.GetO
 // The response includes a list of Image Builds as well as some metadata about the Image such as its Image Source.
 //
 // Note, `imageId` may not be the same as the container name. `imageId` is determined by the system making notifications about new builds.
-
 func (s *public) GetOrgsOrgIDImagesImageID(ctx context.Context, request operations.GetOrgsOrgIDImagesImageIDRequest) (*operations.GetOrgsOrgIDImagesImageIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}", request, nil)
@@ -3358,7 +3296,6 @@ func (s *public) GetOrgsOrgIDImagesImageID(ctx context.Context, request operatio
 // DEPRECATED: This endpoint exists for historical compatibility and should not be used. Please use the [Artefact API](https://api-docs.humanitec.com/#tag/Artefact) instead.
 //
 // The response lists all available Image Builds of an Image.
-
 func (s *public) GetOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request operations.GetOrgsOrgIDImagesImageIDBuildsRequest) (*operations.GetOrgsOrgIDImagesImageIDBuildsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}/builds", request, nil)
@@ -3416,7 +3353,6 @@ func (s *public) GetOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request op
 }
 
 // GetOrgsOrgIDInvitations - List the invites issued for the organization.
-
 func (s *public) GetOrgsOrgIDInvitations(ctx context.Context, request operations.GetOrgsOrgIDInvitationsRequest) (*operations.GetOrgsOrgIDInvitationsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/invitations", request, nil)
@@ -3464,7 +3400,6 @@ func (s *public) GetOrgsOrgIDInvitations(ctx context.Context, request operations
 }
 
 // GetOrgsOrgIDRegistries - Lists available registries for the organization.
-
 func (s *public) GetOrgsOrgIDRegistries(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRequest) (*operations.GetOrgsOrgIDRegistriesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries", request, nil)
@@ -3524,7 +3459,6 @@ func (s *public) GetOrgsOrgIDRegistries(ctx context.Context, request operations.
 }
 
 // GetOrgsOrgIDRegistriesRegID - Loads a registry record details.
-
 func (s *public) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRegIDRequest) (*operations.GetOrgsOrgIDRegistriesRegIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
@@ -3584,7 +3518,6 @@ func (s *public) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request operat
 }
 
 // GetOrgsOrgIDRegistriesRegIDCreds - Returns current account credentials or secret details for the registry.
-
 func (s *public) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRegIDCredsRequest) (*operations.GetOrgsOrgIDRegistriesRegIDCredsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}/creds", request, nil)
@@ -3646,7 +3579,6 @@ func (s *public) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request o
 }
 
 // GetOrgsOrgIDResourcesAccountTypes - List Resource Account Types available to the organization.
-
 func (s *public) GetOrgsOrgIDResourcesAccountTypes(ctx context.Context, request operations.GetOrgsOrgIDResourcesAccountTypesRequest) (*operations.GetOrgsOrgIDResourcesAccountTypesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/account-types", request, nil)
@@ -3704,7 +3636,6 @@ func (s *public) GetOrgsOrgIDResourcesAccountTypes(ctx context.Context, request 
 }
 
 // GetOrgsOrgIDResourcesAccounts - List Resource Accounts in the organization.
-
 func (s *public) GetOrgsOrgIDResourcesAccounts(ctx context.Context, request operations.GetOrgsOrgIDResourcesAccountsRequest) (*operations.GetOrgsOrgIDResourcesAccountsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts", request, nil)
@@ -3762,7 +3693,6 @@ func (s *public) GetOrgsOrgIDResourcesAccounts(ctx context.Context, request oper
 }
 
 // GetOrgsOrgIDResourcesAccountsAccID - Get a Resource Account.
-
 func (s *public) GetOrgsOrgIDResourcesAccountsAccID(ctx context.Context, request operations.GetOrgsOrgIDResourcesAccountsAccIDRequest) (*operations.GetOrgsOrgIDResourcesAccountsAccIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts/{accId}", request, nil)
@@ -3823,7 +3753,6 @@ func (s *public) GetOrgsOrgIDResourcesAccountsAccID(ctx context.Context, request
 
 // GetOrgsOrgIDResourcesDefs - List Resource Definitions.
 // Filter criteria can be applied to obtain all the resource definitions that could match the filters, grouped by type and sorted by matching rank.
-
 func (s *public) GetOrgsOrgIDResourcesDefs(ctx context.Context, request operations.GetOrgsOrgIDResourcesDefsRequest) (*operations.GetOrgsOrgIDResourcesDefsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs", request, nil)
@@ -3885,7 +3814,6 @@ func (s *public) GetOrgsOrgIDResourcesDefs(ctx context.Context, request operatio
 }
 
 // GetOrgsOrgIDResourcesDefsDefID - Get a specific Resource Definition.
-
 func (s *public) GetOrgsOrgIDResourcesDefsDefID(ctx context.Context, request operations.GetOrgsOrgIDResourcesDefsDefIDRequest) (*operations.GetOrgsOrgIDResourcesDefsDefIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}", request, nil)
@@ -3945,7 +3873,6 @@ func (s *public) GetOrgsOrgIDResourcesDefsDefID(ctx context.Context, request ope
 }
 
 // GetOrgsOrgIDResourcesDefsDefIDResources - List Active Resources provisioned via a specific Resource Definition.
-
 func (s *public) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context.Context, request operations.GetOrgsOrgIDResourcesDefsDefIDResourcesRequest) (*operations.GetOrgsOrgIDResourcesDefsDefIDResourcesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/resources", request, nil)
@@ -4003,7 +3930,6 @@ func (s *public) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context.Context, re
 }
 
 // GetOrgsOrgIDResourcesDrivers - List Resource Drivers.
-
 func (s *public) GetOrgsOrgIDResourcesDrivers(ctx context.Context, request operations.GetOrgsOrgIDResourcesDriversRequest) (*operations.GetOrgsOrgIDResourcesDriversResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers", request, nil)
@@ -4062,7 +3988,6 @@ func (s *public) GetOrgsOrgIDResourcesDrivers(ctx context.Context, request opera
 
 // GetOrgsOrgIDResourcesDriversDriverID - Get a Resource Driver.
 // # Only drivers that belongs to the given organization or registered as `public` are accessible through this endpoint
-
 func (s *public) GetOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.GetOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.GetOrgsOrgIDResourcesDriversDriverIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)
@@ -4122,7 +4047,6 @@ func (s *public) GetOrgsOrgIDResourcesDriversDriverID(ctx context.Context, reque
 }
 
 // GetOrgsOrgIDResourcesTypes - List Resource Types.
-
 func (s *public) GetOrgsOrgIDResourcesTypes(ctx context.Context, request operations.GetOrgsOrgIDResourcesTypesRequest) (*operations.GetOrgsOrgIDResourcesTypesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/types", request, nil)
@@ -4180,7 +4104,6 @@ func (s *public) GetOrgsOrgIDResourcesTypes(ctx context.Context, request operati
 }
 
 // GetOrgsOrgIDUsers - List Users with roles in an Organization
-
 func (s *public) GetOrgsOrgIDUsers(ctx context.Context, request operations.GetOrgsOrgIDUsersRequest) (*operations.GetOrgsOrgIDUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users", request, nil)
@@ -4229,7 +4152,6 @@ func (s *public) GetOrgsOrgIDUsers(ctx context.Context, request operations.GetOr
 }
 
 // GetOrgsOrgIDUsersUserID - Get the role of a User on an Organization
-
 func (s *public) GetOrgsOrgIDUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDUsersUserIDRequest) (*operations.GetOrgsOrgIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
@@ -4288,7 +4210,6 @@ func (s *public) GetOrgsOrgIDUsersUserID(ctx context.Context, request operations
 }
 
 // GetOrgsOrgIDWorkloadProfiles - List workload profiles available to the organization.
-
 func (s *public) GetOrgsOrgIDWorkloadProfiles(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesRequest) (*operations.GetOrgsOrgIDWorkloadProfilesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles", request, nil)
@@ -4336,7 +4257,6 @@ func (s *public) GetOrgsOrgIDWorkloadProfiles(ctx context.Context, request opera
 }
 
 // GetOrgsOrgIDWorkloadProfilesProfileQid - Get a Workload Profile
-
 func (s *public) GetOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesProfileQidRequest) (*operations.GetOrgsOrgIDWorkloadProfilesProfileQidResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}", request, nil)
@@ -4394,7 +4314,6 @@ func (s *public) GetOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Context, req
 }
 
 // GetOrgsOrgIDWorkloadProfilesProfileQidVersions - List versions of the given workload profile with optional constraint.
-
 func (s *public) GetOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesProfileQidVersionsRequest) (*operations.GetOrgsOrgIDWorkloadProfilesProfileQidVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}/versions", request, nil)
@@ -4456,7 +4375,6 @@ func (s *public) GetOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx context.Cont
 }
 
 // GetTokens - DEPRECATED
-
 func (s *public) GetTokens(ctx context.Context) (*operations.GetTokensResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/tokens"
@@ -4501,7 +4419,6 @@ func (s *public) GetTokens(ctx context.Context) (*operations.GetTokensResponse, 
 }
 
 // GetUsersMe - DEPRECATED
-
 func (s *public) GetUsersMe(ctx context.Context) (*operations.GetUsersMeResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/users/me"
@@ -4549,7 +4466,6 @@ func (s *public) GetUsersMe(ctx context.Context) (*operations.GetUsersMeResponse
 }
 
 // PatchCurrentUser - Updates the extended profile of the current user.
-
 func (s *public) PatchCurrentUser(ctx context.Context, request shared.UserProfileExtendedRequest) (*operations.PatchCurrentUserResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/current-user"
@@ -4617,7 +4533,6 @@ func (s *public) PatchCurrentUser(ctx context.Context, request shared.UserProfil
 }
 
 // PatchOrgsOrgIDAppsAppIDDeltasDeltaID - Update an existing Delta
-
 func (s *public) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDDeltasDeltaIDRequest) (*operations.PatchOrgsOrgIDAppsAppIDDeltasDeltaIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
@@ -4696,7 +4611,6 @@ func (s *public) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, reque
 }
 
 // PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas - Set number of replicas for an environment's modules.
-
 func (s *public) PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicasRequest) (*operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicasResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/replicas", request, nil)
@@ -4758,7 +4672,6 @@ func (s *public) PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas(ctx context.Con
 
 // PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Update Shared Value for an Environment
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-
 func (s *public) PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
@@ -4828,7 +4741,6 @@ func (s *public) PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, 
 }
 
 // PatchOrgsOrgIDAppsAppIDUsersUserID - Update the role of a User on an Application
-
 func (s *public) PatchOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.PatchOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
@@ -4898,7 +4810,6 @@ func (s *public) PatchOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request
 
 // PatchOrgsOrgIDAppsAppIDValuesKey - Update Shared Value for an Application
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-
 func (s *public) PatchOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.PatchOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)
@@ -4969,7 +4880,6 @@ func (s *public) PatchOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request o
 
 // PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID - Update Version of an Artefact.
 // Update the version of a specified Artefact registered with your organization".
-
 func (s *public) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx context.Context, request operations.PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionIDRequest) (*operations.PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}/versions/{versionId}", request, nil)
@@ -5043,7 +4953,6 @@ func (s *public) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx context.
 }
 
 // PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID - Update the role of a User on an Environment Type
-
 func (s *public) PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.PatchOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
@@ -5112,7 +5021,6 @@ func (s *public) PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, r
 }
 
 // PatchOrgsOrgIDRegistriesRegID - Updates (patches) an existing registry record.
-
 func (s *public) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.PatchOrgsOrgIDRegistriesRegIDRequest) (*operations.PatchOrgsOrgIDRegistriesRegIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
@@ -5186,7 +5094,6 @@ func (s *public) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request oper
 }
 
 // PatchOrgsOrgIDResourcesAccountsAccID - Update a Resource Account.
-
 func (s *public) PatchOrgsOrgIDResourcesAccountsAccID(ctx context.Context, request operations.PatchOrgsOrgIDResourcesAccountsAccIDRequest) (*operations.PatchOrgsOrgIDResourcesAccountsAccIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts/{accId}", request, nil)
@@ -5260,7 +5167,6 @@ func (s *public) PatchOrgsOrgIDResourcesAccountsAccID(ctx context.Context, reque
 }
 
 // PatchOrgsOrgIDResourcesDefsDefID - Update a Resource Definition.
-
 func (s *public) PatchOrgsOrgIDResourcesDefsDefID(ctx context.Context, request operations.PatchOrgsOrgIDResourcesDefsDefIDRequest) (*operations.PatchOrgsOrgIDResourcesDefsDefIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}", request, nil)
@@ -5334,7 +5240,6 @@ func (s *public) PatchOrgsOrgIDResourcesDefsDefID(ctx context.Context, request o
 }
 
 // PatchOrgsOrgIDUsersUserID - Update the role of a User on an Organization
-
 func (s *public) PatchOrgsOrgIDUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDUsersUserIDRequest) (*operations.PatchOrgsOrgIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
@@ -5404,7 +5309,6 @@ func (s *public) PatchOrgsOrgIDUsersUserID(ctx context.Context, request operatio
 
 // PostOrgsOrgIDApps - Add a new Application to an Organization
 // Creates a new Application, then adds it to the specified Organization.
-
 func (s *public) PostOrgsOrgIDApps(ctx context.Context, request operations.PostOrgsOrgIDAppsRequest) (*operations.PostOrgsOrgIDAppsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps", request, nil)
@@ -5476,7 +5380,6 @@ func (s *public) PostOrgsOrgIDApps(ctx context.Context, request operations.PostO
 }
 
 // PostOrgsOrgIDAppsAppIDDeltas - Create a new Delta
-
 func (s *public) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDDeltasRequest) (*operations.PostOrgsOrgIDAppsAppIDDeltasResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas", request, nil)
@@ -5549,7 +5452,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request opera
 // The Environment is also initialized to the **current or past state of Deployment in another Environment**. This ensures that every Environment is derived from a previously known state. This means it is not possible to create a new Environment for an Application until at least one Deployment has occurred. (The Deployment does not have to be successful.)
 //
 // The Type of the Environment must be already defined in the Organization.
-
 func (s *public) PostOrgsOrgIDAppsAppIDEnvs(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs", request, nil)
@@ -5630,7 +5532,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDEnvs(ctx context.Context, request operati
 // **NOTE:**
 //
 // Directly setting a `set_id` in a deployment is not recommended as it will not record history of where the set came from. If the intention is to replicate an existing environment, use the environment rebasing approach described above.
-
 func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploysRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploysResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys", request, nil)
@@ -5703,7 +5604,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, req
 
 // PostOrgsOrgIDAppsAppIDEnvsEnvIDRules - Create a new Automation Rule for an Environment.
 // Items marked as deprecated are still supported (however not recommended) for use and are incompatible with properties of the latest api version. In particular an error is raised if  `images_filter` (deprecated) and `artefacts_filter` are used in the same payload. The same is true for `exclude_images_filter` (deprecated) and `exclude_artefacts_filter`. `match` and `update_to` are still supported but will trigger an error if combined with `match_ref`.
-
 func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDRulesRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDRulesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules", request, nil)
@@ -5776,8 +5676,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context, reque
 // by deployments referencing a Value Set Version where the value was present.
 //
 // Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
-//
-
 func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/purge/{key}", request, nil)
@@ -5841,8 +5739,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionI
 // Restore the values of all Shared Values in an environment from a specific version. Keys not existing in the selected version are deleted.
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-//
-
 func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestore(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore", request, nil)
@@ -5913,8 +5809,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionI
 // Restore the values of a single Shared Value in an Environment from a specific version.
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-//
-
 func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore/{key}", request, nil)
@@ -5987,7 +5881,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionI
 // The Shared Value created will only be available to the specific Environment.
 //
 // If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
-
 func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
@@ -6057,7 +5950,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, requ
 }
 
 // PostOrgsOrgIDAppsAppIDSetsSetID - Apply a Deployment Delta to a Deployment Set
-
 func (s *public) PostOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDSetsSetIDRequest) (*operations.PostOrgsOrgIDAppsAppIDSetsSetIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}", request, nil)
@@ -6137,7 +6029,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request op
 }
 
 // PostOrgsOrgIDAppsAppIDUsers - Adds a User to an Application with a Role
-
 func (s *public) PostOrgsOrgIDAppsAppIDUsers(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDUsersRequest) (*operations.PostOrgsOrgIDAppsAppIDUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users", request, nil)
@@ -6212,8 +6103,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDUsers(ctx context.Context, request operat
 // by deployments referencing a Value Set Version where the value was present.
 //
 // Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
-//
-
 func (s *public) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/purge/{key}", request, nil)
@@ -6277,8 +6166,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKey
 // Restore the values of all Shared Values in an application from a specific version. Keys not existing in the selected version are deleted.
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-//
-
 func (s *public) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestore(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore", request, nil)
@@ -6349,8 +6236,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestore(
 // Restore the values of a single Shared Value in an application from a specific version.
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-//
-
 func (s *public) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore/{key}", request, nil)
@@ -6423,7 +6308,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreK
 // The Shared Value created will be available to all Environments in that Application.
 //
 // If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
-
 func (s *public) PostOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValuesRequest) (*operations.PostOrgsOrgIDAppsAppIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
@@ -6493,7 +6377,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDValues(ctx context.Context, request opera
 }
 
 // PostOrgsOrgIDAppsAppIDWebhooks - Create a new Webhook
-
 func (s *public) PostOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDWebhooksRequest) (*operations.PostOrgsOrgIDAppsAppIDWebhooksResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks", request, nil)
@@ -6564,7 +6447,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request ope
 }
 
 // PostOrgsOrgIDAppsAppIDWebhooksJobID - Update a Webhook
-
 func (s *public) PostOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDWebhooksJobIDRequest) (*operations.PostOrgsOrgIDAppsAppIDWebhooksJobIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks/{jobId}", request, nil)
@@ -6625,7 +6507,6 @@ func (s *public) PostOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, reques
 }
 
 // PostOrgsOrgIDArtefactVersions - Register a new Artefact Version with your organization.
-
 func (s *public) PostOrgsOrgIDArtefactVersions(ctx context.Context, request operations.PostOrgsOrgIDArtefactVersionsRequest) (*operations.PostOrgsOrgIDArtefactVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions", request, nil)
@@ -6700,7 +6581,6 @@ func (s *public) PostOrgsOrgIDArtefactVersions(ctx context.Context, request oper
 
 // PostOrgsOrgIDEnvTypes - Add a new Environment Type
 // Adds a new Environment Type to an Organization.
-
 func (s *public) PostOrgsOrgIDEnvTypes(ctx context.Context, request operations.PostOrgsOrgIDEnvTypesRequest) (*operations.PostOrgsOrgIDEnvTypesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types", request, nil)
@@ -6772,7 +6652,6 @@ func (s *public) PostOrgsOrgIDEnvTypes(ctx context.Context, request operations.P
 }
 
 // PostOrgsOrgIDEnvTypesEnvTypeUsers - Adds a User to an Environment Type with a Role
-
 func (s *public) PostOrgsOrgIDEnvTypesEnvTypeUsers(ctx context.Context, request operations.PostOrgsOrgIDEnvTypesEnvTypeUsersRequest) (*operations.PostOrgsOrgIDEnvTypesEnvTypeUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users", request, nil)
@@ -6846,7 +6725,6 @@ func (s *public) PostOrgsOrgIDEnvTypesEnvTypeUsers(ctx context.Context, request 
 // This endpoint is used by Continuous Integration (CI) pipelines to notify Humanitec that a new Image Build is available.
 //
 // If there is no Image with ID `imageId`, it will be automatically created.
-
 func (s *public) PostOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request operations.PostOrgsOrgIDImagesImageIDBuildsRequest) (*operations.PostOrgsOrgIDImagesImageIDBuildsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}/builds", request, nil)
@@ -6911,7 +6789,6 @@ func (s *public) PostOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request o
 }
 
 // PostOrgsOrgIDInvitations - Invites a user to an Organization with a specified role.
-
 func (s *public) PostOrgsOrgIDInvitations(ctx context.Context, request operations.PostOrgsOrgIDInvitationsRequest) (*operations.PostOrgsOrgIDInvitationsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/invitations", request, nil)
@@ -6980,7 +6857,6 @@ func (s *public) PostOrgsOrgIDInvitations(ctx context.Context, request operation
 }
 
 // PostOrgsOrgIDRegistries - Creates a new registry record.
-
 func (s *public) PostOrgsOrgIDRegistries(ctx context.Context, request operations.PostOrgsOrgIDRegistriesRequest) (*operations.PostOrgsOrgIDRegistriesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries", request, nil)
@@ -7054,7 +6930,6 @@ func (s *public) PostOrgsOrgIDRegistries(ctx context.Context, request operations
 }
 
 // PostOrgsOrgIDResourcesAccounts - Create a new Resource Account in the organization.
-
 func (s *public) PostOrgsOrgIDResourcesAccounts(ctx context.Context, request operations.PostOrgsOrgIDResourcesAccountsRequest) (*operations.PostOrgsOrgIDResourcesAccountsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts", request, nil)
@@ -7130,7 +7005,6 @@ func (s *public) PostOrgsOrgIDResourcesAccounts(ctx context.Context, request ope
 }
 
 // PostOrgsOrgIDResourcesDefs - Create a new Resource Definition.
-
 func (s *public) PostOrgsOrgIDResourcesDefs(ctx context.Context, request operations.PostOrgsOrgIDResourcesDefsRequest) (*operations.PostOrgsOrgIDResourcesDefsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs", request, nil)
@@ -7210,10 +7084,10 @@ func (s *public) PostOrgsOrgIDResourcesDefs(ctx context.Context, request operati
 //  1. {"env_type":"test"}
 //  2. {"env_type":"development"}
 //  3. {"env_type":"test", "app_id":"my-app"}
+//
 // ```
 //
 // If, a resource of that time was needed in an Application `my-app`, Environment `qa-team` with Type `test` and Resource ID `modules.my-module-externals.my-resource`, there would be two resources definitions matching the criteria: #1 & #3. Definition #3 will be chosen because it's matching criteria is the most specific.
-
 func (s *public) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context.Context, request operations.PostOrgsOrgIDResourcesDefsDefIDCriteriaRequest) (*operations.PostOrgsOrgIDResourcesDefsDefIDCriteriaResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/criteria", request, nil)
@@ -7287,7 +7161,6 @@ func (s *public) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context.Context, re
 }
 
 // PostOrgsOrgIDResourcesDrivers - Register a new Resource Driver.
-
 func (s *public) PostOrgsOrgIDResourcesDrivers(ctx context.Context, request operations.PostOrgsOrgIDResourcesDriversRequest) (*operations.PostOrgsOrgIDResourcesDriversResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers", request, nil)
@@ -7361,7 +7234,6 @@ func (s *public) PostOrgsOrgIDResourcesDrivers(ctx context.Context, request oper
 }
 
 // PostOrgsOrgIDUsers - Creates a new service user.
-
 func (s *public) PostOrgsOrgIDUsers(ctx context.Context, request operations.PostOrgsOrgIDUsersRequest) (*operations.PostOrgsOrgIDUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users", request, nil)
@@ -7432,7 +7304,6 @@ func (s *public) PostOrgsOrgIDUsers(ctx context.Context, request operations.Post
 }
 
 // PostOrgsOrgIDWorkloadProfiles - Create new Workload Profile
-
 func (s *public) PostOrgsOrgIDWorkloadProfiles(ctx context.Context, request operations.PostOrgsOrgIDWorkloadProfilesRequest) (*operations.PostOrgsOrgIDWorkloadProfilesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles", request, nil)
@@ -7512,12 +7383,11 @@ func (s *public) PostOrgsOrgIDWorkloadProfiles(ctx context.Context, request oper
 //
 // Request body example:
 //
-// 	Content-Type: multipart/form-data; boundary=----boundary 	----boundary 	Content-Disposition: form-data; name="metadata" 	Content-Type: application/json; charset=UTF-8 	{ 	  "features": { 	     "humanitec/service": {}, 	     "humanitec/volumes": {}, 	     "custom": {"schema": {}} 	  }, 	  "notes": "Notes related to this version of the profile" 	} 	----boundary 	Content-Disposition: form-data; name="file"; filename="my-workload-1.0.1.tgz" 	Content-Type: application/x-gzip 	[TGZ_DATA] 	----boundary
+//	Content-Type: multipart/form-data; boundary=----boundary 	----boundary 	Content-Disposition: form-data; name="metadata" 	Content-Type: application/json; charset=UTF-8 	{ 	  "features": { 	     "humanitec/service": {}, 	     "humanitec/volumes": {}, 	     "custom": {"schema": {}} 	  }, 	  "notes": "Notes related to this version of the profile" 	} 	----boundary 	Content-Disposition: form-data; name="file"; filename="my-workload-1.0.1.tgz" 	Content-Type: application/x-gzip 	[TGZ_DATA] 	----boundary
 //
 // **NOTE:**
 //
 // A Workload Profile must be created before a version can be added to it.
-
 func (s *public) PostOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx context.Context, request operations.PostOrgsOrgIDWorkloadProfilesProfileQidVersionsRequest) (*operations.PostOrgsOrgIDWorkloadProfilesProfileQidVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}/versions", request, nil)
@@ -7589,7 +7459,6 @@ func (s *public) PostOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx context.Con
 }
 
 // PutDelta - Update an existing Delta
-
 func (s *public) PutDelta(ctx context.Context, request operations.PutDeltaRequest) (*operations.PutDeltaResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
@@ -7660,7 +7529,6 @@ func (s *public) PutDelta(ctx context.Context, request operations.PutDeltaReques
 
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived - Mark a Delta as "archived"
 // Archived Deltas are still accessible but can no longer be updated.
-
 func (s *public) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchivedRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchivedResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/archived", request, nil)
@@ -7730,7 +7598,6 @@ func (s *public) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.
 }
 
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID - Change the Environment of a Delta
-
 func (s *public) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvIDRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/env_id", request, nil)
@@ -7800,7 +7667,6 @@ func (s *public) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Con
 }
 
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName - Change the name of a Delta
-
 func (s *public) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataNameRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataNameResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/name", request, nil)
@@ -7879,7 +7745,6 @@ func (s *public) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName(ctx context.Cont
 // * _Rollback_: Rebasing to a previous Deployment in the current Environment and then Deploying without additional changes will execute a rollback to the previous Deployment state.
 //
 // * _Clone_: Rebasing to the current Deployment in a different Environment and then deploying without additional changes will clone all of the configuration of the other Environment into the current one. (NOTE: External Resources will not be cloned in the process - the current External Resources of the Environment will remain unchanged and will be used by the deployed Application in the Environment.
-
 func (s *public) PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployID(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployIDRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/from_deploy_id", request, nil)
@@ -7941,7 +7806,6 @@ func (s *public) PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployID(ctx context.Context,
 
 // PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Update an existing Automation Rule for an Environment.
 // Items marked as deprecated are still supported (however not recommended) for use and are incompatible with properties of the latest api version. In particular an error is raised if  `images_filter` (deprecated) and `artefacts_filter` are used in the same payload. The same is true for `exclude_images_filter` (deprecated) and `exclude_artefacts_filter`. `match` and `update_to` are still supported but will trigger an error if combined with `match_ref`.
-
 func (s *public) PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)
@@ -8021,8 +7885,8 @@ func (s *public) PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, 
 // ```
 //   - Deploy the environment within Humanitec.
 //   - Scale the number of replicas running of any workload.
+//
 // ```
-
 func (s *public) PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePausedRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePausedResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/paused", request, nil)
@@ -8082,7 +7946,6 @@ func (s *public) PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused(ctx context.Context
 
 // PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Update Shared Value for an Environment
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-
 func (s *public) PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
@@ -8153,7 +8016,6 @@ func (s *public) PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, re
 
 // PutOrgsOrgIDAppsAppIDValuesKey - Update Shared Value for an Application
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-
 func (s *public) PutOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.PutOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)
@@ -8223,7 +8085,6 @@ func (s *public) PutOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request ope
 }
 
 // PutOrgsOrgIDResourcesDefsDefID - Update a Resource Definition.
-
 func (s *public) PutOrgsOrgIDResourcesDefsDefID(ctx context.Context, request operations.PutOrgsOrgIDResourcesDefsDefIDRequest) (*operations.PutOrgsOrgIDResourcesDefsDefIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}", request, nil)
@@ -8295,7 +8156,6 @@ func (s *public) PutOrgsOrgIDResourcesDefsDefID(ctx context.Context, request ope
 }
 
 // PutOrgsOrgIDResourcesDriversDriverID - Update a Resource Driver.
-
 func (s *public) PutOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.PutOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.PutOrgsOrgIDResourcesDriversDriverIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)

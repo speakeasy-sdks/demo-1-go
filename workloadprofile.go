@@ -36,7 +36,6 @@ func newWorkloadProfile(defaultClient, securityClient HTTPClient, serverURL, lan
 }
 
 // DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion - Delete a Workload Profile Version
-
 func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion(ctx context.Context, request operations.DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersionRequest) (*operations.DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersionResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileId}/versions/{version}", request, nil)
@@ -88,7 +87,6 @@ func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersio
 // This will also delete all versions of a workload profile.
 //
 // It is not possible to delete profiles of other organizations.
-
 func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Context, request operations.DeleteOrgsOrgIDWorkloadProfilesProfileQidRequest) (*operations.DeleteOrgsOrgIDWorkloadProfilesProfileQidResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}", request, nil)
@@ -137,7 +135,6 @@ func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileQid(ctx context.
 }
 
 // GetOrgsOrgIDWorkloadProfiles - List workload profiles available to the organization.
-
 func (s *workloadProfile) GetOrgsOrgIDWorkloadProfiles(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesRequest) (*operations.GetOrgsOrgIDWorkloadProfilesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles", request, nil)
@@ -185,7 +182,6 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfiles(ctx context.Context, requ
 }
 
 // GetOrgsOrgIDWorkloadProfilesProfileQid - Get a Workload Profile
-
 func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesProfileQidRequest) (*operations.GetOrgsOrgIDWorkloadProfilesProfileQidResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}", request, nil)
@@ -243,7 +239,6 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Con
 }
 
 // GetOrgsOrgIDWorkloadProfilesProfileQidVersions - List versions of the given workload profile with optional constraint.
-
 func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesProfileQidVersionsRequest) (*operations.GetOrgsOrgIDWorkloadProfilesProfileQidVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}/versions", request, nil)
@@ -305,7 +300,6 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx con
 }
 
 // PostOrgsOrgIDWorkloadProfiles - Create new Workload Profile
-
 func (s *workloadProfile) PostOrgsOrgIDWorkloadProfiles(ctx context.Context, request operations.PostOrgsOrgIDWorkloadProfilesRequest) (*operations.PostOrgsOrgIDWorkloadProfilesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles", request, nil)
@@ -385,12 +379,11 @@ func (s *workloadProfile) PostOrgsOrgIDWorkloadProfiles(ctx context.Context, req
 //
 // Request body example:
 //
-// 	Content-Type: multipart/form-data; boundary=----boundary 	----boundary 	Content-Disposition: form-data; name="metadata" 	Content-Type: application/json; charset=UTF-8 	{ 	  "features": { 	     "humanitec/service": {}, 	     "humanitec/volumes": {}, 	     "custom": {"schema": {}} 	  }, 	  "notes": "Notes related to this version of the profile" 	} 	----boundary 	Content-Disposition: form-data; name="file"; filename="my-workload-1.0.1.tgz" 	Content-Type: application/x-gzip 	[TGZ_DATA] 	----boundary
+//	Content-Type: multipart/form-data; boundary=----boundary 	----boundary 	Content-Disposition: form-data; name="metadata" 	Content-Type: application/json; charset=UTF-8 	{ 	  "features": { 	     "humanitec/service": {}, 	     "humanitec/volumes": {}, 	     "custom": {"schema": {}} 	  }, 	  "notes": "Notes related to this version of the profile" 	} 	----boundary 	Content-Disposition: form-data; name="file"; filename="my-workload-1.0.1.tgz" 	Content-Type: application/x-gzip 	[TGZ_DATA] 	----boundary
 //
 // **NOTE:**
 //
 // A Workload Profile must be created before a version can be added to it.
-
 func (s *workloadProfile) PostOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx context.Context, request operations.PostOrgsOrgIDWorkloadProfilesProfileQidVersionsRequest) (*operations.PostOrgsOrgIDWorkloadProfilesProfileQidVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}/versions", request, nil)

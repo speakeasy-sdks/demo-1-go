@@ -39,7 +39,6 @@ func newEnvironment(defaultClient, securityClient HTTPClient, serverURL, languag
 // Deleting an Environment will also delete the Deployment history of the Environment.
 //
 // _Deletions are currently irreversible._
-
 func (s *environment) DeleteOrgsOrgIDAppsAppIDEnvsEnvID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}", request, nil)
@@ -91,7 +90,6 @@ func (s *environment) DeleteOrgsOrgIDAppsAppIDEnvsEnvID(ctx context.Context, req
 
 // GetOrgsOrgIDAppsAppIDEnvs - List all Environments.
 // Lists all of the Environments in the Application.
-
 func (s *environment) GetOrgsOrgIDAppsAppIDEnvs(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs", request, nil)
@@ -140,7 +138,6 @@ func (s *environment) GetOrgsOrgIDAppsAppIDEnvs(ctx context.Context, request ope
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvID - Get a specific Environment.
 // Gets a specific Environment in an Application.
-
 func (s *environment) GetOrgsOrgIDAppsAppIDEnvsEnvID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}", request, nil)
@@ -203,7 +200,6 @@ func (s *environment) GetOrgsOrgIDAppsAppIDEnvsEnvID(ctx context.Context, reques
 // The Environment is also initialized to the **current or past state of Deployment in another Environment**. This ensures that every Environment is derived from a previously known state. This means it is not possible to create a new Environment for an Application until at least one Deployment has occurred. (The Deployment does not have to be successful.)
 //
 // The Type of the Environment must be already defined in the Organization.
-
 func (s *environment) PostOrgsOrgIDAppsAppIDEnvs(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs", request, nil)
@@ -284,7 +280,6 @@ func (s *environment) PostOrgsOrgIDAppsAppIDEnvs(ctx context.Context, request op
 // * _Rollback_: Rebasing to a previous Deployment in the current Environment and then Deploying without additional changes will execute a rollback to the previous Deployment state.
 //
 // * _Clone_: Rebasing to the current Deployment in a different Environment and then deploying without additional changes will clone all of the configuration of the other Environment into the current one. (NOTE: External Resources will not be cloned in the process - the current External Resources of the Environment will remain unchanged and will be used by the deployed Application in the Environment.
-
 func (s *environment) PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployID(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployIDRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/from_deploy_id", request, nil)

@@ -56,7 +56,6 @@ func newMatchingCriteria(defaultClient, securityClient HTTPClient, serverURL, la
 // If there **are** Active Resources that would match to a different Resource Definition, the request fails with HTTP status code 409 (Conflict). The response content will list all of affected Active Resources and their new matches.
 //
 // The request can take an optional `force` query parameter. If set to `true`, the Matching Criteria is deleted immediately. Referenced Active Resources would match to a different Resource Definition during the next deployment in the target environment.
-
 func (s *matchingCriteria) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID(ctx context.Context, request operations.DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaIDRequest) (*operations.DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/criteria/{criteriaId}", request, nil)
@@ -138,10 +137,10 @@ func (s *matchingCriteria) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID(c
 //  1. {"env_type":"test"}
 //  2. {"env_type":"development"}
 //  3. {"env_type":"test", "app_id":"my-app"}
+//
 // ```
 //
 // If, a resource of that time was needed in an Application `my-app`, Environment `qa-team` with Type `test` and Resource ID `modules.my-module-externals.my-resource`, there would be two resources definitions matching the criteria: #1 & #3. Definition #3 will be chosen because it's matching criteria is the most specific.
-
 func (s *matchingCriteria) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context.Context, request operations.PostOrgsOrgIDResourcesDefsDefIDCriteriaRequest) (*operations.PostOrgsOrgIDResourcesDefsDefIDCriteriaResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/criteria", request, nil)

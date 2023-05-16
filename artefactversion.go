@@ -35,7 +35,6 @@ func newArtefactVersion(defaultClient, securityClient HTTPClient, serverURL, lan
 
 // GetOrgsOrgIDArtefactVersions - List all Artefacts Versions.
 // Returns the Artefact Versions registered with your organization. If no elements are found, an empty list is returned.
-
 func (s *artefactVersion) GetOrgsOrgIDArtefactVersions(ctx context.Context, request operations.GetOrgsOrgIDArtefactVersionsRequest) (*operations.GetOrgsOrgIDArtefactVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions", request, nil)
@@ -98,7 +97,6 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersions(ctx context.Context, requ
 
 // GetOrgsOrgIDArtefactVersionsArtefactVersionID - Get an Artefacts Versions.
 // Returns a specific Artefact Version.
-
 func (s *artefactVersion) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx context.Context, request operations.GetOrgsOrgIDArtefactVersionsArtefactVersionIDRequest) (*operations.GetOrgsOrgIDArtefactVersionsArtefactVersionIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions/{artefactVersionId}", request, nil)
@@ -159,7 +157,6 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx cont
 
 // GetOrgsOrgIDArtefactsArtefactIDVersions - List all Artefact Versions of an Artefact.
 // Returns the Artefact Versions of a specified Artefact registered with your organization. If no elements are found, an empty list is returned.
-
 func (s *artefactVersion) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Context, request operations.GetOrgsOrgIDArtefactsArtefactIDVersionsRequest) (*operations.GetOrgsOrgIDArtefactsArtefactIDVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}/versions", request, nil)
@@ -224,7 +221,6 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Co
 
 // PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID - Update Version of an Artefact.
 // Update the version of a specified Artefact registered with your organization".
-
 func (s *artefactVersion) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx context.Context, request operations.PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionIDRequest) (*operations.PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}/versions/{versionId}", request, nil)
@@ -298,7 +294,6 @@ func (s *artefactVersion) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx
 }
 
 // PostOrgsOrgIDArtefactVersions - Register a new Artefact Version with your organization.
-
 func (s *artefactVersion) PostOrgsOrgIDArtefactVersions(ctx context.Context, request operations.PostOrgsOrgIDArtefactVersionsRequest) (*operations.PostOrgsOrgIDArtefactVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions", request, nil)

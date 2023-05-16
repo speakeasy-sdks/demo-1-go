@@ -35,7 +35,6 @@ func newValueSetVersion(defaultClient, securityClient HTTPClient, serverURL, lan
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions - List Value Set Versions in an Environment of an App
 // A new Value Set Version is created on every modification of a Value inside the an Environment of an App. In case this environment has no overrides the response is the same as the App level endpoint.
-
 func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions", request, nil)
@@ -87,7 +86,6 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions(ctx con
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID - Get a single Value Set Version in an Environment of an App
-
 func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}", request, nil)
@@ -146,7 +144,6 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSet
 
 // GetOrgsOrgIDAppsAppIDValueSetVersions - List Value Set Versions in the App
 // A new Value Set Version is created on every modification of a Value inside the app.
-
 func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersions(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValueSetVersionsRequest) (*operations.GetOrgsOrgIDAppsAppIDValueSetVersionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions", request, nil)
@@ -198,7 +195,6 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersions(ctx context.Cont
 }
 
 // GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID - Get a single Value Set Version from the App
-
 func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRequest) (*operations.GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}", request, nil)
@@ -260,8 +256,6 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID
 // by deployments referencing a Value Set Version where the value was present.
 //
 // Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
-//
-
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/purge/{key}", request, nil)
@@ -325,8 +319,6 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 // Restore the values of all Shared Values in an environment from a specific version. Keys not existing in the selected version are deleted.
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-//
-
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestore(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore", request, nil)
@@ -397,8 +389,6 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 // Restore the values of a single Shared Value in an Environment from a specific version.
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-//
-
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore/{key}", request, nil)
@@ -472,8 +462,6 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 // by deployments referencing a Value Set Version where the value was present.
 //
 // Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
-//
-
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/purge/{key}", request, nil)
@@ -537,8 +525,6 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionI
 // Restore the values of all Shared Values in an application from a specific version. Keys not existing in the selected version are deleted.
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-//
-
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestore(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore", request, nil)
@@ -609,8 +595,6 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionI
 // Restore the values of a single Shared Value in an application from a specific version.
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-//
-
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore/{key}", request, nil)

@@ -67,7 +67,6 @@ func newSet(defaultClient, securityClient HTTPClient, serverURL, language, sdkVe
 }
 
 // GetSets - Get all Deployment Sets
-
 func (s *set) GetSets(ctx context.Context, request operations.GetSetsRequest) (*operations.GetSetsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets", request, nil)
@@ -126,7 +125,6 @@ func (s *set) GetSets(ctx context.Context, request operations.GetSetsRequest) (*
 }
 
 // GetOrgsOrgIDAppsAppIDSetsSetID - Get a Deployment Set
-
 func (s *set) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDSetsSetIDRequest) (*operations.GetOrgsOrgIDAppsAppIDSetsSetIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}", request, nil)
@@ -189,7 +187,6 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operat
 }
 
 // GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID - Get the difference between 2 Deployment Sets
-
 func (s *set) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetIDRequest) (*operations.GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}/diff/{sourceSetId}", request, nil)
@@ -248,7 +245,6 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context,
 }
 
 // PostOrgsOrgIDAppsAppIDSetsSetID - Apply a Deployment Delta to a Deployment Set
-
 func (s *set) PostOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDSetsSetIDRequest) (*operations.PostOrgsOrgIDAppsAppIDSetsSetIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}", request, nil)

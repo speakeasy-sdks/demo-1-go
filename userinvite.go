@@ -32,7 +32,6 @@ func newUserInvite(defaultClient, securityClient HTTPClient, serverURL, language
 }
 
 // GetOrgsOrgIDInvitations - List the invites issued for the organization.
-
 func (s *userInvite) GetOrgsOrgIDInvitations(ctx context.Context, request operations.GetOrgsOrgIDInvitationsRequest) (*operations.GetOrgsOrgIDInvitationsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/invitations", request, nil)

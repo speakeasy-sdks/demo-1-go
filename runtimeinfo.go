@@ -34,7 +34,6 @@ func newRuntimeInfo(defaultClient, securityClient HTTPClient, serverURL, languag
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime - Get Runtime information about the environment.
-
 func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime", request, nil)
@@ -85,7 +84,6 @@ func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime(ctx context.Context,
 }
 
 // GetOrgsOrgIDAppsAppIDRuntime - Get Runtime information about specific environments.
-
 func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDRuntime(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDRuntimeRequest) (*operations.GetOrgsOrgIDAppsAppIDRuntimeResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/runtime", request, nil)
@@ -140,7 +138,6 @@ func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDRuntime(ctx context.Context, request 
 }
 
 // PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas - Set number of replicas for an environment's modules.
-
 func (s *runtimeInfo) PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicasRequest) (*operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicasResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/replicas", request, nil)
@@ -210,8 +207,8 @@ func (s *runtimeInfo) PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas(ctx contex
 // ```
 //   - Deploy the environment within Humanitec.
 //   - Scale the number of replicas running of any workload.
+//
 // ```
-
 func (s *runtimeInfo) PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePausedRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePausedResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/paused", request, nil)

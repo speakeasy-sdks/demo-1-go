@@ -39,7 +39,6 @@ func newApplication(defaultClient, securityClient HTTPClient, serverURL, languag
 // Deleting an Application will also delete everything associated with it. This includes Environments, Deployment history on those Environments, and any shared values and secrets associated.
 //
 // _Deletions are currently irreversible._
-
 func (s *application) DeleteOrgsOrgIDAppsAppID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}", request, nil)
@@ -91,7 +90,6 @@ func (s *application) DeleteOrgsOrgIDAppsAppID(ctx context.Context, request oper
 
 // GetOrgsOrgIDApps - List all Applications in an Organization.
 // Listing or lists of all Applications that exist within a specific Organization.
-
 func (s *application) GetOrgsOrgIDApps(ctx context.Context, request operations.GetOrgsOrgIDAppsRequest) (*operations.GetOrgsOrgIDAppsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps", request, nil)
@@ -140,7 +138,6 @@ func (s *application) GetOrgsOrgIDApps(ctx context.Context, request operations.G
 
 // GetOrgsOrgIDAppsAppID - Get an existing Application
 // Gets a specific Application in the specified Organization by ID.
-
 func (s *application) GetOrgsOrgIDAppsAppID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDRequest) (*operations.GetOrgsOrgIDAppsAppIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}", request, nil)
@@ -199,7 +196,6 @@ func (s *application) GetOrgsOrgIDAppsAppID(ctx context.Context, request operati
 
 // PostOrgsOrgIDApps - Add a new Application to an Organization
 // Creates a new Application, then adds it to the specified Organization.
-
 func (s *application) PostOrgsOrgIDApps(ctx context.Context, request operations.PostOrgsOrgIDAppsRequest) (*operations.PostOrgsOrgIDAppsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps", request, nil)

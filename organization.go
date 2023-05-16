@@ -35,7 +35,6 @@ func newOrganization(defaultClient, securityClient HTTPClient, serverURL, langua
 }
 
 // GetOrgs - List active organizations the user has access to.
-
 func (s *organization) GetOrgs(ctx context.Context) (*operations.GetOrgsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/orgs"
@@ -83,7 +82,6 @@ func (s *organization) GetOrgs(ctx context.Context) (*operations.GetOrgsResponse
 }
 
 // GetOrgsOrgID - Get the specified Organization.
-
 func (s *organization) GetOrgsOrgID(ctx context.Context, request operations.GetOrgsOrgIDRequest) (*operations.GetOrgsOrgIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}", request, nil)

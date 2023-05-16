@@ -37,7 +37,6 @@ func newEnvironmentType(defaultClient, securityClient HTTPClient, serverURL, lan
 
 // DeleteOrgsOrgIDEnvTypesEnvTypeID - Deletes an Environment Type
 // Deletes a specific Environment Type from an Organization. If there are Environments with this Type in the Organization, the operation will fail.
-
 func (s *environmentType) DeleteOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, request operations.DeleteOrgsOrgIDEnvTypesEnvTypeIDRequest) (*operations.DeleteOrgsOrgIDEnvTypesEnvTypeIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envTypeId}", request, nil)
@@ -108,7 +107,6 @@ func (s *environmentType) DeleteOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, 
 
 // GetOrgsOrgIDEnvTypes - List all Environment Types
 // Lists all Environment Types in an Organization.
-
 func (s *environmentType) GetOrgsOrgIDEnvTypes(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesRequest) (*operations.GetOrgsOrgIDEnvTypesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types", request, nil)
@@ -157,7 +155,6 @@ func (s *environmentType) GetOrgsOrgIDEnvTypes(ctx context.Context, request oper
 
 // GetOrgsOrgIDEnvTypesEnvTypeID - Get an Environment Type
 // Gets a specific Environment Type within an Organization.
-
 func (s *environmentType) GetOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesEnvTypeIDRequest) (*operations.GetOrgsOrgIDEnvTypesEnvTypeIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envTypeId}", request, nil)
@@ -216,7 +213,6 @@ func (s *environmentType) GetOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, req
 
 // PostOrgsOrgIDEnvTypes - Add a new Environment Type
 // Adds a new Environment Type to an Organization.
-
 func (s *environmentType) PostOrgsOrgIDEnvTypes(ctx context.Context, request operations.PostOrgsOrgIDEnvTypesRequest) (*operations.PostOrgsOrgIDEnvTypesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types", request, nil)

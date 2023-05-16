@@ -34,7 +34,6 @@ func newUserRole(defaultClient, securityClient HTTPClient, serverURL, language, 
 }
 
 // DeleteOrgsOrgIDAppsAppIDUsersUserID - Remove the role of a User on an Application
-
 func (s *userRole) DeleteOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
@@ -85,7 +84,6 @@ func (s *userRole) DeleteOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, requ
 }
 
 // DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID - Remove the role of a User on an Environment Type
-
 func (s *userRole) DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
@@ -136,7 +134,6 @@ func (s *userRole) DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context
 }
 
 // DeleteOrgsOrgIDUsersUserID - Remove the role of a User on an Organization
-
 func (s *userRole) DeleteOrgsOrgIDUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDUsersUserIDRequest) (*operations.DeleteOrgsOrgIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
@@ -187,7 +184,6 @@ func (s *userRole) DeleteOrgsOrgIDUsersUserID(ctx context.Context, request opera
 }
 
 // GetOrgsOrgIDAppsAppIDUsers - List Users with roles in an App
-
 func (s *userRole) GetOrgsOrgIDAppsAppIDUsers(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDUsersRequest) (*operations.GetOrgsOrgIDAppsAppIDUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users", request, nil)
@@ -236,7 +232,6 @@ func (s *userRole) GetOrgsOrgIDAppsAppIDUsers(ctx context.Context, request opera
 }
 
 // GetOrgsOrgIDAppsAppIDUsersUserID - Get the role of a User on an Application
-
 func (s *userRole) GetOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.GetOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
@@ -295,7 +290,6 @@ func (s *userRole) GetOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request
 }
 
 // GetOrgsOrgIDEnvTypesEnvTypeUsersUserID - Get the role of a User on an Environment Type
-
 func (s *userRole) GetOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.GetOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
@@ -354,7 +348,6 @@ func (s *userRole) GetOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, r
 }
 
 // GetOrgsOrgIDUsers - List Users with roles in an Organization
-
 func (s *userRole) GetOrgsOrgIDUsers(ctx context.Context, request operations.GetOrgsOrgIDUsersRequest) (*operations.GetOrgsOrgIDUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users", request, nil)
@@ -403,7 +396,6 @@ func (s *userRole) GetOrgsOrgIDUsers(ctx context.Context, request operations.Get
 }
 
 // GetOrgsOrgIDUsersUserID - Get the role of a User on an Organization
-
 func (s *userRole) GetOrgsOrgIDUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDUsersUserIDRequest) (*operations.GetOrgsOrgIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
@@ -462,7 +454,6 @@ func (s *userRole) GetOrgsOrgIDUsersUserID(ctx context.Context, request operatio
 }
 
 // PatchOrgsOrgIDAppsAppIDUsersUserID - Update the role of a User on an Application
-
 func (s *userRole) PatchOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.PatchOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
@@ -531,7 +522,6 @@ func (s *userRole) PatchOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, reque
 }
 
 // PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID - Update the role of a User on an Environment Type
-
 func (s *userRole) PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.PatchOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
@@ -600,7 +590,6 @@ func (s *userRole) PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context,
 }
 
 // PatchOrgsOrgIDUsersUserID - Update the role of a User on an Organization
-
 func (s *userRole) PatchOrgsOrgIDUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDUsersUserIDRequest) (*operations.PatchOrgsOrgIDUsersUserIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
@@ -669,7 +658,6 @@ func (s *userRole) PatchOrgsOrgIDUsersUserID(ctx context.Context, request operat
 }
 
 // PostOrgsOrgIDAppsAppIDUsers - Adds a User to an Application with a Role
-
 func (s *userRole) PostOrgsOrgIDAppsAppIDUsers(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDUsersRequest) (*operations.PostOrgsOrgIDAppsAppIDUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users", request, nil)
@@ -740,7 +728,6 @@ func (s *userRole) PostOrgsOrgIDAppsAppIDUsers(ctx context.Context, request oper
 }
 
 // PostOrgsOrgIDEnvTypesEnvTypeUsers - Adds a User to an Environment Type with a Role
-
 func (s *userRole) PostOrgsOrgIDEnvTypesEnvTypeUsers(ctx context.Context, request operations.PostOrgsOrgIDEnvTypesEnvTypeUsersRequest) (*operations.PostOrgsOrgIDEnvTypesEnvTypeUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users", request, nil)
@@ -809,7 +796,6 @@ func (s *userRole) PostOrgsOrgIDEnvTypesEnvTypeUsers(ctx context.Context, reques
 }
 
 // PostOrgsOrgIDInvitations - Invites a user to an Organization with a specified role.
-
 func (s *userRole) PostOrgsOrgIDInvitations(ctx context.Context, request operations.PostOrgsOrgIDInvitationsRequest) (*operations.PostOrgsOrgIDInvitationsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/invitations", request, nil)

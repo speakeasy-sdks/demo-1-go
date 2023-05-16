@@ -36,7 +36,6 @@ func newDriverDefinition(defaultClient, securityClient HTTPClient, serverURL, la
 }
 
 // DeleteOrgsOrgIDResourcesDriversDriverID - Delete a Resources Driver.
-
 func (s *driverDefinition) DeleteOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.DeleteOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.DeleteOrgsOrgIDResourcesDriversDriverIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)
@@ -85,7 +84,6 @@ func (s *driverDefinition) DeleteOrgsOrgIDResourcesDriversDriverID(ctx context.C
 }
 
 // GetOrgsOrgIDResourcesDrivers - List Resource Drivers.
-
 func (s *driverDefinition) GetOrgsOrgIDResourcesDrivers(ctx context.Context, request operations.GetOrgsOrgIDResourcesDriversRequest) (*operations.GetOrgsOrgIDResourcesDriversResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers", request, nil)
@@ -144,7 +142,6 @@ func (s *driverDefinition) GetOrgsOrgIDResourcesDrivers(ctx context.Context, req
 
 // GetOrgsOrgIDResourcesDriversDriverID - Get a Resource Driver.
 // # Only drivers that belongs to the given organization or registered as `public` are accessible through this endpoint
-
 func (s *driverDefinition) GetOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.GetOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.GetOrgsOrgIDResourcesDriversDriverIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)
@@ -204,7 +201,6 @@ func (s *driverDefinition) GetOrgsOrgIDResourcesDriversDriverID(ctx context.Cont
 }
 
 // PostOrgsOrgIDResourcesDrivers - Register a new Resource Driver.
-
 func (s *driverDefinition) PostOrgsOrgIDResourcesDrivers(ctx context.Context, request operations.PostOrgsOrgIDResourcesDriversRequest) (*operations.PostOrgsOrgIDResourcesDriversResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers", request, nil)
@@ -278,7 +274,6 @@ func (s *driverDefinition) PostOrgsOrgIDResourcesDrivers(ctx context.Context, re
 }
 
 // PutOrgsOrgIDResourcesDriversDriverID - Update a Resource Driver.
-
 func (s *driverDefinition) PutOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.PutOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.PutOrgsOrgIDResourcesDriversDriverIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)

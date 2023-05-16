@@ -36,7 +36,6 @@ func newResourceType(defaultClient, securityClient HTTPClient, serverURL, langua
 }
 
 // GetOrgsOrgIDResourcesTypes - List Resource Types.
-
 func (s *resourceType) GetOrgsOrgIDResourcesTypes(ctx context.Context, request operations.GetOrgsOrgIDResourcesTypesRequest) (*operations.GetOrgsOrgIDResourcesTypesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/types", request, nil)

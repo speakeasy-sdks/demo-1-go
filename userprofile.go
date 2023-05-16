@@ -35,7 +35,6 @@ func newUserProfile(defaultClient, securityClient HTTPClient, serverURL, languag
 }
 
 // DeleteTokensTokenID - DEPRECATED
-
 func (s *userProfile) DeleteTokensTokenID(ctx context.Context, request operations.DeleteTokensTokenIDRequest) (*operations.DeleteTokensTokenIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/tokens/{tokenId}", request, nil)
@@ -74,7 +73,6 @@ func (s *userProfile) DeleteTokensTokenID(ctx context.Context, request operation
 }
 
 // GetCurrentUser - Gets the extended profile of the current user
-
 func (s *userProfile) GetCurrentUser(ctx context.Context) (*operations.GetCurrentUserResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/current-user"
@@ -122,7 +120,6 @@ func (s *userProfile) GetCurrentUser(ctx context.Context) (*operations.GetCurren
 }
 
 // GetTokens - DEPRECATED
-
 func (s *userProfile) GetTokens(ctx context.Context) (*operations.GetTokensResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/tokens"
@@ -167,7 +164,6 @@ func (s *userProfile) GetTokens(ctx context.Context) (*operations.GetTokensRespo
 }
 
 // GetUsersMe - DEPRECATED
-
 func (s *userProfile) GetUsersMe(ctx context.Context) (*operations.GetUsersMeResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/users/me"
@@ -215,7 +211,6 @@ func (s *userProfile) GetUsersMe(ctx context.Context) (*operations.GetUsersMeRes
 }
 
 // PatchCurrentUser - Updates the extended profile of the current user.
-
 func (s *userProfile) PatchCurrentUser(ctx context.Context, request shared.UserProfileExtendedRequest) (*operations.PatchCurrentUserResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/current-user"
@@ -283,7 +278,6 @@ func (s *userProfile) PatchCurrentUser(ctx context.Context, request shared.UserP
 }
 
 // PostOrgsOrgIDUsers - Creates a new service user.
-
 func (s *userProfile) PostOrgsOrgIDUsers(ctx context.Context, request operations.PostOrgsOrgIDUsersRequest) (*operations.PostOrgsOrgIDUsersResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users", request, nil)

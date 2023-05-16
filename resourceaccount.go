@@ -36,7 +36,6 @@ func newResourceAccount(defaultClient, securityClient HTTPClient, serverURL, lan
 }
 
 // GetOrgsOrgIDResourcesAccounts - List Resource Accounts in the organization.
-
 func (s *resourceAccount) GetOrgsOrgIDResourcesAccounts(ctx context.Context, request operations.GetOrgsOrgIDResourcesAccountsRequest) (*operations.GetOrgsOrgIDResourcesAccountsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts", request, nil)
@@ -94,7 +93,6 @@ func (s *resourceAccount) GetOrgsOrgIDResourcesAccounts(ctx context.Context, req
 }
 
 // GetOrgsOrgIDResourcesAccountsAccID - Get a Resource Account.
-
 func (s *resourceAccount) GetOrgsOrgIDResourcesAccountsAccID(ctx context.Context, request operations.GetOrgsOrgIDResourcesAccountsAccIDRequest) (*operations.GetOrgsOrgIDResourcesAccountsAccIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts/{accId}", request, nil)
@@ -154,7 +152,6 @@ func (s *resourceAccount) GetOrgsOrgIDResourcesAccountsAccID(ctx context.Context
 }
 
 // PatchOrgsOrgIDResourcesAccountsAccID - Update a Resource Account.
-
 func (s *resourceAccount) PatchOrgsOrgIDResourcesAccountsAccID(ctx context.Context, request operations.PatchOrgsOrgIDResourcesAccountsAccIDRequest) (*operations.PatchOrgsOrgIDResourcesAccountsAccIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts/{accId}", request, nil)
@@ -228,7 +225,6 @@ func (s *resourceAccount) PatchOrgsOrgIDResourcesAccountsAccID(ctx context.Conte
 }
 
 // PostOrgsOrgIDResourcesAccounts - Create a new Resource Account in the organization.
-
 func (s *resourceAccount) PostOrgsOrgIDResourcesAccounts(ctx context.Context, request operations.PostOrgsOrgIDResourcesAccountsRequest) (*operations.PostOrgsOrgIDResourcesAccountsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts", request, nil)

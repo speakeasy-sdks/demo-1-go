@@ -36,7 +36,6 @@ func newActiveResource(defaultClient, securityClient HTTPClient, serverURL, lang
 }
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID - Delete Active Resources.
-
 func (s *activeResource) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources/{type}/{resId}", request, nil)
@@ -81,7 +80,6 @@ func (s *activeResource) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID(ctx
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDResources - List Active Resources provisioned in an environment.
-
 func (s *activeResource) GetOrgsOrgIDAppsAppIDEnvsEnvIDResources(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDResourcesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDResourcesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources", request, nil)
@@ -139,7 +137,6 @@ func (s *activeResource) GetOrgsOrgIDAppsAppIDEnvsEnvIDResources(ctx context.Con
 }
 
 // GetOrgsOrgIDResourcesDefsDefIDResources - List Active Resources provisioned via a specific Resource Definition.
-
 func (s *activeResource) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context.Context, request operations.GetOrgsOrgIDResourcesDefsDefIDResourcesRequest) (*operations.GetOrgsOrgIDResourcesDefsDefIDResourcesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/resources", request, nil)

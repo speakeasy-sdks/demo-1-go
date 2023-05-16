@@ -37,7 +37,6 @@ func newRegistry(defaultClient, securityClient HTTPClient, serverURL, language, 
 
 // DeleteOrgsOrgIDRegistriesRegID - Deletes an existing registry record and all associated credentials and secrets.
 // _Deletions are currently irreversible._
-
 func (s *registry) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.DeleteOrgsOrgIDRegistriesRegIDRequest) (*operations.DeleteOrgsOrgIDRegistriesRegIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
@@ -90,7 +89,6 @@ func (s *registry) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request o
 }
 
 // GetOrgsOrgIDRegistries - Lists available registries for the organization.
-
 func (s *registry) GetOrgsOrgIDRegistries(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRequest) (*operations.GetOrgsOrgIDRegistriesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries", request, nil)
@@ -150,7 +148,6 @@ func (s *registry) GetOrgsOrgIDRegistries(ctx context.Context, request operation
 }
 
 // GetOrgsOrgIDRegistriesRegID - Loads a registry record details.
-
 func (s *registry) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRegIDRequest) (*operations.GetOrgsOrgIDRegistriesRegIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
@@ -210,7 +207,6 @@ func (s *registry) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request oper
 }
 
 // GetOrgsOrgIDRegistriesRegIDCreds - Returns current account credentials or secret details for the registry.
-
 func (s *registry) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRegIDCredsRequest) (*operations.GetOrgsOrgIDRegistriesRegIDCredsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}/creds", request, nil)
@@ -272,7 +268,6 @@ func (s *registry) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request
 }
 
 // PatchOrgsOrgIDRegistriesRegID - Updates (patches) an existing registry record.
-
 func (s *registry) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.PatchOrgsOrgIDRegistriesRegIDRequest) (*operations.PatchOrgsOrgIDRegistriesRegIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
@@ -346,7 +341,6 @@ func (s *registry) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request op
 }
 
 // PostOrgsOrgIDRegistries - Creates a new registry record.
-
 func (s *registry) PostOrgsOrgIDRegistries(ctx context.Context, request operations.PostOrgsOrgIDRegistriesRequest) (*operations.PostOrgsOrgIDRegistriesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries", request, nil)

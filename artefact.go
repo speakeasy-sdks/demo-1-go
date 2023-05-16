@@ -35,7 +35,6 @@ func newArtefact(defaultClient, securityClient HTTPClient, serverURL, language, 
 
 // DeleteOrgsOrgIDArtefactsArtefactID - Delete Artefact and all related Artefact Versions
 // The specified Artefact and its Artefact Versions will be permanently deleted. Only Administrators can delete an Artefact.
-
 func (s *artefact) DeleteOrgsOrgIDArtefactsArtefactID(ctx context.Context, request operations.DeleteOrgsOrgIDArtefactsArtefactIDRequest) (*operations.DeleteOrgsOrgIDArtefactsArtefactIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}", request, nil)
@@ -87,7 +86,6 @@ func (s *artefact) DeleteOrgsOrgIDArtefactsArtefactID(ctx context.Context, reque
 
 // GetOrgsOrgIDArtefacts - List all Artefacts.
 // Returns the Artefacts registered with your organization. If no elements are found, an empty list is returned.
-
 func (s *artefact) GetOrgsOrgIDArtefacts(ctx context.Context, request operations.GetOrgsOrgIDArtefactsRequest) (*operations.GetOrgsOrgIDArtefactsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts", request, nil)

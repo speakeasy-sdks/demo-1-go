@@ -39,7 +39,6 @@ func newValue(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues - Delete all Shared Value for an Environment
 // All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
-
 func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
@@ -79,7 +78,6 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, req
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Delete Shared Value for an Environment
 // The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
-
 func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
@@ -131,7 +129,6 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, 
 
 // DeleteOrgsOrgIDAppsAppIDValues - Delete all Shared Value for an App
 // All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
-
 func (s *value) DeleteOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDValuesRequest) (*operations.DeleteOrgsOrgIDAppsAppIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
@@ -171,7 +168,6 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDValues(ctx context.Context, request oper
 
 // DeleteOrgsOrgIDAppsAppIDValuesKey - Delete Shared Value for an Application
 // The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
-
 func (s *value) DeleteOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.DeleteOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)
@@ -223,7 +219,6 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request o
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValues - List Shared Values in an Environment
 // The returned values will be the base Application values with the Environment overrides where applicable. The `source` field will specify the level from which the value is from.
-
 func (s *value) GetOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
@@ -272,7 +267,6 @@ func (s *value) GetOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, reques
 
 // GetOrgsOrgIDAppsAppIDValues - List Shared Values in an Application
 // The returned values will be the "base" values for the Application. The overridden value for the Environment can be retrieved via the `/orgs/{orgId}/apps/{appId}/envs/{envId}/values` endpoint.
-
 func (s *value) GetOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValuesRequest) (*operations.GetOrgsOrgIDAppsAppIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
@@ -321,7 +315,6 @@ func (s *value) GetOrgsOrgIDAppsAppIDValues(ctx context.Context, request operati
 
 // PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Update Shared Value for an Environment
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-
 func (s *value) PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
@@ -392,7 +385,6 @@ func (s *value) PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, r
 
 // PatchOrgsOrgIDAppsAppIDValuesKey - Update Shared Value for an Application
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-
 func (s *value) PatchOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.PatchOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)
@@ -465,7 +457,6 @@ func (s *value) PatchOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request op
 // The Shared Value created will only be available to the specific Environment.
 //
 // If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
-
 func (s *value) PostOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
@@ -538,7 +529,6 @@ func (s *value) PostOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, reque
 // The Shared Value created will be available to all Environments in that Application.
 //
 // If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
-
 func (s *value) PostOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValuesRequest) (*operations.PostOrgsOrgIDAppsAppIDValuesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
@@ -609,7 +599,6 @@ func (s *value) PostOrgsOrgIDAppsAppIDValues(ctx context.Context, request operat
 
 // PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Update Shared Value for an Environment
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-
 func (s *value) PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
@@ -680,7 +669,6 @@ func (s *value) PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, req
 
 // PutOrgsOrgIDAppsAppIDValuesKey - Update Shared Value for an Application
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-
 func (s *value) PutOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.PutOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)

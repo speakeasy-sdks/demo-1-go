@@ -65,7 +65,6 @@ func newDelta(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 }
 
 // GetDelta - Fetch an existing Delta
-
 func (s *delta) GetDelta(ctx context.Context, request operations.GetDeltaRequest) (*operations.GetDeltaResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
@@ -124,7 +123,6 @@ func (s *delta) GetDelta(ctx context.Context, request operations.GetDeltaRequest
 }
 
 // GetOrgsOrgIDAppsAppIDDeltas - List Deltas in an Application
-
 func (s *delta) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDDeltasRequest) (*operations.GetOrgsOrgIDAppsAppIDDeltasResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas", request, nil)
@@ -176,7 +174,6 @@ func (s *delta) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operati
 }
 
 // PatchOrgsOrgIDAppsAppIDDeltasDeltaID - Update an existing Delta
-
 func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDDeltasDeltaIDRequest) (*operations.PatchOrgsOrgIDAppsAppIDDeltasDeltaIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
@@ -255,7 +252,6 @@ func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, reques
 }
 
 // PostOrgsOrgIDAppsAppIDDeltas - Create a new Delta
-
 func (s *delta) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDDeltasRequest) (*operations.PostOrgsOrgIDAppsAppIDDeltasResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas", request, nil)
@@ -323,7 +319,6 @@ func (s *delta) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operat
 }
 
 // PutDelta - Update an existing Delta
-
 func (s *delta) PutDelta(ctx context.Context, request operations.PutDeltaRequest) (*operations.PutDeltaResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
@@ -394,7 +389,6 @@ func (s *delta) PutDelta(ctx context.Context, request operations.PutDeltaRequest
 
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived - Mark a Delta as "archived"
 // Archived Deltas are still accessible but can no longer be updated.
-
 func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchivedRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchivedResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/archived", request, nil)
@@ -464,7 +458,6 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.C
 }
 
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID - Change the Environment of a Delta
-
 func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvIDRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/env_id", request, nil)
@@ -534,7 +527,6 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Cont
 }
 
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName - Change the name of a Delta
-
 func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataNameRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataNameResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/name", request, nil)

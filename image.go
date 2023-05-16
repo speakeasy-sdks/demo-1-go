@@ -39,7 +39,6 @@ func newImage(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 // DEPRECATED: This endpoint exists for historical compatibility and should not be used. Please use the [Artefact API](https://api-docs.humanitec.com/#tag/Artefact) instead.
 //
 // Lists all of the Container Images registered for this organization.
-
 func (s *image) GetOrgsOrgIDImages(ctx context.Context, request operations.GetOrgsOrgIDImagesRequest) (*operations.GetOrgsOrgIDImagesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images", request, nil)
@@ -92,7 +91,6 @@ func (s *image) GetOrgsOrgIDImages(ctx context.Context, request operations.GetOr
 // The response includes a list of Image Builds as well as some metadata about the Image such as its Image Source.
 //
 // Note, `imageId` may not be the same as the container name. `imageId` is determined by the system making notifications about new builds.
-
 func (s *image) GetOrgsOrgIDImagesImageID(ctx context.Context, request operations.GetOrgsOrgIDImagesImageIDRequest) (*operations.GetOrgsOrgIDImagesImageIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}", request, nil)
@@ -153,7 +151,6 @@ func (s *image) GetOrgsOrgIDImagesImageID(ctx context.Context, request operation
 // DEPRECATED: This endpoint exists for historical compatibility and should not be used. Please use the [Artefact API](https://api-docs.humanitec.com/#tag/Artefact) instead.
 //
 // The response lists all available Image Builds of an Image.
-
 func (s *image) GetOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request operations.GetOrgsOrgIDImagesImageIDBuildsRequest) (*operations.GetOrgsOrgIDImagesImageIDBuildsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}/builds", request, nil)
@@ -216,7 +213,6 @@ func (s *image) GetOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request ope
 // This endpoint is used by Continuous Integration (CI) pipelines to notify Humanitec that a new Image Build is available.
 //
 // If there is no Image with ID `imageId`, it will be automatically created.
-
 func (s *image) PostOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request operations.PostOrgsOrgIDImagesImageIDBuildsRequest) (*operations.PostOrgsOrgIDImagesImageIDBuildsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}/builds", request, nil)

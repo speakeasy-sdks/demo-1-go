@@ -37,7 +37,6 @@ func newDeployment(defaultClient, securityClient HTTPClient, serverURL, language
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys - List Deployments in an Environment.
 // List all of the Deployments that have been carried out in the current Environment. Deployments are returned with the newest first.
-
 func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys", request, nil)
@@ -96,7 +95,6 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, 
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID - Get a specific Deployment.
 // Gets a specific Deployment in an Application and an Environment.
-
 func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys/{deployId}", request, nil)
@@ -154,7 +152,6 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID(ctx context.C
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors - List errors that occurred in a Deployment.
-
 func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrorsRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrorsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys/{deployId}/errors", request, nil)
@@ -211,7 +208,6 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors(ctx con
 // **NOTE:**
 //
 // Directly setting a `set_id` in a deployment is not recommended as it will not record history of where the set came from. If the intention is to replicate an existing environment, use the environment rebasing approach described above.
-
 func (s *deployment) PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploysRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploysResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys", request, nil)
