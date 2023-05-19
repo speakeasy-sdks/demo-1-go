@@ -24,8 +24,8 @@ type ValueResponse struct {
 	// Version of the current secret value as returned by the secret store.
 	SecretVersion string `json:"secret_version"`
 	// Source of the value, "app" for app level, "env" for app env level.
-	Source    ValueSourceEnum `json:"source"`
-	UpdatedAt time.Time       `json:"updated_at"`
+	Source    ValueSource `json:"source"`
+	UpdatedAt time.Time   `json:"updated_at"`
 	// The value that will be stored. (Will be always empty for secrets.)
 	Value string `json:"value"`
 }

@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: c55873d722daddf34405c22fd446d472
   docVersion: 0.20.16
-  speakeasyVersion: 1.32.0
-  generationVersion: 2.28.0
+  speakeasyVersion: 1.35.0
+  generationVersion: 2.31.0
 generation:
   sdkClassName: test-1
   singleTagPerOp: false
   telemetryEnabled: false
 go:
-  version: 1.1.0
+  version: 1.2.0
   maxMethodParams: 0
   packageName: test-1

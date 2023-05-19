@@ -255,12 +255,12 @@ pkg/models/shared/rolerequest.go
 pkg/models/shared/userrolerequest.go
 pkg/models/shared/userinviterequestrequest.go
 pkg/models/shared/valueresponse.go
-pkg/models/shared/valuesourceenum.go
+pkg/models/shared/valuesource.go
 pkg/models/shared/valuepatchpayloadrequest.go
 pkg/models/shared/valuecreatepayloadrequest.go
 pkg/models/shared/valueeditpayloadrequest.go
 pkg/models/shared/valuesetversionresponse.go
-pkg/models/shared/valuesetversionresultofenum.go
+pkg/models/shared/valuesetversionresultof.go
 pkg/models/shared/jsonpatchresponse.go
 pkg/models/shared/valuesetactionpayloadrequest.go
 pkg/models/shared/workloadprofileresponse.go
