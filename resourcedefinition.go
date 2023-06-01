@@ -3,6 +3,7 @@
 package test1
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -71,7 +72,13 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefID(ctx context.Conte
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -88,7 +95,7 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefID(ctx context.Conte
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -98,7 +105,7 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefID(ctx context.Conte
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ResourceDefinitionChangeResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -142,7 +149,13 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -156,19 +169,14 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID404ApplicationJSONString = &out
 		}
 	case httpRes.StatusCode == 409:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ResourceDefinitionChangeResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -178,7 +186,7 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -218,7 +226,13 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefs(ctx context.Context, requ
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -232,7 +246,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefs(ctx context.Context, requ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ResourceDefinitionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -242,7 +256,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefs(ctx context.Context, requ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -277,7 +291,13 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -291,7 +311,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ResourceDefinitionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -303,7 +323,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -338,7 +358,13 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -352,7 +378,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ActiveResourceResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -362,7 +388,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -407,7 +433,13 @@ func (s *resourceDefinition) PatchOrgsOrgIDResourcesDefsDefID(ctx context.Contex
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -421,7 +453,7 @@ func (s *resourceDefinition) PatchOrgsOrgIDResourcesDefsDefID(ctx context.Contex
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ResourceDefinitionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -437,7 +469,7 @@ func (s *resourceDefinition) PatchOrgsOrgIDResourcesDefsDefID(ctx context.Contex
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -482,7 +514,13 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefs(ctx context.Context, req
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -496,7 +534,7 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefs(ctx context.Context, req
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ResourceDefinitionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -510,7 +548,7 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefs(ctx context.Context, req
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -567,7 +605,13 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -581,7 +625,7 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.MatchingCriteriaResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -597,7 +641,7 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -642,7 +686,13 @@ func (s *resourceDefinition) PutOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -656,7 +706,7 @@ func (s *resourceDefinition) PutOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ResourceDefinitionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -670,7 +720,7 @@ func (s *resourceDefinition) PutOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

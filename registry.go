@@ -3,8 +3,10 @@
 package test1
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"test-1/pkg/models/operations"
 	"test-1/pkg/models/shared"
@@ -60,7 +62,13 @@ func (s *registry) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request o
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -79,7 +87,7 @@ func (s *registry) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request o
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ErrorInfoResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -114,7 +122,13 @@ func (s *registry) GetOrgsOrgIDRegistries(ctx context.Context, request operation
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -128,7 +142,7 @@ func (s *registry) GetOrgsOrgIDRegistries(ctx context.Context, request operation
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.RegistryResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -140,7 +154,7 @@ func (s *registry) GetOrgsOrgIDRegistries(ctx context.Context, request operation
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ErrorInfoResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -175,7 +189,13 @@ func (s *registry) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request oper
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -189,7 +209,7 @@ func (s *registry) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request oper
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.RegistryResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -201,7 +221,7 @@ func (s *registry) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request oper
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ErrorInfoResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -236,7 +256,13 @@ func (s *registry) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -250,7 +276,7 @@ func (s *registry) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.RegistryCredsResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -264,7 +290,7 @@ func (s *registry) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ErrorInfoResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -309,7 +335,13 @@ func (s *registry) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request op
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -323,7 +355,7 @@ func (s *registry) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request op
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.RegistryResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -339,7 +371,7 @@ func (s *registry) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request op
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ErrorInfoResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -384,7 +416,13 @@ func (s *registry) PostOrgsOrgIDRegistries(ctx context.Context, request operatio
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -398,7 +436,7 @@ func (s *registry) PostOrgsOrgIDRegistries(ctx context.Context, request operatio
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.RegistryResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -414,7 +452,7 @@ func (s *registry) PostOrgsOrgIDRegistries(ctx context.Context, request operatio
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ErrorInfoResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

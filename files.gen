@@ -27,6 +27,7 @@ valuesetversion.go
 workloadprofile.go
 public.go
 test1.go
+.gitignore
 go.mod
 go.sum
 pkg/types/bigint.go

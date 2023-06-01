@@ -3,6 +3,7 @@
 package test1
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -88,7 +89,13 @@ func (s *delta) GetDelta(ctx context.Context, request operations.GetDeltaRequest
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -102,7 +109,7 @@ func (s *delta) GetDelta(ctx context.Context, request operations.GetDeltaRequest
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeltaResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -111,12 +118,7 @@ func (s *delta) GetDelta(ctx context.Context, request operations.GetDeltaRequest
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.GetDelta404ApplicationJSONString = &out
 		}
 	}
@@ -152,7 +154,13 @@ func (s *delta) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operati
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -166,7 +174,7 @@ func (s *delta) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operati
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.DeltaResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -211,7 +219,13 @@ func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, reques
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -225,7 +239,7 @@ func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, reques
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeltaResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -235,7 +249,7 @@ func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, reques
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -244,12 +258,7 @@ func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, reques
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.PatchOrgsOrgIDAppsAppIDDeltasDeltaID404ApplicationJSONString = &out
 		}
 	}
@@ -291,7 +300,13 @@ func (s *delta) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operat
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -305,7 +320,7 @@ func (s *delta) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operat
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.PostOrgsOrgIDAppsAppIDDeltas200ApplicationJSON
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -315,7 +330,7 @@ func (s *delta) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operat
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -360,7 +375,13 @@ func (s *delta) PutDelta(ctx context.Context, request operations.PutDeltaRequest
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -375,7 +396,7 @@ func (s *delta) PutDelta(ctx context.Context, request operations.PutDeltaRequest
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -384,12 +405,7 @@ func (s *delta) PutDelta(ctx context.Context, request operations.PutDeltaRequest
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.PutDelta404ApplicationJSONString = &out
 		}
 	}
@@ -432,7 +448,13 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.C
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -447,7 +469,7 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.C
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -456,12 +478,7 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.C
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived404ApplicationJSONString = &out
 		}
 	}
@@ -503,7 +520,13 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Cont
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -518,7 +541,7 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Cont
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -527,12 +550,7 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Cont
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID404ApplicationJSONString = &out
 		}
 	}
@@ -574,7 +592,13 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName(ctx context.Conte
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -589,7 +613,7 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName(ctx context.Conte
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -598,12 +622,7 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName(ctx context.Conte
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName404ApplicationJSONString = &out
 		}
 	}

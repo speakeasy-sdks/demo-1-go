@@ -3,8 +3,10 @@
 package test1
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"strings"
 	"test-1/pkg/models/operations"
@@ -58,7 +60,13 @@ func (s *userProfile) DeleteTokensTokenID(ctx context.Context, request operation
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -95,7 +103,13 @@ func (s *userProfile) GetCurrentUser(ctx context.Context) (*operations.GetCurren
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -109,7 +123,7 @@ func (s *userProfile) GetCurrentUser(ctx context.Context) (*operations.GetCurren
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.UserProfileExtendedResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -144,7 +158,13 @@ func (s *userProfile) GetTokens(ctx context.Context) (*operations.GetTokensRespo
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -158,7 +178,7 @@ func (s *userProfile) GetTokens(ctx context.Context) (*operations.GetTokensRespo
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out map[string]interface{}
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -190,7 +210,13 @@ func (s *userProfile) GetUsersMe(ctx context.Context) (*operations.GetUsersMeRes
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -204,7 +230,7 @@ func (s *userProfile) GetUsersMe(ctx context.Context) (*operations.GetUsersMeRes
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out map[string]interface{}
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -249,7 +275,13 @@ func (s *userProfile) PatchCurrentUser(ctx context.Context, request shared.UserP
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -263,7 +295,7 @@ func (s *userProfile) PatchCurrentUser(ctx context.Context, request shared.UserP
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.UserProfileExtendedResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -273,7 +305,7 @@ func (s *userProfile) PatchCurrentUser(ctx context.Context, request shared.UserP
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -321,7 +353,13 @@ func (s *userProfile) PostOrgsOrgIDUsers(ctx context.Context, request operations
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -335,7 +373,7 @@ func (s *userProfile) PostOrgsOrgIDUsers(ctx context.Context, request operations
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.UserProfileExtendedResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -345,7 +383,7 @@ func (s *userProfile) PostOrgsOrgIDUsers(ctx context.Context, request operations
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

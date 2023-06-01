@@ -3,8 +3,10 @@
 package test1
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"test-1/pkg/models/operations"
 	"test-1/pkg/models/shared"
@@ -57,7 +59,13 @@ func (s *event) DeleteOrgsOrgIDAppsAppIDJobs(ctx context.Context, request operat
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -97,7 +105,13 @@ func (s *event) DeleteOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, reque
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -139,7 +153,13 @@ func (s *event) GetOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request opera
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -153,7 +173,7 @@ func (s *event) GetOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request opera
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.WebhookResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -188,7 +208,13 @@ func (s *event) GetOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request 
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -202,7 +228,7 @@ func (s *event) GetOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.WebhookResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -238,7 +264,13 @@ func (s *event) GetOrgsOrgIDEvents(ctx context.Context, request operations.GetOr
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -252,7 +284,7 @@ func (s *event) GetOrgsOrgIDEvents(ctx context.Context, request operations.GetOr
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.EventResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -297,7 +329,13 @@ func (s *event) PostOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request oper
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -311,7 +349,7 @@ func (s *event) PostOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request oper
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.WebhookResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -323,7 +361,7 @@ func (s *event) PostOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request oper
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ErrorInfoResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -369,7 +407,13 @@ func (s *event) PostOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -383,7 +427,7 @@ func (s *event) PostOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.WebhookResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

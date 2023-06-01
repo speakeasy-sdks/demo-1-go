@@ -3,8 +3,10 @@
 package test1
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"test-1/pkg/models/operations"
 	"test-1/pkg/models/shared"
@@ -57,7 +59,13 @@ func (s *accountType) GetOrgsOrgIDResourcesAccountTypes(ctx context.Context, req
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -71,7 +79,7 @@ func (s *accountType) GetOrgsOrgIDResourcesAccountTypes(ctx context.Context, req
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.AccountTypeResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -81,7 +89,7 @@ func (s *accountType) GetOrgsOrgIDResourcesAccountTypes(ctx context.Context, req
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

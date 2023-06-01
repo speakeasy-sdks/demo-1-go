@@ -3,6 +3,7 @@
 package test1
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -90,7 +91,13 @@ func (s *set) GetSets(ctx context.Context, request operations.GetSetsRequest) (*
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -104,7 +111,7 @@ func (s *set) GetSets(ctx context.Context, request operations.GetSetsRequest) (*
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.SetResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -113,12 +120,7 @@ func (s *set) GetSets(ctx context.Context, request operations.GetSetsRequest) (*
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.GetSets404ApplicationJSONString = &out
 		}
 	}
@@ -154,7 +156,13 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operat
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -168,7 +176,7 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operat
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.GetOrgsOrgIDAppsAppIDSetsSetID200ApplicationJSON
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -177,12 +185,7 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operat
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.GetOrgsOrgIDAppsAppIDSetsSetID404ApplicationJSONString = &out
 		}
 	}
@@ -214,7 +217,13 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context,
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -228,7 +237,7 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context,
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.PlainDeltaResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -237,12 +246,7 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context,
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID404ApplicationJSONString = &out
 		}
 	}
@@ -284,7 +288,13 @@ func (s *set) PostOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request opera
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -297,19 +307,14 @@ func (s *set) PostOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request opera
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.PostOrgsOrgIDAppsAppIDSetsSetID200ApplicationJSONString = &out
 		}
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -318,12 +323,7 @@ func (s *set) PostOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request opera
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			data, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			out := string(data)
+			out := string(rawBody)
 			res.PostOrgsOrgIDAppsAppIDSetsSetID404ApplicationJSONString = &out
 		}
 	}

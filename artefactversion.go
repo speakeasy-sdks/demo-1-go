@@ -3,8 +3,10 @@
 package test1
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"test-1/pkg/models/operations"
 	"test-1/pkg/models/shared"
@@ -62,7 +64,13 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersions(ctx context.Context, requ
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -76,7 +84,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersions(ctx context.Context, requ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ArtefactVersionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -86,7 +94,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersions(ctx context.Context, requ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -122,7 +130,13 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx cont
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -136,7 +150,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx cont
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ArtefactVersionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -148,7 +162,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx cont
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -188,7 +202,13 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Co
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -202,7 +222,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Co
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ArtefactVersionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -214,7 +234,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Co
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -260,7 +280,13 @@ func (s *artefactVersion) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -274,7 +300,7 @@ func (s *artefactVersion) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ArtefactVersionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -290,7 +316,7 @@ func (s *artefactVersion) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -339,7 +365,13 @@ func (s *artefactVersion) PostOrgsOrgIDArtefactVersions(ctx context.Context, req
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -353,7 +385,7 @@ func (s *artefactVersion) PostOrgsOrgIDArtefactVersions(ctx context.Context, req
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ArtefactVersionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -365,7 +397,7 @@ func (s *artefactVersion) PostOrgsOrgIDArtefactVersions(ctx context.Context, req
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HumanitecErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
