@@ -18,28 +18,18 @@ import (
 // Each Resource Type also defines a set of input parameters (`inputs_schema`), and a set of output data (`outputs_schema`). When provisioning a resource, these are treated as inputs and outputs respectively.
 // <SchemaDefinition schemaRef="#/components/schemas/ResourceTypeRequest" />
 type resourceType struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newResourceType(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *resourceType {
+func newResourceType(sdkConfig sdkConfiguration) *resourceType {
 	return &resourceType{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetOrgsOrgIDResourcesTypes - List Resource Types.
 func (s *resourceType) GetOrgsOrgIDResourcesTypes(ctx context.Context, request operations.GetOrgsOrgIDResourcesTypesRequest) (*operations.GetOrgsOrgIDResourcesTypesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/types", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -50,9 +40,9 @@ func (s *resourceType) GetOrgsOrgIDResourcesTypes(ctx context.Context, request o
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

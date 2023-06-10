@@ -42,364 +42,364 @@ func main() {
 ## Available Resources and Operations
 
 
-### [AccountType](docs/accounttype/README.md)
+### [AccountType](docs/sdks/accounttype/README.md)
 
-* [GetOrgsOrgIDResourcesAccountTypes](docs/accounttype/README.md#getorgsorgidresourcesaccounttypes) - List Resource Account Types available to the organization.
+* [GetOrgsOrgIDResourcesAccountTypes](docs/sdks/accounttype/README.md#getorgsorgidresourcesaccounttypes) - List Resource Account Types available to the organization.
 
-### [ActiveResource](docs/activeresource/README.md)
+### [ActiveResource](docs/sdks/activeresource/README.md)
 
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID](docs/activeresource/README.md#deleteorgsorgidappsappidenvsenvidresourcestyperesid) - Delete Active Resources.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDResources](docs/activeresource/README.md#getorgsorgidappsappidenvsenvidresources) - List Active Resources provisioned in an environment.
-* [GetOrgsOrgIDResourcesDefsDefIDResources](docs/activeresource/README.md#getorgsorgidresourcesdefsdefidresources) - List Active Resources provisioned via a specific Resource Definition.
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID](docs/sdks/activeresource/README.md#deleteorgsorgidappsappidenvsenvidresourcestyperesid) - Delete Active Resources.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDResources](docs/sdks/activeresource/README.md#getorgsorgidappsappidenvsenvidresources) - List Active Resources provisioned in an environment.
+* [GetOrgsOrgIDResourcesDefsDefIDResources](docs/sdks/activeresource/README.md#getorgsorgidresourcesdefsdefidresources) - List Active Resources provisioned via a specific Resource Definition.
 
-### [Application](docs/application/README.md)
+### [Application](docs/sdks/application/README.md)
 
-* [DeleteOrgsOrgIDAppsAppID](docs/application/README.md#deleteorgsorgidappsappid) - Delete an Application
-* [GetOrgsOrgIDApps](docs/application/README.md#getorgsorgidapps) - List all Applications in an Organization.
-* [GetOrgsOrgIDAppsAppID](docs/application/README.md#getorgsorgidappsappid) - Get an existing Application
-* [PostOrgsOrgIDApps](docs/application/README.md#postorgsorgidapps) - Add a new Application to an Organization
+* [DeleteOrgsOrgIDAppsAppID](docs/sdks/application/README.md#deleteorgsorgidappsappid) - Delete an Application
+* [GetOrgsOrgIDApps](docs/sdks/application/README.md#getorgsorgidapps) - List all Applications in an Organization.
+* [GetOrgsOrgIDAppsAppID](docs/sdks/application/README.md#getorgsorgidappsappid) - Get an existing Application
+* [PostOrgsOrgIDApps](docs/sdks/application/README.md#postorgsorgidapps) - Add a new Application to an Organization
 
-### [Artefact](docs/artefact/README.md)
+### [Artefact](docs/sdks/artefact/README.md)
 
-* [DeleteOrgsOrgIDArtefactsArtefactID](docs/artefact/README.md#deleteorgsorgidartefactsartefactid) - Delete Artefact and all related Artefact Versions
-* [GetOrgsOrgIDArtefacts](docs/artefact/README.md#getorgsorgidartefacts) - List all Artefacts.
+* [DeleteOrgsOrgIDArtefactsArtefactID](docs/sdks/artefact/README.md#deleteorgsorgidartefactsartefactid) - Delete Artefact and all related Artefact Versions
+* [GetOrgsOrgIDArtefacts](docs/sdks/artefact/README.md#getorgsorgidartefacts) - List all Artefacts.
 
-### [ArtefactVersion](docs/artefactversion/README.md)
+### [ArtefactVersion](docs/sdks/artefactversion/README.md)
 
-* [GetOrgsOrgIDArtefactVersions](docs/artefactversion/README.md#getorgsorgidartefactversions) - List all Artefacts Versions.
-* [GetOrgsOrgIDArtefactVersionsArtefactVersionID](docs/artefactversion/README.md#getorgsorgidartefactversionsartefactversionid) - Get an Artefacts Versions.
-* [GetOrgsOrgIDArtefactsArtefactIDVersions](docs/artefactversion/README.md#getorgsorgidartefactsartefactidversions) - List all Artefact Versions of an Artefact.
-* [PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID](docs/artefactversion/README.md#patchorgsorgidartefactsartefactidversionsversionid) - Update Version of an Artefact.
-* [PostOrgsOrgIDArtefactVersions](docs/artefactversion/README.md#postorgsorgidartefactversions) - Register a new Artefact Version with your organization.
+* [GetOrgsOrgIDArtefactVersions](docs/sdks/artefactversion/README.md#getorgsorgidartefactversions) - List all Artefacts Versions.
+* [GetOrgsOrgIDArtefactVersionsArtefactVersionID](docs/sdks/artefactversion/README.md#getorgsorgidartefactversionsartefactversionid) - Get an Artefacts Versions.
+* [GetOrgsOrgIDArtefactsArtefactIDVersions](docs/sdks/artefactversion/README.md#getorgsorgidartefactsartefactidversions) - List all Artefact Versions of an Artefact.
+* [PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID](docs/sdks/artefactversion/README.md#patchorgsorgidartefactsartefactidversionsversionid) - Update Version of an Artefact.
+* [PostOrgsOrgIDArtefactVersions](docs/sdks/artefactversion/README.md#postorgsorgidartefactversions) - Register a new Artefact Version with your organization.
 
-### [AutomationRule](docs/automationrule/README.md)
+### [AutomationRule](docs/sdks/automationrule/README.md)
 
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/automationrule/README.md#deleteorgsorgidappsappidenvsenvidrulesruleid) - Delete Automation Rule from an Environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRules](docs/automationrule/README.md#getorgsorgidappsappidenvsenvidrules) - List all Automation Rules in an Environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/automationrule/README.md#getorgsorgidappsappidenvsenvidrulesruleid) - Get a specific Automation Rule for an Environment.
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDRules](docs/automationrule/README.md#postorgsorgidappsappidenvsenvidrules) - Create a new Automation Rule for an Environment.
-* [PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/automationrule/README.md#putorgsorgidappsappidenvsenvidrulesruleid) - Update an existing Automation Rule for an Environment.
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/sdks/automationrule/README.md#deleteorgsorgidappsappidenvsenvidrulesruleid) - Delete Automation Rule from an Environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRules](docs/sdks/automationrule/README.md#getorgsorgidappsappidenvsenvidrules) - List all Automation Rules in an Environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/sdks/automationrule/README.md#getorgsorgidappsappidenvsenvidrulesruleid) - Get a specific Automation Rule for an Environment.
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDRules](docs/sdks/automationrule/README.md#postorgsorgidappsappidenvsenvidrules) - Create a new Automation Rule for an Environment.
+* [PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/sdks/automationrule/README.md#putorgsorgidappsappidenvsenvidrulesruleid) - Update an existing Automation Rule for an Environment.
 
-### [Delta](docs/delta/README.md)
+### [Delta](docs/sdks/delta/README.md)
 
-* [GetDelta](docs/delta/README.md#getdelta) - Fetch an existing Delta
-* [GetOrgsOrgIDAppsAppIDDeltas](docs/delta/README.md#getorgsorgidappsappiddeltas) - List Deltas in an Application
-* [PatchOrgsOrgIDAppsAppIDDeltasDeltaID](docs/delta/README.md#patchorgsorgidappsappiddeltasdeltaid) - Update an existing Delta
-* [PostOrgsOrgIDAppsAppIDDeltas](docs/delta/README.md#postorgsorgidappsappiddeltas) - Create a new Delta
-* [PutDelta](docs/delta/README.md#putdelta) - Update an existing Delta
-* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived](docs/delta/README.md#putorgsorgidappsappiddeltasdeltaidmetadataarchived) - Mark a Delta as "archived"
-* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID](docs/delta/README.md#putorgsorgidappsappiddeltasdeltaidmetadataenvid) - Change the Environment of a Delta
-* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName](docs/delta/README.md#putorgsorgidappsappiddeltasdeltaidmetadataname) - Change the name of a Delta
+* [GetDelta](docs/sdks/delta/README.md#getdelta) - Fetch an existing Delta
+* [GetOrgsOrgIDAppsAppIDDeltas](docs/sdks/delta/README.md#getorgsorgidappsappiddeltas) - List Deltas in an Application
+* [PatchOrgsOrgIDAppsAppIDDeltasDeltaID](docs/sdks/delta/README.md#patchorgsorgidappsappiddeltasdeltaid) - Update an existing Delta
+* [PostOrgsOrgIDAppsAppIDDeltas](docs/sdks/delta/README.md#postorgsorgidappsappiddeltas) - Create a new Delta
+* [PutDelta](docs/sdks/delta/README.md#putdelta) - Update an existing Delta
+* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived](docs/sdks/delta/README.md#putorgsorgidappsappiddeltasdeltaidmetadataarchived) - Mark a Delta as "archived"
+* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID](docs/sdks/delta/README.md#putorgsorgidappsappiddeltasdeltaidmetadataenvid) - Change the Environment of a Delta
+* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName](docs/sdks/delta/README.md#putorgsorgidappsappiddeltasdeltaidmetadataname) - Change the name of a Delta
 
-### [Deployment](docs/deployment/README.md)
+### [Deployment](docs/sdks/deployment/README.md)
 
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys](docs/deployment/README.md#getorgsorgidappsappidenvsenviddeploys) - List Deployments in an Environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID](docs/deployment/README.md#getorgsorgidappsappidenvsenviddeploysdeployid) - Get a specific Deployment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors](docs/deployment/README.md#getorgsorgidappsappidenvsenviddeploysdeployiderrors) - List errors that occurred in a Deployment.
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys](docs/deployment/README.md#postorgsorgidappsappidenvsenviddeploys) - Start a new Deployment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys](docs/sdks/deployment/README.md#getorgsorgidappsappidenvsenviddeploys) - List Deployments in an Environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID](docs/sdks/deployment/README.md#getorgsorgidappsappidenvsenviddeploysdeployid) - Get a specific Deployment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors](docs/sdks/deployment/README.md#getorgsorgidappsappidenvsenviddeploysdeployiderrors) - List errors that occurred in a Deployment.
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys](docs/sdks/deployment/README.md#postorgsorgidappsappidenvsenviddeploys) - Start a new Deployment.
 
-### [DriverDefinition](docs/driverdefinition/README.md)
+### [DriverDefinition](docs/sdks/driverdefinition/README.md)
 
-* [DeleteOrgsOrgIDResourcesDriversDriverID](docs/driverdefinition/README.md#deleteorgsorgidresourcesdriversdriverid) - Delete a Resources Driver.
-* [GetOrgsOrgIDResourcesDrivers](docs/driverdefinition/README.md#getorgsorgidresourcesdrivers) - List Resource Drivers.
-* [GetOrgsOrgIDResourcesDriversDriverID](docs/driverdefinition/README.md#getorgsorgidresourcesdriversdriverid) - Get a Resource Driver.
-* [PostOrgsOrgIDResourcesDrivers](docs/driverdefinition/README.md#postorgsorgidresourcesdrivers) - Register a new Resource Driver.
-* [PutOrgsOrgIDResourcesDriversDriverID](docs/driverdefinition/README.md#putorgsorgidresourcesdriversdriverid) - Update a Resource Driver.
+* [DeleteOrgsOrgIDResourcesDriversDriverID](docs/sdks/driverdefinition/README.md#deleteorgsorgidresourcesdriversdriverid) - Delete a Resources Driver.
+* [GetOrgsOrgIDResourcesDrivers](docs/sdks/driverdefinition/README.md#getorgsorgidresourcesdrivers) - List Resource Drivers.
+* [GetOrgsOrgIDResourcesDriversDriverID](docs/sdks/driverdefinition/README.md#getorgsorgidresourcesdriversdriverid) - Get a Resource Driver.
+* [PostOrgsOrgIDResourcesDrivers](docs/sdks/driverdefinition/README.md#postorgsorgidresourcesdrivers) - Register a new Resource Driver.
+* [PutOrgsOrgIDResourcesDriversDriverID](docs/sdks/driverdefinition/README.md#putorgsorgidresourcesdriversdriverid) - Update a Resource Driver.
 
-### [Environment](docs/environment/README.md)
+### [Environment](docs/sdks/environment/README.md)
 
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvID](docs/environment/README.md#deleteorgsorgidappsappidenvsenvid) - Delete a specific Environment.
-* [GetOrgsOrgIDAppsAppIDEnvs](docs/environment/README.md#getorgsorgidappsappidenvs) - List all Environments.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvID](docs/environment/README.md#getorgsorgidappsappidenvsenvid) - Get a specific Environment.
-* [PostOrgsOrgIDAppsAppIDEnvs](docs/environment/README.md#postorgsorgidappsappidenvs) - Add a new Environment to an Application.
-* [PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployID](docs/environment/README.md#putorgsorgidappsappidenvsenvidfromdeployid) - Rebase to a different Deployment.
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvID](docs/sdks/environment/README.md#deleteorgsorgidappsappidenvsenvid) - Delete a specific Environment.
+* [GetOrgsOrgIDAppsAppIDEnvs](docs/sdks/environment/README.md#getorgsorgidappsappidenvs) - List all Environments.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvID](docs/sdks/environment/README.md#getorgsorgidappsappidenvsenvid) - Get a specific Environment.
+* [PostOrgsOrgIDAppsAppIDEnvs](docs/sdks/environment/README.md#postorgsorgidappsappidenvs) - Add a new Environment to an Application.
+* [PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployID](docs/sdks/environment/README.md#putorgsorgidappsappidenvsenvidfromdeployid) - Rebase to a different Deployment.
 
-### [EnvironmentType](docs/environmenttype/README.md)
+### [EnvironmentType](docs/sdks/environmenttype/README.md)
 
-* [DeleteOrgsOrgIDEnvTypesEnvTypeID](docs/environmenttype/README.md#deleteorgsorgidenvtypesenvtypeid) - Deletes an Environment Type
-* [GetOrgsOrgIDEnvTypes](docs/environmenttype/README.md#getorgsorgidenvtypes) - List all Environment Types
-* [GetOrgsOrgIDEnvTypesEnvTypeID](docs/environmenttype/README.md#getorgsorgidenvtypesenvtypeid) - Get an Environment Type
-* [PostOrgsOrgIDEnvTypes](docs/environmenttype/README.md#postorgsorgidenvtypes) - Add a new Environment Type
+* [DeleteOrgsOrgIDEnvTypesEnvTypeID](docs/sdks/environmenttype/README.md#deleteorgsorgidenvtypesenvtypeid) - Deletes an Environment Type
+* [GetOrgsOrgIDEnvTypes](docs/sdks/environmenttype/README.md#getorgsorgidenvtypes) - List all Environment Types
+* [GetOrgsOrgIDEnvTypesEnvTypeID](docs/sdks/environmenttype/README.md#getorgsorgidenvtypesenvtypeid) - Get an Environment Type
+* [PostOrgsOrgIDEnvTypes](docs/sdks/environmenttype/README.md#postorgsorgidenvtypes) - Add a new Environment Type
 
-### [Event](docs/event/README.md)
+### [Event](docs/sdks/event/README.md)
 
-* [DeleteOrgsOrgIDAppsAppIDJobs](docs/event/README.md#deleteorgsorgidappsappidjobs) - Deletes all Jobs for the Application
-* [DeleteOrgsOrgIDAppsAppIDWebhooksJobID](docs/event/README.md#deleteorgsorgidappsappidwebhooksjobid) - Delete a Webhook
-* [GetOrgsOrgIDAppsAppIDWebhooks](docs/event/README.md#getorgsorgidappsappidwebhooks) - List Webhooks
-* [GetOrgsOrgIDAppsAppIDWebhooksJobID](docs/event/README.md#getorgsorgidappsappidwebhooksjobid) - Get a Webhook
-* [GetOrgsOrgIDEvents](docs/event/README.md#getorgsorgidevents) - List Events
-* [PostOrgsOrgIDAppsAppIDWebhooks](docs/event/README.md#postorgsorgidappsappidwebhooks) - Create a new Webhook
-* [PostOrgsOrgIDAppsAppIDWebhooksJobID](docs/event/README.md#postorgsorgidappsappidwebhooksjobid) - Update a Webhook
+* [DeleteOrgsOrgIDAppsAppIDJobs](docs/sdks/event/README.md#deleteorgsorgidappsappidjobs) - Deletes all Jobs for the Application
+* [DeleteOrgsOrgIDAppsAppIDWebhooksJobID](docs/sdks/event/README.md#deleteorgsorgidappsappidwebhooksjobid) - Delete a Webhook
+* [GetOrgsOrgIDAppsAppIDWebhooks](docs/sdks/event/README.md#getorgsorgidappsappidwebhooks) - List Webhooks
+* [GetOrgsOrgIDAppsAppIDWebhooksJobID](docs/sdks/event/README.md#getorgsorgidappsappidwebhooksjobid) - Get a Webhook
+* [GetOrgsOrgIDEvents](docs/sdks/event/README.md#getorgsorgidevents) - List Events
+* [PostOrgsOrgIDAppsAppIDWebhooks](docs/sdks/event/README.md#postorgsorgidappsappidwebhooks) - Create a new Webhook
+* [PostOrgsOrgIDAppsAppIDWebhooksJobID](docs/sdks/event/README.md#postorgsorgidappsappidwebhooksjobid) - Update a Webhook
 
-### [Image](docs/image/README.md)
+### [Image](docs/sdks/image/README.md)
 
-* [GetOrgsOrgIDImages](docs/image/README.md#getorgsorgidimages) - List all Container Images
-* [GetOrgsOrgIDImagesImageID](docs/image/README.md#getorgsorgidimagesimageid) - Get a specific Image Object
-* [GetOrgsOrgIDImagesImageIDBuilds](docs/image/README.md#getorgsorgidimagesimageidbuilds) - Lists all the Builds of an Image
-* [PostOrgsOrgIDImagesImageIDBuilds](docs/image/README.md#postorgsorgidimagesimageidbuilds) - Add a new Image Build
+* [GetOrgsOrgIDImages](docs/sdks/image/README.md#getorgsorgidimages) - List all Container Images
+* [GetOrgsOrgIDImagesImageID](docs/sdks/image/README.md#getorgsorgidimagesimageid) - Get a specific Image Object
+* [GetOrgsOrgIDImagesImageIDBuilds](docs/sdks/image/README.md#getorgsorgidimagesimageidbuilds) - Lists all the Builds of an Image
+* [PostOrgsOrgIDImagesImageIDBuilds](docs/sdks/image/README.md#postorgsorgidimagesimageidbuilds) - Add a new Image Build
 
-### [MatchingCriteria](docs/matchingcriteria/README.md)
+### [MatchingCriteria](docs/sdks/matchingcriteria/README.md)
 
-* [DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID](docs/matchingcriteria/README.md#deleteorgsorgidresourcesdefsdefidcriteriacriteriaid) - Delete a Matching Criteria from a Resource Definition.
-* [PostOrgsOrgIDResourcesDefsDefIDCriteria](docs/matchingcriteria/README.md#postorgsorgidresourcesdefsdefidcriteria) - Add a new Matching Criteria to a Resource Definition.
+* [DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID](docs/sdks/matchingcriteria/README.md#deleteorgsorgidresourcesdefsdefidcriteriacriteriaid) - Delete a Matching Criteria from a Resource Definition.
+* [PostOrgsOrgIDResourcesDefsDefIDCriteria](docs/sdks/matchingcriteria/README.md#postorgsorgidresourcesdefsdefidcriteria) - Add a new Matching Criteria to a Resource Definition.
 
-### [Organization](docs/organization/README.md)
+### [Organization](docs/sdks/organization/README.md)
 
-* [GetOrgs](docs/organization/README.md#getorgs) - List active organizations the user has access to.
-* [GetOrgsOrgID](docs/organization/README.md#getorgsorgid) - Get the specified Organization.
+* [GetOrgs](docs/sdks/organization/README.md#getorgs) - List active organizations the user has access to.
+* [GetOrgsOrgID](docs/sdks/organization/README.md#getorgsorgid) - Get the specified Organization.
 
-### [Registry](docs/registry/README.md)
+### [Registry](docs/sdks/registry/README.md)
 
-* [DeleteOrgsOrgIDRegistriesRegID](docs/registry/README.md#deleteorgsorgidregistriesregid) - Deletes an existing registry record and all associated credentials and secrets.
-* [GetOrgsOrgIDRegistries](docs/registry/README.md#getorgsorgidregistries) - Lists available registries for the organization.
-* [GetOrgsOrgIDRegistriesRegID](docs/registry/README.md#getorgsorgidregistriesregid) - Loads a registry record details.
-* [GetOrgsOrgIDRegistriesRegIDCreds](docs/registry/README.md#getorgsorgidregistriesregidcreds) - Returns current account credentials or secret details for the registry.
-* [PatchOrgsOrgIDRegistriesRegID](docs/registry/README.md#patchorgsorgidregistriesregid) - Updates (patches) an existing registry record.
-* [PostOrgsOrgIDRegistries](docs/registry/README.md#postorgsorgidregistries) - Creates a new registry record.
+* [DeleteOrgsOrgIDRegistriesRegID](docs/sdks/registry/README.md#deleteorgsorgidregistriesregid) - Deletes an existing registry record and all associated credentials and secrets.
+* [GetOrgsOrgIDRegistries](docs/sdks/registry/README.md#getorgsorgidregistries) - Lists available registries for the organization.
+* [GetOrgsOrgIDRegistriesRegID](docs/sdks/registry/README.md#getorgsorgidregistriesregid) - Loads a registry record details.
+* [GetOrgsOrgIDRegistriesRegIDCreds](docs/sdks/registry/README.md#getorgsorgidregistriesregidcreds) - Returns current account credentials or secret details for the registry.
+* [PatchOrgsOrgIDRegistriesRegID](docs/sdks/registry/README.md#patchorgsorgidregistriesregid) - Updates (patches) an existing registry record.
+* [PostOrgsOrgIDRegistries](docs/sdks/registry/README.md#postorgsorgidregistries) - Creates a new registry record.
 
-### [ResourceAccount](docs/resourceaccount/README.md)
+### [ResourceAccount](docs/sdks/resourceaccount/README.md)
 
-* [GetOrgsOrgIDResourcesAccounts](docs/resourceaccount/README.md#getorgsorgidresourcesaccounts) - List Resource Accounts in the organization.
-* [GetOrgsOrgIDResourcesAccountsAccID](docs/resourceaccount/README.md#getorgsorgidresourcesaccountsaccid) - Get a Resource Account.
-* [PatchOrgsOrgIDResourcesAccountsAccID](docs/resourceaccount/README.md#patchorgsorgidresourcesaccountsaccid) - Update a Resource Account.
-* [PostOrgsOrgIDResourcesAccounts](docs/resourceaccount/README.md#postorgsorgidresourcesaccounts) - Create a new Resource Account in the organization.
+* [GetOrgsOrgIDResourcesAccounts](docs/sdks/resourceaccount/README.md#getorgsorgidresourcesaccounts) - List Resource Accounts in the organization.
+* [GetOrgsOrgIDResourcesAccountsAccID](docs/sdks/resourceaccount/README.md#getorgsorgidresourcesaccountsaccid) - Get a Resource Account.
+* [PatchOrgsOrgIDResourcesAccountsAccID](docs/sdks/resourceaccount/README.md#patchorgsorgidresourcesaccountsaccid) - Update a Resource Account.
+* [PostOrgsOrgIDResourcesAccounts](docs/sdks/resourceaccount/README.md#postorgsorgidresourcesaccounts) - Create a new Resource Account in the organization.
 
-### [ResourceDefinition](docs/resourcedefinition/README.md)
+### [ResourceDefinition](docs/sdks/resourcedefinition/README.md)
 
-* [DeleteOrgsOrgIDResourcesDefsDefID](docs/resourcedefinition/README.md#deleteorgsorgidresourcesdefsdefid) - Delete a Resource Definition.
-* [DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID](docs/resourcedefinition/README.md#deleteorgsorgidresourcesdefsdefidcriteriacriteriaid) - Delete a Matching Criteria from a Resource Definition.
-* [GetOrgsOrgIDResourcesDefs](docs/resourcedefinition/README.md#getorgsorgidresourcesdefs) - List Resource Definitions.
-* [GetOrgsOrgIDResourcesDefsDefID](docs/resourcedefinition/README.md#getorgsorgidresourcesdefsdefid) - Get a specific Resource Definition.
-* [GetOrgsOrgIDResourcesDefsDefIDResources](docs/resourcedefinition/README.md#getorgsorgidresourcesdefsdefidresources) - List Active Resources provisioned via a specific Resource Definition.
-* [PatchOrgsOrgIDResourcesDefsDefID](docs/resourcedefinition/README.md#patchorgsorgidresourcesdefsdefid) - Update a Resource Definition.
-* [PostOrgsOrgIDResourcesDefs](docs/resourcedefinition/README.md#postorgsorgidresourcesdefs) - Create a new Resource Definition.
-* [PostOrgsOrgIDResourcesDefsDefIDCriteria](docs/resourcedefinition/README.md#postorgsorgidresourcesdefsdefidcriteria) - Add a new Matching Criteria to a Resource Definition.
-* [PutOrgsOrgIDResourcesDefsDefID](docs/resourcedefinition/README.md#putorgsorgidresourcesdefsdefid) - Update a Resource Definition.
+* [DeleteOrgsOrgIDResourcesDefsDefID](docs/sdks/resourcedefinition/README.md#deleteorgsorgidresourcesdefsdefid) - Delete a Resource Definition.
+* [DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID](docs/sdks/resourcedefinition/README.md#deleteorgsorgidresourcesdefsdefidcriteriacriteriaid) - Delete a Matching Criteria from a Resource Definition.
+* [GetOrgsOrgIDResourcesDefs](docs/sdks/resourcedefinition/README.md#getorgsorgidresourcesdefs) - List Resource Definitions.
+* [GetOrgsOrgIDResourcesDefsDefID](docs/sdks/resourcedefinition/README.md#getorgsorgidresourcesdefsdefid) - Get a specific Resource Definition.
+* [GetOrgsOrgIDResourcesDefsDefIDResources](docs/sdks/resourcedefinition/README.md#getorgsorgidresourcesdefsdefidresources) - List Active Resources provisioned via a specific Resource Definition.
+* [PatchOrgsOrgIDResourcesDefsDefID](docs/sdks/resourcedefinition/README.md#patchorgsorgidresourcesdefsdefid) - Update a Resource Definition.
+* [PostOrgsOrgIDResourcesDefs](docs/sdks/resourcedefinition/README.md#postorgsorgidresourcesdefs) - Create a new Resource Definition.
+* [PostOrgsOrgIDResourcesDefsDefIDCriteria](docs/sdks/resourcedefinition/README.md#postorgsorgidresourcesdefsdefidcriteria) - Add a new Matching Criteria to a Resource Definition.
+* [PutOrgsOrgIDResourcesDefsDefID](docs/sdks/resourcedefinition/README.md#putorgsorgidresourcesdefsdefid) - Update a Resource Definition.
 
-### [ResourceType](docs/resourcetype/README.md)
+### [ResourceType](docs/sdks/resourcetype/README.md)
 
-* [GetOrgsOrgIDResourcesTypes](docs/resourcetype/README.md#getorgsorgidresourcestypes) - List Resource Types.
+* [GetOrgsOrgIDResourcesTypes](docs/sdks/resourcetype/README.md#getorgsorgidresourcestypes) - List Resource Types.
 
-### [RuntimeInfo](docs/runtimeinfo/README.md)
+### [RuntimeInfo](docs/sdks/runtimeinfo/README.md)
 
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime](docs/runtimeinfo/README.md#getorgsorgidappsappidenvsenvidruntime) - Get Runtime information about the environment.
-* [GetOrgsOrgIDAppsAppIDRuntime](docs/runtimeinfo/README.md#getorgsorgidappsappidruntime) - Get Runtime information about specific environments.
-* [PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas](docs/runtimeinfo/README.md#patchorgsorgidappsappidenvsenvidruntimereplicas) - Set number of replicas for an environment's modules.
-* [PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused](docs/runtimeinfo/README.md#putorgsorgidappsappidenvsenvidruntimepaused) - Pause / Resume an environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime](docs/sdks/runtimeinfo/README.md#getorgsorgidappsappidenvsenvidruntime) - Get Runtime information about the environment.
+* [GetOrgsOrgIDAppsAppIDRuntime](docs/sdks/runtimeinfo/README.md#getorgsorgidappsappidruntime) - Get Runtime information about specific environments.
+* [PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas](docs/sdks/runtimeinfo/README.md#patchorgsorgidappsappidenvsenvidruntimereplicas) - Set number of replicas for an environment's modules.
+* [PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused](docs/sdks/runtimeinfo/README.md#putorgsorgidappsappidenvsenvidruntimepaused) - Pause / Resume an environment.
 
-### [Set](docs/set/README.md)
+### [Set](docs/sdks/set/README.md)
 
-* [GetSets](docs/set/README.md#getsets) - Get all Deployment Sets
-* [GetOrgsOrgIDAppsAppIDSetsSetID](docs/set/README.md#getorgsorgidappsappidsetssetid) - Get a Deployment Set
-* [GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID](docs/set/README.md#getorgsorgidappsappidsetssetiddiffsourcesetid) - Get the difference between 2 Deployment Sets
-* [PostOrgsOrgIDAppsAppIDSetsSetID](docs/set/README.md#postorgsorgidappsappidsetssetid) - Apply a Deployment Delta to a Deployment Set
+* [GetSets](docs/sdks/set/README.md#getsets) - Get all Deployment Sets
+* [GetOrgsOrgIDAppsAppIDSetsSetID](docs/sdks/set/README.md#getorgsorgidappsappidsetssetid) - Get a Deployment Set
+* [GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID](docs/sdks/set/README.md#getorgsorgidappsappidsetssetiddiffsourcesetid) - Get the difference between 2 Deployment Sets
+* [PostOrgsOrgIDAppsAppIDSetsSetID](docs/sdks/set/README.md#postorgsorgidappsappidsetssetid) - Apply a Deployment Delta to a Deployment Set
 
-### [UserInvite](docs/userinvite/README.md)
+### [UserInvite](docs/sdks/userinvite/README.md)
 
-* [GetOrgsOrgIDInvitations](docs/userinvite/README.md#getorgsorgidinvitations) - List the invites issued for the organization.
+* [GetOrgsOrgIDInvitations](docs/sdks/userinvite/README.md#getorgsorgidinvitations) - List the invites issued for the organization.
 
-### [UserProfile](docs/userprofile/README.md)
+### [UserProfile](docs/sdks/userprofile/README.md)
 
-* [DeleteTokensTokenID](docs/userprofile/README.md#deletetokenstokenid) - DEPRECATED
-* [GetCurrentUser](docs/userprofile/README.md#getcurrentuser) - Gets the extended profile of the current user
-* [GetTokens](docs/userprofile/README.md#gettokens) - DEPRECATED
-* [GetUsersMe](docs/userprofile/README.md#getusersme) - DEPRECATED
-* [PatchCurrentUser](docs/userprofile/README.md#patchcurrentuser) - Updates the extended profile of the current user.
-* [PostOrgsOrgIDUsers](docs/userprofile/README.md#postorgsorgidusers) - Creates a new service user.
+* [DeleteTokensTokenID](docs/sdks/userprofile/README.md#deletetokenstokenid) - DEPRECATED
+* [GetCurrentUser](docs/sdks/userprofile/README.md#getcurrentuser) - Gets the extended profile of the current user
+* [GetTokens](docs/sdks/userprofile/README.md#gettokens) - DEPRECATED
+* [GetUsersMe](docs/sdks/userprofile/README.md#getusersme) - DEPRECATED
+* [PatchCurrentUser](docs/sdks/userprofile/README.md#patchcurrentuser) - Updates the extended profile of the current user.
+* [PostOrgsOrgIDUsers](docs/sdks/userprofile/README.md#postorgsorgidusers) - Creates a new service user.
 
-### [UserRole](docs/userrole/README.md)
+### [UserRole](docs/sdks/userrole/README.md)
 
-* [DeleteOrgsOrgIDAppsAppIDUsersUserID](docs/userrole/README.md#deleteorgsorgidappsappidusersuserid) - Remove the role of a User on an Application
-* [DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/userrole/README.md#deleteorgsorgidenvtypesenvtypeusersuserid) - Remove the role of a User on an Environment Type
-* [DeleteOrgsOrgIDUsersUserID](docs/userrole/README.md#deleteorgsorgidusersuserid) - Remove the role of a User on an Organization
-* [GetOrgsOrgIDAppsAppIDUsers](docs/userrole/README.md#getorgsorgidappsappidusers) - List Users with roles in an App
-* [GetOrgsOrgIDAppsAppIDUsersUserID](docs/userrole/README.md#getorgsorgidappsappidusersuserid) - Get the role of a User on an Application
-* [GetOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/userrole/README.md#getorgsorgidenvtypesenvtypeusersuserid) - Get the role of a User on an Environment Type
-* [GetOrgsOrgIDUsers](docs/userrole/README.md#getorgsorgidusers) - List Users with roles in an Organization
-* [GetOrgsOrgIDUsersUserID](docs/userrole/README.md#getorgsorgidusersuserid) - Get the role of a User on an Organization
-* [PatchOrgsOrgIDAppsAppIDUsersUserID](docs/userrole/README.md#patchorgsorgidappsappidusersuserid) - Update the role of a User on an Application
-* [PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/userrole/README.md#patchorgsorgidenvtypesenvtypeusersuserid) - Update the role of a User on an Environment Type
-* [PatchOrgsOrgIDUsersUserID](docs/userrole/README.md#patchorgsorgidusersuserid) - Update the role of a User on an Organization
-* [PostOrgsOrgIDAppsAppIDUsers](docs/userrole/README.md#postorgsorgidappsappidusers) - Adds a User to an Application with a Role
-* [PostOrgsOrgIDEnvTypesEnvTypeUsers](docs/userrole/README.md#postorgsorgidenvtypesenvtypeusers) - Adds a User to an Environment Type with a Role
-* [PostOrgsOrgIDInvitations](docs/userrole/README.md#postorgsorgidinvitations) - Invites a user to an Organization with a specified role.
+* [DeleteOrgsOrgIDAppsAppIDUsersUserID](docs/sdks/userrole/README.md#deleteorgsorgidappsappidusersuserid) - Remove the role of a User on an Application
+* [DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/sdks/userrole/README.md#deleteorgsorgidenvtypesenvtypeusersuserid) - Remove the role of a User on an Environment Type
+* [DeleteOrgsOrgIDUsersUserID](docs/sdks/userrole/README.md#deleteorgsorgidusersuserid) - Remove the role of a User on an Organization
+* [GetOrgsOrgIDAppsAppIDUsers](docs/sdks/userrole/README.md#getorgsorgidappsappidusers) - List Users with roles in an App
+* [GetOrgsOrgIDAppsAppIDUsersUserID](docs/sdks/userrole/README.md#getorgsorgidappsappidusersuserid) - Get the role of a User on an Application
+* [GetOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/sdks/userrole/README.md#getorgsorgidenvtypesenvtypeusersuserid) - Get the role of a User on an Environment Type
+* [GetOrgsOrgIDUsers](docs/sdks/userrole/README.md#getorgsorgidusers) - List Users with roles in an Organization
+* [GetOrgsOrgIDUsersUserID](docs/sdks/userrole/README.md#getorgsorgidusersuserid) - Get the role of a User on an Organization
+* [PatchOrgsOrgIDAppsAppIDUsersUserID](docs/sdks/userrole/README.md#patchorgsorgidappsappidusersuserid) - Update the role of a User on an Application
+* [PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/sdks/userrole/README.md#patchorgsorgidenvtypesenvtypeusersuserid) - Update the role of a User on an Environment Type
+* [PatchOrgsOrgIDUsersUserID](docs/sdks/userrole/README.md#patchorgsorgidusersuserid) - Update the role of a User on an Organization
+* [PostOrgsOrgIDAppsAppIDUsers](docs/sdks/userrole/README.md#postorgsorgidappsappidusers) - Adds a User to an Application with a Role
+* [PostOrgsOrgIDEnvTypesEnvTypeUsers](docs/sdks/userrole/README.md#postorgsorgidenvtypesenvtypeusers) - Adds a User to an Environment Type with a Role
+* [PostOrgsOrgIDInvitations](docs/sdks/userrole/README.md#postorgsorgidinvitations) - Invites a user to an Organization with a specified role.
 
-### [Value](docs/value/README.md)
+### [Value](docs/sdks/value/README.md)
 
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/value/README.md#deleteorgsorgidappsappidenvsenvidvalues) - Delete all Shared Value for an Environment
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/value/README.md#deleteorgsorgidappsappidenvsenvidvalueskey) - Delete Shared Value for an Environment
-* [DeleteOrgsOrgIDAppsAppIDValues](docs/value/README.md#deleteorgsorgidappsappidvalues) - Delete all Shared Value for an App
-* [DeleteOrgsOrgIDAppsAppIDValuesKey](docs/value/README.md#deleteorgsorgidappsappidvalueskey) - Delete Shared Value for an Application
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/value/README.md#getorgsorgidappsappidenvsenvidvalues) - List Shared Values in an Environment
-* [GetOrgsOrgIDAppsAppIDValues](docs/value/README.md#getorgsorgidappsappidvalues) - List Shared Values in an Application
-* [PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/value/README.md#patchorgsorgidappsappidenvsenvidvalueskey) - Update Shared Value for an Environment
-* [PatchOrgsOrgIDAppsAppIDValuesKey](docs/value/README.md#patchorgsorgidappsappidvalueskey) - Update Shared Value for an Application
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/value/README.md#postorgsorgidappsappidenvsenvidvalues) - Create a Shared Value for an Environment
-* [PostOrgsOrgIDAppsAppIDValues](docs/value/README.md#postorgsorgidappsappidvalues) - Create a Shared Value for an Application
-* [PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/value/README.md#putorgsorgidappsappidenvsenvidvalueskey) - Update Shared Value for an Environment
-* [PutOrgsOrgIDAppsAppIDValuesKey](docs/value/README.md#putorgsorgidappsappidvalueskey) - Update Shared Value for an Application
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/sdks/value/README.md#deleteorgsorgidappsappidenvsenvidvalues) - Delete all Shared Value for an Environment
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/sdks/value/README.md#deleteorgsorgidappsappidenvsenvidvalueskey) - Delete Shared Value for an Environment
+* [DeleteOrgsOrgIDAppsAppIDValues](docs/sdks/value/README.md#deleteorgsorgidappsappidvalues) - Delete all Shared Value for an App
+* [DeleteOrgsOrgIDAppsAppIDValuesKey](docs/sdks/value/README.md#deleteorgsorgidappsappidvalueskey) - Delete Shared Value for an Application
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/sdks/value/README.md#getorgsorgidappsappidenvsenvidvalues) - List Shared Values in an Environment
+* [GetOrgsOrgIDAppsAppIDValues](docs/sdks/value/README.md#getorgsorgidappsappidvalues) - List Shared Values in an Application
+* [PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/sdks/value/README.md#patchorgsorgidappsappidenvsenvidvalueskey) - Update Shared Value for an Environment
+* [PatchOrgsOrgIDAppsAppIDValuesKey](docs/sdks/value/README.md#patchorgsorgidappsappidvalueskey) - Update Shared Value for an Application
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/sdks/value/README.md#postorgsorgidappsappidenvsenvidvalues) - Create a Shared Value for an Environment
+* [PostOrgsOrgIDAppsAppIDValues](docs/sdks/value/README.md#postorgsorgidappsappidvalues) - Create a Shared Value for an Application
+* [PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/sdks/value/README.md#putorgsorgidappsappidenvsenvidvalueskey) - Update Shared Value for an Environment
+* [PutOrgsOrgIDAppsAppIDValuesKey](docs/sdks/value/README.md#putorgsorgidappsappidvalueskey) - Update Shared Value for an Application
 
-### [ValueSetVersion](docs/valuesetversion/README.md)
+### [ValueSetVersion](docs/sdks/valuesetversion/README.md)
 
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions](docs/valuesetversion/README.md#getorgsorgidappsappidenvsenvidvaluesetversions) - List Value Set Versions in an Environment of an App
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID](docs/valuesetversion/README.md#getorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionid) - Get a single Value Set Version in an Environment of an App
-* [GetOrgsOrgIDAppsAppIDValueSetVersions](docs/valuesetversion/README.md#getorgsorgidappsappidvaluesetversions) - List Value Set Versions in the App
-* [GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID](docs/valuesetversion/README.md#getorgsorgidappsappidvaluesetversionsvaluesetversionid) - Get a single Value Set Version from the App
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKey](docs/valuesetversion/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidpurgekey) - Purge the value of a specific Shared Value from the App Environment Version history.
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestore](docs/valuesetversion/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidrestore) - Restore a Value Set Version in an Environment of an App
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKey](docs/valuesetversion/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidrestorekey) - Restore a specific key from the Value Set Version in an Environment of an App
-* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKey](docs/valuesetversion/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidpurgekey) - Purge the value of a specific Shared Value from the App Version history.
-* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestore](docs/valuesetversion/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidrestore) - Restore a Value Set Version in an App
-* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKey](docs/valuesetversion/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidrestorekey) - Restore a specific key from the Value Set Version in an App
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions](docs/sdks/valuesetversion/README.md#getorgsorgidappsappidenvsenvidvaluesetversions) - List Value Set Versions in an Environment of an App
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID](docs/sdks/valuesetversion/README.md#getorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionid) - Get a single Value Set Version in an Environment of an App
+* [GetOrgsOrgIDAppsAppIDValueSetVersions](docs/sdks/valuesetversion/README.md#getorgsorgidappsappidvaluesetversions) - List Value Set Versions in the App
+* [GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID](docs/sdks/valuesetversion/README.md#getorgsorgidappsappidvaluesetversionsvaluesetversionid) - Get a single Value Set Version from the App
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKey](docs/sdks/valuesetversion/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidpurgekey) - Purge the value of a specific Shared Value from the App Environment Version history.
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestore](docs/sdks/valuesetversion/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidrestore) - Restore a Value Set Version in an Environment of an App
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKey](docs/sdks/valuesetversion/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidrestorekey) - Restore a specific key from the Value Set Version in an Environment of an App
+* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKey](docs/sdks/valuesetversion/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidpurgekey) - Purge the value of a specific Shared Value from the App Version history.
+* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestore](docs/sdks/valuesetversion/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidrestore) - Restore a Value Set Version in an App
+* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKey](docs/sdks/valuesetversion/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidrestorekey) - Restore a specific key from the Value Set Version in an App
 
-### [WorkloadProfile](docs/workloadprofile/README.md)
+### [WorkloadProfile](docs/sdks/workloadprofile/README.md)
 
-* [DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion](docs/workloadprofile/README.md#deleteorgsorgidworkloadprofilesprofileidversionsversion) - Delete a Workload Profile Version
-* [DeleteOrgsOrgIDWorkloadProfilesProfileQid](docs/workloadprofile/README.md#deleteorgsorgidworkloadprofilesprofileqid) - Delete a Workload Profile
-* [GetOrgsOrgIDWorkloadProfiles](docs/workloadprofile/README.md#getorgsorgidworkloadprofiles) - List workload profiles available to the organization.
-* [GetOrgsOrgIDWorkloadProfilesProfileQid](docs/workloadprofile/README.md#getorgsorgidworkloadprofilesprofileqid) - Get a Workload Profile
-* [GetOrgsOrgIDWorkloadProfilesProfileQidVersions](docs/workloadprofile/README.md#getorgsorgidworkloadprofilesprofileqidversions) - List versions of the given workload profile with optional constraint.
-* [PostOrgsOrgIDWorkloadProfiles](docs/workloadprofile/README.md#postorgsorgidworkloadprofiles) - Create new Workload Profile
-* [PostOrgsOrgIDWorkloadProfilesProfileQidVersions](docs/workloadprofile/README.md#postorgsorgidworkloadprofilesprofileqidversions) - Add new Version of the Workload Profile
+* [DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion](docs/sdks/workloadprofile/README.md#deleteorgsorgidworkloadprofilesprofileidversionsversion) - Delete a Workload Profile Version
+* [DeleteOrgsOrgIDWorkloadProfilesProfileQid](docs/sdks/workloadprofile/README.md#deleteorgsorgidworkloadprofilesprofileqid) - Delete a Workload Profile
+* [GetOrgsOrgIDWorkloadProfiles](docs/sdks/workloadprofile/README.md#getorgsorgidworkloadprofiles) - List workload profiles available to the organization.
+* [GetOrgsOrgIDWorkloadProfilesProfileQid](docs/sdks/workloadprofile/README.md#getorgsorgidworkloadprofilesprofileqid) - Get a Workload Profile
+* [GetOrgsOrgIDWorkloadProfilesProfileQidVersions](docs/sdks/workloadprofile/README.md#getorgsorgidworkloadprofilesprofileqidversions) - List versions of the given workload profile with optional constraint.
+* [PostOrgsOrgIDWorkloadProfiles](docs/sdks/workloadprofile/README.md#postorgsorgidworkloadprofiles) - Create new Workload Profile
+* [PostOrgsOrgIDWorkloadProfilesProfileQidVersions](docs/sdks/workloadprofile/README.md#postorgsorgidworkloadprofilesprofileqidversions) - Add new Version of the Workload Profile
 
-### [Public](docs/public/README.md)
+### [Public](docs/sdks/public/README.md)
 
-* [DeleteOrgsOrgIDAppsAppID](docs/public/README.md#deleteorgsorgidappsappid) - Delete an Application
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvID](docs/public/README.md#deleteorgsorgidappsappidenvsenvid) - Delete a specific Environment.
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID](docs/public/README.md#deleteorgsorgidappsappidenvsenvidresourcestyperesid) - Delete Active Resources.
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/public/README.md#deleteorgsorgidappsappidenvsenvidrulesruleid) - Delete Automation Rule from an Environment.
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/public/README.md#deleteorgsorgidappsappidenvsenvidvalues) - Delete all Shared Value for an Environment
-* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/public/README.md#deleteorgsorgidappsappidenvsenvidvalueskey) - Delete Shared Value for an Environment
-* [DeleteOrgsOrgIDAppsAppIDJobs](docs/public/README.md#deleteorgsorgidappsappidjobs) - Deletes all Jobs for the Application
-* [DeleteOrgsOrgIDAppsAppIDUsersUserID](docs/public/README.md#deleteorgsorgidappsappidusersuserid) - Remove the role of a User on an Application
-* [DeleteOrgsOrgIDAppsAppIDValues](docs/public/README.md#deleteorgsorgidappsappidvalues) - Delete all Shared Value for an App
-* [DeleteOrgsOrgIDAppsAppIDValuesKey](docs/public/README.md#deleteorgsorgidappsappidvalueskey) - Delete Shared Value for an Application
-* [DeleteOrgsOrgIDAppsAppIDWebhooksJobID](docs/public/README.md#deleteorgsorgidappsappidwebhooksjobid) - Delete a Webhook
-* [DeleteOrgsOrgIDArtefactsArtefactID](docs/public/README.md#deleteorgsorgidartefactsartefactid) - Delete Artefact and all related Artefact Versions
-* [DeleteOrgsOrgIDEnvTypesEnvTypeID](docs/public/README.md#deleteorgsorgidenvtypesenvtypeid) - Deletes an Environment Type
-* [DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/public/README.md#deleteorgsorgidenvtypesenvtypeusersuserid) - Remove the role of a User on an Environment Type
-* [DeleteOrgsOrgIDRegistriesRegID](docs/public/README.md#deleteorgsorgidregistriesregid) - Deletes an existing registry record and all associated credentials and secrets.
-* [DeleteOrgsOrgIDResourcesDefsDefID](docs/public/README.md#deleteorgsorgidresourcesdefsdefid) - Delete a Resource Definition.
-* [DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID](docs/public/README.md#deleteorgsorgidresourcesdefsdefidcriteriacriteriaid) - Delete a Matching Criteria from a Resource Definition.
-* [DeleteOrgsOrgIDResourcesDriversDriverID](docs/public/README.md#deleteorgsorgidresourcesdriversdriverid) - Delete a Resources Driver.
-* [DeleteOrgsOrgIDUsersUserID](docs/public/README.md#deleteorgsorgidusersuserid) - Remove the role of a User on an Organization
-* [DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion](docs/public/README.md#deleteorgsorgidworkloadprofilesprofileidversionsversion) - Delete a Workload Profile Version
-* [DeleteOrgsOrgIDWorkloadProfilesProfileQid](docs/public/README.md#deleteorgsorgidworkloadprofilesprofileqid) - Delete a Workload Profile
-* [DeleteTokensTokenID](docs/public/README.md#deletetokenstokenid) - DEPRECATED
-* [GetDelta](docs/public/README.md#getdelta) - Fetch an existing Delta
-* [GetSets](docs/public/README.md#getsets) - Get all Deployment Sets
-* [GetCurrentUser](docs/public/README.md#getcurrentuser) - Gets the extended profile of the current user
-* [GetOrgs](docs/public/README.md#getorgs) - List active organizations the user has access to.
-* [GetOrgsOrgID](docs/public/README.md#getorgsorgid) - Get the specified Organization.
-* [GetOrgsOrgIDApps](docs/public/README.md#getorgsorgidapps) - List all Applications in an Organization.
-* [GetOrgsOrgIDAppsAppID](docs/public/README.md#getorgsorgidappsappid) - Get an existing Application
-* [GetOrgsOrgIDAppsAppIDDeltas](docs/public/README.md#getorgsorgidappsappiddeltas) - List Deltas in an Application
-* [GetOrgsOrgIDAppsAppIDEnvs](docs/public/README.md#getorgsorgidappsappidenvs) - List all Environments.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvID](docs/public/README.md#getorgsorgidappsappidenvsenvid) - Get a specific Environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys](docs/public/README.md#getorgsorgidappsappidenvsenviddeploys) - List Deployments in an Environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID](docs/public/README.md#getorgsorgidappsappidenvsenviddeploysdeployid) - Get a specific Deployment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors](docs/public/README.md#getorgsorgidappsappidenvsenviddeploysdeployiderrors) - List errors that occurred in a Deployment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDResources](docs/public/README.md#getorgsorgidappsappidenvsenvidresources) - List Active Resources provisioned in an environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRules](docs/public/README.md#getorgsorgidappsappidenvsenvidrules) - List all Automation Rules in an Environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/public/README.md#getorgsorgidappsappidenvsenvidrulesruleid) - Get a specific Automation Rule for an Environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime](docs/public/README.md#getorgsorgidappsappidenvsenvidruntime) - Get Runtime information about the environment.
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions](docs/public/README.md#getorgsorgidappsappidenvsenvidvaluesetversions) - List Value Set Versions in an Environment of an App
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID](docs/public/README.md#getorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionid) - Get a single Value Set Version in an Environment of an App
-* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/public/README.md#getorgsorgidappsappidenvsenvidvalues) - List Shared Values in an Environment
-* [GetOrgsOrgIDAppsAppIDRuntime](docs/public/README.md#getorgsorgidappsappidruntime) - Get Runtime information about specific environments.
-* [GetOrgsOrgIDAppsAppIDSetsSetID](docs/public/README.md#getorgsorgidappsappidsetssetid) - Get a Deployment Set
-* [GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID](docs/public/README.md#getorgsorgidappsappidsetssetiddiffsourcesetid) - Get the difference between 2 Deployment Sets
-* [GetOrgsOrgIDAppsAppIDUsers](docs/public/README.md#getorgsorgidappsappidusers) - List Users with roles in an App
-* [GetOrgsOrgIDAppsAppIDUsersUserID](docs/public/README.md#getorgsorgidappsappidusersuserid) - Get the role of a User on an Application
-* [GetOrgsOrgIDAppsAppIDValueSetVersions](docs/public/README.md#getorgsorgidappsappidvaluesetversions) - List Value Set Versions in the App
-* [GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID](docs/public/README.md#getorgsorgidappsappidvaluesetversionsvaluesetversionid) - Get a single Value Set Version from the App
-* [GetOrgsOrgIDAppsAppIDValues](docs/public/README.md#getorgsorgidappsappidvalues) - List Shared Values in an Application
-* [GetOrgsOrgIDAppsAppIDWebhooks](docs/public/README.md#getorgsorgidappsappidwebhooks) - List Webhooks
-* [GetOrgsOrgIDAppsAppIDWebhooksJobID](docs/public/README.md#getorgsorgidappsappidwebhooksjobid) - Get a Webhook
-* [GetOrgsOrgIDArtefactVersions](docs/public/README.md#getorgsorgidartefactversions) - List all Artefacts Versions.
-* [GetOrgsOrgIDArtefactVersionsArtefactVersionID](docs/public/README.md#getorgsorgidartefactversionsartefactversionid) - Get an Artefacts Versions.
-* [GetOrgsOrgIDArtefacts](docs/public/README.md#getorgsorgidartefacts) - List all Artefacts.
-* [GetOrgsOrgIDArtefactsArtefactIDVersions](docs/public/README.md#getorgsorgidartefactsartefactidversions) - List all Artefact Versions of an Artefact.
-* [GetOrgsOrgIDEnvTypes](docs/public/README.md#getorgsorgidenvtypes) - List all Environment Types
-* [GetOrgsOrgIDEnvTypesEnvTypeID](docs/public/README.md#getorgsorgidenvtypesenvtypeid) - Get an Environment Type
-* [GetOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/public/README.md#getorgsorgidenvtypesenvtypeusersuserid) - Get the role of a User on an Environment Type
-* [GetOrgsOrgIDEvents](docs/public/README.md#getorgsorgidevents) - List Events
-* [GetOrgsOrgIDImages](docs/public/README.md#getorgsorgidimages) - List all Container Images
-* [GetOrgsOrgIDImagesImageID](docs/public/README.md#getorgsorgidimagesimageid) - Get a specific Image Object
-* [GetOrgsOrgIDImagesImageIDBuilds](docs/public/README.md#getorgsorgidimagesimageidbuilds) - Lists all the Builds of an Image
-* [GetOrgsOrgIDInvitations](docs/public/README.md#getorgsorgidinvitations) - List the invites issued for the organization.
-* [GetOrgsOrgIDRegistries](docs/public/README.md#getorgsorgidregistries) - Lists available registries for the organization.
-* [GetOrgsOrgIDRegistriesRegID](docs/public/README.md#getorgsorgidregistriesregid) - Loads a registry record details.
-* [GetOrgsOrgIDRegistriesRegIDCreds](docs/public/README.md#getorgsorgidregistriesregidcreds) - Returns current account credentials or secret details for the registry.
-* [GetOrgsOrgIDResourcesAccountTypes](docs/public/README.md#getorgsorgidresourcesaccounttypes) - List Resource Account Types available to the organization.
-* [GetOrgsOrgIDResourcesAccounts](docs/public/README.md#getorgsorgidresourcesaccounts) - List Resource Accounts in the organization.
-* [GetOrgsOrgIDResourcesAccountsAccID](docs/public/README.md#getorgsorgidresourcesaccountsaccid) - Get a Resource Account.
-* [GetOrgsOrgIDResourcesDefs](docs/public/README.md#getorgsorgidresourcesdefs) - List Resource Definitions.
-* [GetOrgsOrgIDResourcesDefsDefID](docs/public/README.md#getorgsorgidresourcesdefsdefid) - Get a specific Resource Definition.
-* [GetOrgsOrgIDResourcesDefsDefIDResources](docs/public/README.md#getorgsorgidresourcesdefsdefidresources) - List Active Resources provisioned via a specific Resource Definition.
-* [GetOrgsOrgIDResourcesDrivers](docs/public/README.md#getorgsorgidresourcesdrivers) - List Resource Drivers.
-* [GetOrgsOrgIDResourcesDriversDriverID](docs/public/README.md#getorgsorgidresourcesdriversdriverid) - Get a Resource Driver.
-* [GetOrgsOrgIDResourcesTypes](docs/public/README.md#getorgsorgidresourcestypes) - List Resource Types.
-* [GetOrgsOrgIDUsers](docs/public/README.md#getorgsorgidusers) - List Users with roles in an Organization
-* [GetOrgsOrgIDUsersUserID](docs/public/README.md#getorgsorgidusersuserid) - Get the role of a User on an Organization
-* [GetOrgsOrgIDWorkloadProfiles](docs/public/README.md#getorgsorgidworkloadprofiles) - List workload profiles available to the organization.
-* [GetOrgsOrgIDWorkloadProfilesProfileQid](docs/public/README.md#getorgsorgidworkloadprofilesprofileqid) - Get a Workload Profile
-* [GetOrgsOrgIDWorkloadProfilesProfileQidVersions](docs/public/README.md#getorgsorgidworkloadprofilesprofileqidversions) - List versions of the given workload profile with optional constraint.
-* [GetTokens](docs/public/README.md#gettokens) - DEPRECATED
-* [GetUsersMe](docs/public/README.md#getusersme) - DEPRECATED
-* [PatchCurrentUser](docs/public/README.md#patchcurrentuser) - Updates the extended profile of the current user.
-* [PatchOrgsOrgIDAppsAppIDDeltasDeltaID](docs/public/README.md#patchorgsorgidappsappiddeltasdeltaid) - Update an existing Delta
-* [PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas](docs/public/README.md#patchorgsorgidappsappidenvsenvidruntimereplicas) - Set number of replicas for an environment's modules.
-* [PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/public/README.md#patchorgsorgidappsappidenvsenvidvalueskey) - Update Shared Value for an Environment
-* [PatchOrgsOrgIDAppsAppIDUsersUserID](docs/public/README.md#patchorgsorgidappsappidusersuserid) - Update the role of a User on an Application
-* [PatchOrgsOrgIDAppsAppIDValuesKey](docs/public/README.md#patchorgsorgidappsappidvalueskey) - Update Shared Value for an Application
-* [PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID](docs/public/README.md#patchorgsorgidartefactsartefactidversionsversionid) - Update Version of an Artefact.
-* [PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/public/README.md#patchorgsorgidenvtypesenvtypeusersuserid) - Update the role of a User on an Environment Type
-* [PatchOrgsOrgIDRegistriesRegID](docs/public/README.md#patchorgsorgidregistriesregid) - Updates (patches) an existing registry record.
-* [PatchOrgsOrgIDResourcesAccountsAccID](docs/public/README.md#patchorgsorgidresourcesaccountsaccid) - Update a Resource Account.
-* [PatchOrgsOrgIDResourcesDefsDefID](docs/public/README.md#patchorgsorgidresourcesdefsdefid) - Update a Resource Definition.
-* [PatchOrgsOrgIDUsersUserID](docs/public/README.md#patchorgsorgidusersuserid) - Update the role of a User on an Organization
-* [PostOrgsOrgIDApps](docs/public/README.md#postorgsorgidapps) - Add a new Application to an Organization
-* [PostOrgsOrgIDAppsAppIDDeltas](docs/public/README.md#postorgsorgidappsappiddeltas) - Create a new Delta
-* [PostOrgsOrgIDAppsAppIDEnvs](docs/public/README.md#postorgsorgidappsappidenvs) - Add a new Environment to an Application.
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys](docs/public/README.md#postorgsorgidappsappidenvsenviddeploys) - Start a new Deployment.
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDRules](docs/public/README.md#postorgsorgidappsappidenvsenvidrules) - Create a new Automation Rule for an Environment.
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKey](docs/public/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidpurgekey) - Purge the value of a specific Shared Value from the App Environment Version history.
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestore](docs/public/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidrestore) - Restore a Value Set Version in an Environment of an App
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKey](docs/public/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidrestorekey) - Restore a specific key from the Value Set Version in an Environment of an App
-* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/public/README.md#postorgsorgidappsappidenvsenvidvalues) - Create a Shared Value for an Environment
-* [PostOrgsOrgIDAppsAppIDSetsSetID](docs/public/README.md#postorgsorgidappsappidsetssetid) - Apply a Deployment Delta to a Deployment Set
-* [PostOrgsOrgIDAppsAppIDUsers](docs/public/README.md#postorgsorgidappsappidusers) - Adds a User to an Application with a Role
-* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKey](docs/public/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidpurgekey) - Purge the value of a specific Shared Value from the App Version history.
-* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestore](docs/public/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidrestore) - Restore a Value Set Version in an App
-* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKey](docs/public/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidrestorekey) - Restore a specific key from the Value Set Version in an App
-* [PostOrgsOrgIDAppsAppIDValues](docs/public/README.md#postorgsorgidappsappidvalues) - Create a Shared Value for an Application
-* [PostOrgsOrgIDAppsAppIDWebhooks](docs/public/README.md#postorgsorgidappsappidwebhooks) - Create a new Webhook
-* [PostOrgsOrgIDAppsAppIDWebhooksJobID](docs/public/README.md#postorgsorgidappsappidwebhooksjobid) - Update a Webhook
-* [PostOrgsOrgIDArtefactVersions](docs/public/README.md#postorgsorgidartefactversions) - Register a new Artefact Version with your organization.
-* [PostOrgsOrgIDEnvTypes](docs/public/README.md#postorgsorgidenvtypes) - Add a new Environment Type
-* [PostOrgsOrgIDEnvTypesEnvTypeUsers](docs/public/README.md#postorgsorgidenvtypesenvtypeusers) - Adds a User to an Environment Type with a Role
-* [PostOrgsOrgIDImagesImageIDBuilds](docs/public/README.md#postorgsorgidimagesimageidbuilds) - Add a new Image Build
-* [PostOrgsOrgIDInvitations](docs/public/README.md#postorgsorgidinvitations) - Invites a user to an Organization with a specified role.
-* [PostOrgsOrgIDRegistries](docs/public/README.md#postorgsorgidregistries) - Creates a new registry record.
-* [PostOrgsOrgIDResourcesAccounts](docs/public/README.md#postorgsorgidresourcesaccounts) - Create a new Resource Account in the organization.
-* [PostOrgsOrgIDResourcesDefs](docs/public/README.md#postorgsorgidresourcesdefs) - Create a new Resource Definition.
-* [PostOrgsOrgIDResourcesDefsDefIDCriteria](docs/public/README.md#postorgsorgidresourcesdefsdefidcriteria) - Add a new Matching Criteria to a Resource Definition.
-* [PostOrgsOrgIDResourcesDrivers](docs/public/README.md#postorgsorgidresourcesdrivers) - Register a new Resource Driver.
-* [PostOrgsOrgIDUsers](docs/public/README.md#postorgsorgidusers) - Creates a new service user.
-* [PostOrgsOrgIDWorkloadProfiles](docs/public/README.md#postorgsorgidworkloadprofiles) - Create new Workload Profile
-* [PostOrgsOrgIDWorkloadProfilesProfileQidVersions](docs/public/README.md#postorgsorgidworkloadprofilesprofileqidversions) - Add new Version of the Workload Profile
-* [PutDelta](docs/public/README.md#putdelta) - Update an existing Delta
-* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived](docs/public/README.md#putorgsorgidappsappiddeltasdeltaidmetadataarchived) - Mark a Delta as "archived"
-* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID](docs/public/README.md#putorgsorgidappsappiddeltasdeltaidmetadataenvid) - Change the Environment of a Delta
-* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName](docs/public/README.md#putorgsorgidappsappiddeltasdeltaidmetadataname) - Change the name of a Delta
-* [PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployID](docs/public/README.md#putorgsorgidappsappidenvsenvidfromdeployid) - Rebase to a different Deployment.
-* [PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/public/README.md#putorgsorgidappsappidenvsenvidrulesruleid) - Update an existing Automation Rule for an Environment.
-* [PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused](docs/public/README.md#putorgsorgidappsappidenvsenvidruntimepaused) - Pause / Resume an environment.
-* [PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/public/README.md#putorgsorgidappsappidenvsenvidvalueskey) - Update Shared Value for an Environment
-* [PutOrgsOrgIDAppsAppIDValuesKey](docs/public/README.md#putorgsorgidappsappidvalueskey) - Update Shared Value for an Application
-* [PutOrgsOrgIDResourcesDefsDefID](docs/public/README.md#putorgsorgidresourcesdefsdefid) - Update a Resource Definition.
-* [PutOrgsOrgIDResourcesDriversDriverID](docs/public/README.md#putorgsorgidresourcesdriversdriverid) - Update a Resource Driver.
+* [DeleteOrgsOrgIDAppsAppID](docs/sdks/public/README.md#deleteorgsorgidappsappid) - Delete an Application
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvID](docs/sdks/public/README.md#deleteorgsorgidappsappidenvsenvid) - Delete a specific Environment.
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID](docs/sdks/public/README.md#deleteorgsorgidappsappidenvsenvidresourcestyperesid) - Delete Active Resources.
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/sdks/public/README.md#deleteorgsorgidappsappidenvsenvidrulesruleid) - Delete Automation Rule from an Environment.
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/sdks/public/README.md#deleteorgsorgidappsappidenvsenvidvalues) - Delete all Shared Value for an Environment
+* [DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/sdks/public/README.md#deleteorgsorgidappsappidenvsenvidvalueskey) - Delete Shared Value for an Environment
+* [DeleteOrgsOrgIDAppsAppIDJobs](docs/sdks/public/README.md#deleteorgsorgidappsappidjobs) - Deletes all Jobs for the Application
+* [DeleteOrgsOrgIDAppsAppIDUsersUserID](docs/sdks/public/README.md#deleteorgsorgidappsappidusersuserid) - Remove the role of a User on an Application
+* [DeleteOrgsOrgIDAppsAppIDValues](docs/sdks/public/README.md#deleteorgsorgidappsappidvalues) - Delete all Shared Value for an App
+* [DeleteOrgsOrgIDAppsAppIDValuesKey](docs/sdks/public/README.md#deleteorgsorgidappsappidvalueskey) - Delete Shared Value for an Application
+* [DeleteOrgsOrgIDAppsAppIDWebhooksJobID](docs/sdks/public/README.md#deleteorgsorgidappsappidwebhooksjobid) - Delete a Webhook
+* [DeleteOrgsOrgIDArtefactsArtefactID](docs/sdks/public/README.md#deleteorgsorgidartefactsartefactid) - Delete Artefact and all related Artefact Versions
+* [DeleteOrgsOrgIDEnvTypesEnvTypeID](docs/sdks/public/README.md#deleteorgsorgidenvtypesenvtypeid) - Deletes an Environment Type
+* [DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/sdks/public/README.md#deleteorgsorgidenvtypesenvtypeusersuserid) - Remove the role of a User on an Environment Type
+* [DeleteOrgsOrgIDRegistriesRegID](docs/sdks/public/README.md#deleteorgsorgidregistriesregid) - Deletes an existing registry record and all associated credentials and secrets.
+* [DeleteOrgsOrgIDResourcesDefsDefID](docs/sdks/public/README.md#deleteorgsorgidresourcesdefsdefid) - Delete a Resource Definition.
+* [DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID](docs/sdks/public/README.md#deleteorgsorgidresourcesdefsdefidcriteriacriteriaid) - Delete a Matching Criteria from a Resource Definition.
+* [DeleteOrgsOrgIDResourcesDriversDriverID](docs/sdks/public/README.md#deleteorgsorgidresourcesdriversdriverid) - Delete a Resources Driver.
+* [DeleteOrgsOrgIDUsersUserID](docs/sdks/public/README.md#deleteorgsorgidusersuserid) - Remove the role of a User on an Organization
+* [DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion](docs/sdks/public/README.md#deleteorgsorgidworkloadprofilesprofileidversionsversion) - Delete a Workload Profile Version
+* [DeleteOrgsOrgIDWorkloadProfilesProfileQid](docs/sdks/public/README.md#deleteorgsorgidworkloadprofilesprofileqid) - Delete a Workload Profile
+* [DeleteTokensTokenID](docs/sdks/public/README.md#deletetokenstokenid) - DEPRECATED
+* [GetDelta](docs/sdks/public/README.md#getdelta) - Fetch an existing Delta
+* [GetSets](docs/sdks/public/README.md#getsets) - Get all Deployment Sets
+* [GetCurrentUser](docs/sdks/public/README.md#getcurrentuser) - Gets the extended profile of the current user
+* [GetOrgs](docs/sdks/public/README.md#getorgs) - List active organizations the user has access to.
+* [GetOrgsOrgID](docs/sdks/public/README.md#getorgsorgid) - Get the specified Organization.
+* [GetOrgsOrgIDApps](docs/sdks/public/README.md#getorgsorgidapps) - List all Applications in an Organization.
+* [GetOrgsOrgIDAppsAppID](docs/sdks/public/README.md#getorgsorgidappsappid) - Get an existing Application
+* [GetOrgsOrgIDAppsAppIDDeltas](docs/sdks/public/README.md#getorgsorgidappsappiddeltas) - List Deltas in an Application
+* [GetOrgsOrgIDAppsAppIDEnvs](docs/sdks/public/README.md#getorgsorgidappsappidenvs) - List all Environments.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvID](docs/sdks/public/README.md#getorgsorgidappsappidenvsenvid) - Get a specific Environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys](docs/sdks/public/README.md#getorgsorgidappsappidenvsenviddeploys) - List Deployments in an Environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID](docs/sdks/public/README.md#getorgsorgidappsappidenvsenviddeploysdeployid) - Get a specific Deployment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors](docs/sdks/public/README.md#getorgsorgidappsappidenvsenviddeploysdeployiderrors) - List errors that occurred in a Deployment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDResources](docs/sdks/public/README.md#getorgsorgidappsappidenvsenvidresources) - List Active Resources provisioned in an environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRules](docs/sdks/public/README.md#getorgsorgidappsappidenvsenvidrules) - List all Automation Rules in an Environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/sdks/public/README.md#getorgsorgidappsappidenvsenvidrulesruleid) - Get a specific Automation Rule for an Environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime](docs/sdks/public/README.md#getorgsorgidappsappidenvsenvidruntime) - Get Runtime information about the environment.
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions](docs/sdks/public/README.md#getorgsorgidappsappidenvsenvidvaluesetversions) - List Value Set Versions in an Environment of an App
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID](docs/sdks/public/README.md#getorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionid) - Get a single Value Set Version in an Environment of an App
+* [GetOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/sdks/public/README.md#getorgsorgidappsappidenvsenvidvalues) - List Shared Values in an Environment
+* [GetOrgsOrgIDAppsAppIDRuntime](docs/sdks/public/README.md#getorgsorgidappsappidruntime) - Get Runtime information about specific environments.
+* [GetOrgsOrgIDAppsAppIDSetsSetID](docs/sdks/public/README.md#getorgsorgidappsappidsetssetid) - Get a Deployment Set
+* [GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID](docs/sdks/public/README.md#getorgsorgidappsappidsetssetiddiffsourcesetid) - Get the difference between 2 Deployment Sets
+* [GetOrgsOrgIDAppsAppIDUsers](docs/sdks/public/README.md#getorgsorgidappsappidusers) - List Users with roles in an App
+* [GetOrgsOrgIDAppsAppIDUsersUserID](docs/sdks/public/README.md#getorgsorgidappsappidusersuserid) - Get the role of a User on an Application
+* [GetOrgsOrgIDAppsAppIDValueSetVersions](docs/sdks/public/README.md#getorgsorgidappsappidvaluesetversions) - List Value Set Versions in the App
+* [GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID](docs/sdks/public/README.md#getorgsorgidappsappidvaluesetversionsvaluesetversionid) - Get a single Value Set Version from the App
+* [GetOrgsOrgIDAppsAppIDValues](docs/sdks/public/README.md#getorgsorgidappsappidvalues) - List Shared Values in an Application
+* [GetOrgsOrgIDAppsAppIDWebhooks](docs/sdks/public/README.md#getorgsorgidappsappidwebhooks) - List Webhooks
+* [GetOrgsOrgIDAppsAppIDWebhooksJobID](docs/sdks/public/README.md#getorgsorgidappsappidwebhooksjobid) - Get a Webhook
+* [GetOrgsOrgIDArtefactVersions](docs/sdks/public/README.md#getorgsorgidartefactversions) - List all Artefacts Versions.
+* [GetOrgsOrgIDArtefactVersionsArtefactVersionID](docs/sdks/public/README.md#getorgsorgidartefactversionsartefactversionid) - Get an Artefacts Versions.
+* [GetOrgsOrgIDArtefacts](docs/sdks/public/README.md#getorgsorgidartefacts) - List all Artefacts.
+* [GetOrgsOrgIDArtefactsArtefactIDVersions](docs/sdks/public/README.md#getorgsorgidartefactsartefactidversions) - List all Artefact Versions of an Artefact.
+* [GetOrgsOrgIDEnvTypes](docs/sdks/public/README.md#getorgsorgidenvtypes) - List all Environment Types
+* [GetOrgsOrgIDEnvTypesEnvTypeID](docs/sdks/public/README.md#getorgsorgidenvtypesenvtypeid) - Get an Environment Type
+* [GetOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/sdks/public/README.md#getorgsorgidenvtypesenvtypeusersuserid) - Get the role of a User on an Environment Type
+* [GetOrgsOrgIDEvents](docs/sdks/public/README.md#getorgsorgidevents) - List Events
+* [GetOrgsOrgIDImages](docs/sdks/public/README.md#getorgsorgidimages) - List all Container Images
+* [GetOrgsOrgIDImagesImageID](docs/sdks/public/README.md#getorgsorgidimagesimageid) - Get a specific Image Object
+* [GetOrgsOrgIDImagesImageIDBuilds](docs/sdks/public/README.md#getorgsorgidimagesimageidbuilds) - Lists all the Builds of an Image
+* [GetOrgsOrgIDInvitations](docs/sdks/public/README.md#getorgsorgidinvitations) - List the invites issued for the organization.
+* [GetOrgsOrgIDRegistries](docs/sdks/public/README.md#getorgsorgidregistries) - Lists available registries for the organization.
+* [GetOrgsOrgIDRegistriesRegID](docs/sdks/public/README.md#getorgsorgidregistriesregid) - Loads a registry record details.
+* [GetOrgsOrgIDRegistriesRegIDCreds](docs/sdks/public/README.md#getorgsorgidregistriesregidcreds) - Returns current account credentials or secret details for the registry.
+* [GetOrgsOrgIDResourcesAccountTypes](docs/sdks/public/README.md#getorgsorgidresourcesaccounttypes) - List Resource Account Types available to the organization.
+* [GetOrgsOrgIDResourcesAccounts](docs/sdks/public/README.md#getorgsorgidresourcesaccounts) - List Resource Accounts in the organization.
+* [GetOrgsOrgIDResourcesAccountsAccID](docs/sdks/public/README.md#getorgsorgidresourcesaccountsaccid) - Get a Resource Account.
+* [GetOrgsOrgIDResourcesDefs](docs/sdks/public/README.md#getorgsorgidresourcesdefs) - List Resource Definitions.
+* [GetOrgsOrgIDResourcesDefsDefID](docs/sdks/public/README.md#getorgsorgidresourcesdefsdefid) - Get a specific Resource Definition.
+* [GetOrgsOrgIDResourcesDefsDefIDResources](docs/sdks/public/README.md#getorgsorgidresourcesdefsdefidresources) - List Active Resources provisioned via a specific Resource Definition.
+* [GetOrgsOrgIDResourcesDrivers](docs/sdks/public/README.md#getorgsorgidresourcesdrivers) - List Resource Drivers.
+* [GetOrgsOrgIDResourcesDriversDriverID](docs/sdks/public/README.md#getorgsorgidresourcesdriversdriverid) - Get a Resource Driver.
+* [GetOrgsOrgIDResourcesTypes](docs/sdks/public/README.md#getorgsorgidresourcestypes) - List Resource Types.
+* [GetOrgsOrgIDUsers](docs/sdks/public/README.md#getorgsorgidusers) - List Users with roles in an Organization
+* [GetOrgsOrgIDUsersUserID](docs/sdks/public/README.md#getorgsorgidusersuserid) - Get the role of a User on an Organization
+* [GetOrgsOrgIDWorkloadProfiles](docs/sdks/public/README.md#getorgsorgidworkloadprofiles) - List workload profiles available to the organization.
+* [GetOrgsOrgIDWorkloadProfilesProfileQid](docs/sdks/public/README.md#getorgsorgidworkloadprofilesprofileqid) - Get a Workload Profile
+* [GetOrgsOrgIDWorkloadProfilesProfileQidVersions](docs/sdks/public/README.md#getorgsorgidworkloadprofilesprofileqidversions) - List versions of the given workload profile with optional constraint.
+* [GetTokens](docs/sdks/public/README.md#gettokens) - DEPRECATED
+* [GetUsersMe](docs/sdks/public/README.md#getusersme) - DEPRECATED
+* [PatchCurrentUser](docs/sdks/public/README.md#patchcurrentuser) - Updates the extended profile of the current user.
+* [PatchOrgsOrgIDAppsAppIDDeltasDeltaID](docs/sdks/public/README.md#patchorgsorgidappsappiddeltasdeltaid) - Update an existing Delta
+* [PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas](docs/sdks/public/README.md#patchorgsorgidappsappidenvsenvidruntimereplicas) - Set number of replicas for an environment's modules.
+* [PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/sdks/public/README.md#patchorgsorgidappsappidenvsenvidvalueskey) - Update Shared Value for an Environment
+* [PatchOrgsOrgIDAppsAppIDUsersUserID](docs/sdks/public/README.md#patchorgsorgidappsappidusersuserid) - Update the role of a User on an Application
+* [PatchOrgsOrgIDAppsAppIDValuesKey](docs/sdks/public/README.md#patchorgsorgidappsappidvalueskey) - Update Shared Value for an Application
+* [PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID](docs/sdks/public/README.md#patchorgsorgidartefactsartefactidversionsversionid) - Update Version of an Artefact.
+* [PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID](docs/sdks/public/README.md#patchorgsorgidenvtypesenvtypeusersuserid) - Update the role of a User on an Environment Type
+* [PatchOrgsOrgIDRegistriesRegID](docs/sdks/public/README.md#patchorgsorgidregistriesregid) - Updates (patches) an existing registry record.
+* [PatchOrgsOrgIDResourcesAccountsAccID](docs/sdks/public/README.md#patchorgsorgidresourcesaccountsaccid) - Update a Resource Account.
+* [PatchOrgsOrgIDResourcesDefsDefID](docs/sdks/public/README.md#patchorgsorgidresourcesdefsdefid) - Update a Resource Definition.
+* [PatchOrgsOrgIDUsersUserID](docs/sdks/public/README.md#patchorgsorgidusersuserid) - Update the role of a User on an Organization
+* [PostOrgsOrgIDApps](docs/sdks/public/README.md#postorgsorgidapps) - Add a new Application to an Organization
+* [PostOrgsOrgIDAppsAppIDDeltas](docs/sdks/public/README.md#postorgsorgidappsappiddeltas) - Create a new Delta
+* [PostOrgsOrgIDAppsAppIDEnvs](docs/sdks/public/README.md#postorgsorgidappsappidenvs) - Add a new Environment to an Application.
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys](docs/sdks/public/README.md#postorgsorgidappsappidenvsenviddeploys) - Start a new Deployment.
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDRules](docs/sdks/public/README.md#postorgsorgidappsappidenvsenvidrules) - Create a new Automation Rule for an Environment.
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKey](docs/sdks/public/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidpurgekey) - Purge the value of a specific Shared Value from the App Environment Version history.
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestore](docs/sdks/public/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidrestore) - Restore a Value Set Version in an Environment of an App
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKey](docs/sdks/public/README.md#postorgsorgidappsappidenvsenvidvaluesetversionsvaluesetversionidrestorekey) - Restore a specific key from the Value Set Version in an Environment of an App
+* [PostOrgsOrgIDAppsAppIDEnvsEnvIDValues](docs/sdks/public/README.md#postorgsorgidappsappidenvsenvidvalues) - Create a Shared Value for an Environment
+* [PostOrgsOrgIDAppsAppIDSetsSetID](docs/sdks/public/README.md#postorgsorgidappsappidsetssetid) - Apply a Deployment Delta to a Deployment Set
+* [PostOrgsOrgIDAppsAppIDUsers](docs/sdks/public/README.md#postorgsorgidappsappidusers) - Adds a User to an Application with a Role
+* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKey](docs/sdks/public/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidpurgekey) - Purge the value of a specific Shared Value from the App Version history.
+* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestore](docs/sdks/public/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidrestore) - Restore a Value Set Version in an App
+* [PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKey](docs/sdks/public/README.md#postorgsorgidappsappidvaluesetversionsvaluesetversionidrestorekey) - Restore a specific key from the Value Set Version in an App
+* [PostOrgsOrgIDAppsAppIDValues](docs/sdks/public/README.md#postorgsorgidappsappidvalues) - Create a Shared Value for an Application
+* [PostOrgsOrgIDAppsAppIDWebhooks](docs/sdks/public/README.md#postorgsorgidappsappidwebhooks) - Create a new Webhook
+* [PostOrgsOrgIDAppsAppIDWebhooksJobID](docs/sdks/public/README.md#postorgsorgidappsappidwebhooksjobid) - Update a Webhook
+* [PostOrgsOrgIDArtefactVersions](docs/sdks/public/README.md#postorgsorgidartefactversions) - Register a new Artefact Version with your organization.
+* [PostOrgsOrgIDEnvTypes](docs/sdks/public/README.md#postorgsorgidenvtypes) - Add a new Environment Type
+* [PostOrgsOrgIDEnvTypesEnvTypeUsers](docs/sdks/public/README.md#postorgsorgidenvtypesenvtypeusers) - Adds a User to an Environment Type with a Role
+* [PostOrgsOrgIDImagesImageIDBuilds](docs/sdks/public/README.md#postorgsorgidimagesimageidbuilds) - Add a new Image Build
+* [PostOrgsOrgIDInvitations](docs/sdks/public/README.md#postorgsorgidinvitations) - Invites a user to an Organization with a specified role.
+* [PostOrgsOrgIDRegistries](docs/sdks/public/README.md#postorgsorgidregistries) - Creates a new registry record.
+* [PostOrgsOrgIDResourcesAccounts](docs/sdks/public/README.md#postorgsorgidresourcesaccounts) - Create a new Resource Account in the organization.
+* [PostOrgsOrgIDResourcesDefs](docs/sdks/public/README.md#postorgsorgidresourcesdefs) - Create a new Resource Definition.
+* [PostOrgsOrgIDResourcesDefsDefIDCriteria](docs/sdks/public/README.md#postorgsorgidresourcesdefsdefidcriteria) - Add a new Matching Criteria to a Resource Definition.
+* [PostOrgsOrgIDResourcesDrivers](docs/sdks/public/README.md#postorgsorgidresourcesdrivers) - Register a new Resource Driver.
+* [PostOrgsOrgIDUsers](docs/sdks/public/README.md#postorgsorgidusers) - Creates a new service user.
+* [PostOrgsOrgIDWorkloadProfiles](docs/sdks/public/README.md#postorgsorgidworkloadprofiles) - Create new Workload Profile
+* [PostOrgsOrgIDWorkloadProfilesProfileQidVersions](docs/sdks/public/README.md#postorgsorgidworkloadprofilesprofileqidversions) - Add new Version of the Workload Profile
+* [PutDelta](docs/sdks/public/README.md#putdelta) - Update an existing Delta
+* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived](docs/sdks/public/README.md#putorgsorgidappsappiddeltasdeltaidmetadataarchived) - Mark a Delta as "archived"
+* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID](docs/sdks/public/README.md#putorgsorgidappsappiddeltasdeltaidmetadataenvid) - Change the Environment of a Delta
+* [PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName](docs/sdks/public/README.md#putorgsorgidappsappiddeltasdeltaidmetadataname) - Change the name of a Delta
+* [PutOrgsOrgIDAppsAppIDEnvsEnvIDFromDeployID](docs/sdks/public/README.md#putorgsorgidappsappidenvsenvidfromdeployid) - Rebase to a different Deployment.
+* [PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID](docs/sdks/public/README.md#putorgsorgidappsappidenvsenvidrulesruleid) - Update an existing Automation Rule for an Environment.
+* [PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused](docs/sdks/public/README.md#putorgsorgidappsappidenvsenvidruntimepaused) - Pause / Resume an environment.
+* [PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey](docs/sdks/public/README.md#putorgsorgidappsappidenvsenvidvalueskey) - Update Shared Value for an Environment
+* [PutOrgsOrgIDAppsAppIDValuesKey](docs/sdks/public/README.md#putorgsorgidappsappidvalueskey) - Update Shared Value for an Application
+* [PutOrgsOrgIDResourcesDefsDefID](docs/sdks/public/README.md#putorgsorgidresourcesdefsdefid) - Update a Resource Definition.
+* [PutOrgsOrgIDResourcesDriversDriverID](docs/sdks/public/README.md#putorgsorgidresourcesdriversdriverid) - Update a Resource Driver.
 <!-- End SDK Available Operations -->
 
 ### Maturity

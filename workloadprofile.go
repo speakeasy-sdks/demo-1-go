@@ -18,28 +18,18 @@ import (
 // Workloads in Humanitec are implemented as Helm Charts which must implement a specific schema.
 // <SchemaDefinition schemaRef="#/components/schemas/WorkloadProfileRequest" />
 type workloadProfile struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newWorkloadProfile(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *workloadProfile {
+func newWorkloadProfile(sdkConfig sdkConfiguration) *workloadProfile {
 	return &workloadProfile{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion - Delete a Workload Profile Version
 func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersion(ctx context.Context, request operations.DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersionRequest) (*operations.DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersionResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileId}/versions/{version}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -50,9 +40,9 @@ func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersio
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -98,7 +88,7 @@ func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileIDVersionsVersio
 //
 // It is not possible to delete profiles of other organizations.
 func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Context, request operations.DeleteOrgsOrgIDWorkloadProfilesProfileQidRequest) (*operations.DeleteOrgsOrgIDWorkloadProfilesProfileQidResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -109,9 +99,9 @@ func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileQid(ctx context.
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -154,7 +144,7 @@ func (s *workloadProfile) DeleteOrgsOrgIDWorkloadProfilesProfileQid(ctx context.
 
 // GetOrgsOrgIDWorkloadProfiles - List workload profiles available to the organization.
 func (s *workloadProfile) GetOrgsOrgIDWorkloadProfiles(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesRequest) (*operations.GetOrgsOrgIDWorkloadProfilesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -165,9 +155,9 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfiles(ctx context.Context, requ
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -209,7 +199,7 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfiles(ctx context.Context, requ
 
 // GetOrgsOrgIDWorkloadProfilesProfileQid - Get a Workload Profile
 func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesProfileQidRequest) (*operations.GetOrgsOrgIDWorkloadProfilesProfileQidResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -220,9 +210,9 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Con
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -274,7 +264,7 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQid(ctx context.Con
 
 // GetOrgsOrgIDWorkloadProfilesProfileQidVersions - List versions of the given workload profile with optional constraint.
 func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx context.Context, request operations.GetOrgsOrgIDWorkloadProfilesProfileQidVersionsRequest) (*operations.GetOrgsOrgIDWorkloadProfilesProfileQidVersionsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}/versions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -285,13 +275,13 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx con
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -343,7 +333,7 @@ func (s *workloadProfile) GetOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx con
 
 // PostOrgsOrgIDWorkloadProfiles - Create new Workload Profile
 func (s *workloadProfile) PostOrgsOrgIDWorkloadProfiles(ctx context.Context, request operations.PostOrgsOrgIDWorkloadProfilesRequest) (*operations.PostOrgsOrgIDWorkloadProfilesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -362,11 +352,11 @@ func (s *workloadProfile) PostOrgsOrgIDWorkloadProfiles(ctx context.Context, req
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -435,7 +425,7 @@ func (s *workloadProfile) PostOrgsOrgIDWorkloadProfiles(ctx context.Context, req
 //
 // A Workload Profile must be created before a version can be added to it.
 func (s *workloadProfile) PostOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx context.Context, request operations.PostOrgsOrgIDWorkloadProfilesProfileQidVersionsRequest) (*operations.PostOrgsOrgIDWorkloadProfilesProfileQidVersionsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/workload-profiles/{profileQid}/versions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -454,11 +444,11 @@ func (s *workloadProfile) PostOrgsOrgIDWorkloadProfilesProfileQidVersions(ctx co
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

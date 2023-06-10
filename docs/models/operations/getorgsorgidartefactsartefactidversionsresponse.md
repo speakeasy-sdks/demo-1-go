@@ -1,0 +1,12 @@
+# GetOrgsOrgIDArtefactsArtefactIDVersionsResponse
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ArtefactVersionResponses`                                                         | [][shared.ArtefactVersionResponse](../../models/shared/artefactversionresponse.md) | :heavy_minus_sign:                                                                 | Returns all Versions of the specified Artefact.<br/><br/>                          |
+| `ContentType`                                                                      | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `HumanitecErrorResponse`                                                           | [*shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md)    | :heavy_minus_sign:                                                                 | Invalid inputs provided.<br/><br/>                                                 |
+| `StatusCode`                                                                       | *int*                                                                              | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `RawResponse`                                                                      | [*http.Response](https://pkg.go.dev/net/http#Response)                             | :heavy_minus_sign:                                                                 | N/A                                                                                |

@@ -1,0 +1,12 @@
+# PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKeyResponse
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ContentType`                                                                     | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               |
+| `HumanitecErrorResponse`                                                          | [*shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md)   | :heavy_minus_sign:                                                                | Invalid request<br/><br/>                                                         |
+| `StatusCode`                                                                      | *int*                                                                             | :heavy_check_mark:                                                                | N/A                                                                               |
+| `RawResponse`                                                                     | [*http.Response](https://pkg.go.dev/net/http#Response)                            | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `ValueSetVersionResponse`                                                         | [*shared.ValueSetVersionResponse](../../models/shared/valuesetversionresponse.md) | :heavy_minus_sign:                                                                | The resulting ValueSetVersion<br/><br/>                                           |

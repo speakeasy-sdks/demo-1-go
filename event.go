@@ -16,28 +16,18 @@ import (
 // event - Webhook is a special type of a Job, it performs a HTTPS request to a specified URL with specified headers.
 // <SchemaDefinition schemaRef="#/components/schemas/WebhookRequest" />
 type event struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newEvent(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *event {
+func newEvent(sdkConfig sdkConfiguration) *event {
 	return &event{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDAppsAppIDJobs - Deletes all Jobs for the Application
 func (s *event) DeleteOrgsOrgIDAppsAppIDJobs(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDJobsRequest) (*operations.DeleteOrgsOrgIDAppsAppIDJobsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/jobs", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -48,9 +38,9 @@ func (s *event) DeleteOrgsOrgIDAppsAppIDJobs(ctx context.Context, request operat
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -83,7 +73,7 @@ func (s *event) DeleteOrgsOrgIDAppsAppIDJobs(ctx context.Context, request operat
 
 // DeleteOrgsOrgIDAppsAppIDWebhooksJobID - Delete a Webhook
 func (s *event) DeleteOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDWebhooksJobIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDWebhooksJobIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks/{jobId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -94,9 +84,9 @@ func (s *event) DeleteOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, reque
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -131,7 +121,7 @@ func (s *event) DeleteOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, reque
 
 // GetOrgsOrgIDAppsAppIDWebhooks - List Webhooks
 func (s *event) GetOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDWebhooksRequest) (*operations.GetOrgsOrgIDAppsAppIDWebhooksResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -142,9 +132,9 @@ func (s *event) GetOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request opera
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -186,7 +176,7 @@ func (s *event) GetOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request opera
 
 // GetOrgsOrgIDAppsAppIDWebhooksJobID - Get a Webhook
 func (s *event) GetOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDWebhooksJobIDRequest) (*operations.GetOrgsOrgIDAppsAppIDWebhooksJobIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks/{jobId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -197,9 +187,9 @@ func (s *event) GetOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request 
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -242,7 +232,7 @@ func (s *event) GetOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request 
 
 // GetOrgsOrgIDEvents - List Events
 func (s *event) GetOrgsOrgIDEvents(ctx context.Context, request operations.GetOrgsOrgIDEventsRequest) (*operations.GetOrgsOrgIDEventsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/events", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -253,9 +243,9 @@ func (s *event) GetOrgsOrgIDEvents(ctx context.Context, request operations.GetOr
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -297,7 +287,7 @@ func (s *event) GetOrgsOrgIDEvents(ctx context.Context, request operations.GetOr
 
 // PostOrgsOrgIDAppsAppIDWebhooks - Create a new Webhook
 func (s *event) PostOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDWebhooksRequest) (*operations.PostOrgsOrgIDAppsAppIDWebhooksResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -316,11 +306,11 @@ func (s *event) PostOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request oper
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -375,7 +365,7 @@ func (s *event) PostOrgsOrgIDAppsAppIDWebhooks(ctx context.Context, request oper
 
 // PostOrgsOrgIDAppsAppIDWebhooksJobID - Update a Webhook
 func (s *event) PostOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDWebhooksJobIDRequest) (*operations.PostOrgsOrgIDAppsAppIDWebhooksJobIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/webhooks/{jobId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -394,11 +384,11 @@ func (s *event) PostOrgsOrgIDAppsAppIDWebhooksJobID(ctx context.Context, request
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

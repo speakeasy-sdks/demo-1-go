@@ -1,0 +1,11 @@
+# PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ValueSetActionPayloadRequest`                                                             | [shared.ValueSetActionPayloadRequest](../../models/shared/valuesetactionpayloadrequest.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `AppID`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | The Application ID.<br/><br/>                                                              |
+| `OrgID`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | The Organization ID.<br/><br/>                                                             |
+| `ValueSetVersionID`                                                                        | *string*                                                                                   | :heavy_check_mark:                                                                         | The ValueSetVersion ID.<br/><br/>                                                          |

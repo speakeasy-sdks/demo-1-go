@@ -18,22 +18,12 @@ import (
 // The schema for the `driver_inputs` is defined by the `input_schema` property on the DriverDefinition identified by the `driver_type` property.
 // <SchemaDefinition schemaRef="#/components/schemas/ResourceDefinitionRequest" />
 type resourceDefinition struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newResourceDefinition(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *resourceDefinition {
+func newResourceDefinition(sdkConfig sdkConfiguration) *resourceDefinition {
 	return &resourceDefinition{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
@@ -46,7 +36,7 @@ func newResourceDefinition(defaultClient, securityClient HTTPClient, serverURL, 
 //
 // The Resource Definition that has been marked for deletion cannot be used to provision new resources.
 func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefID(ctx context.Context, request operations.DeleteOrgsOrgIDResourcesDefsDefIDRequest) (*operations.DeleteOrgsOrgIDResourcesDefsDefIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -57,13 +47,13 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefID(ctx context.Conte
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -123,7 +113,7 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefID(ctx context.Conte
 //
 // The request can take an optional `force` query parameter. If set to `true`, the Matching Criteria is deleted immediately. Referenced Active Resources would match to a different Resource Definition during the next deployment in the target environment.
 func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID(ctx context.Context, request operations.DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaIDRequest) (*operations.DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/criteria/{criteriaId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -134,13 +124,13 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0.7, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -200,7 +190,7 @@ func (s *resourceDefinition) DeleteOrgsOrgIDResourcesDefsDefIDCriteriaCriteriaID
 // GetOrgsOrgIDResourcesDefs - List Resource Definitions.
 // Filter criteria can be applied to obtain all the resource definitions that could match the filters, grouped by type and sorted by matching rank.
 func (s *resourceDefinition) GetOrgsOrgIDResourcesDefs(ctx context.Context, request operations.GetOrgsOrgIDResourcesDefsRequest) (*operations.GetOrgsOrgIDResourcesDefsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -211,13 +201,13 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefs(ctx context.Context, requ
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -269,7 +259,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefs(ctx context.Context, requ
 
 // GetOrgsOrgIDResourcesDefsDefID - Get a specific Resource Definition.
 func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefID(ctx context.Context, request operations.GetOrgsOrgIDResourcesDefsDefIDRequest) (*operations.GetOrgsOrgIDResourcesDefsDefIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -280,9 +270,9 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -336,7 +326,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 
 // GetOrgsOrgIDResourcesDefsDefIDResources - List Active Resources provisioned via a specific Resource Definition.
 func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context.Context, request operations.GetOrgsOrgIDResourcesDefsDefIDResourcesRequest) (*operations.GetOrgsOrgIDResourcesDefsDefIDResourcesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/resources", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -347,9 +337,9 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -401,7 +391,7 @@ func (s *resourceDefinition) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context
 
 // PatchOrgsOrgIDResourcesDefsDefID - Update a Resource Definition.
 func (s *resourceDefinition) PatchOrgsOrgIDResourcesDefsDefID(ctx context.Context, request operations.PatchOrgsOrgIDResourcesDefsDefIDRequest) (*operations.PatchOrgsOrgIDResourcesDefsDefIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -420,11 +410,11 @@ func (s *resourceDefinition) PatchOrgsOrgIDResourcesDefsDefID(ctx context.Contex
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -482,7 +472,7 @@ func (s *resourceDefinition) PatchOrgsOrgIDResourcesDefsDefID(ctx context.Contex
 
 // PostOrgsOrgIDResourcesDefs - Create a new Resource Definition.
 func (s *resourceDefinition) PostOrgsOrgIDResourcesDefs(ctx context.Context, request operations.PostOrgsOrgIDResourcesDefsRequest) (*operations.PostOrgsOrgIDResourcesDefsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -501,11 +491,11 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefs(ctx context.Context, req
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -573,7 +563,7 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefs(ctx context.Context, req
 //
 // If, a resource of that time was needed in an Application `my-app`, Environment `qa-team` with Type `test` and Resource ID `modules.my-module-externals.my-resource`, there would be two resources definitions matching the criteria: #1 & #3. Definition #3 will be chosen because it's matching criteria is the most specific.
 func (s *resourceDefinition) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context.Context, request operations.PostOrgsOrgIDResourcesDefsDefIDCriteriaRequest) (*operations.PostOrgsOrgIDResourcesDefsDefIDCriteriaResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/criteria", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -592,11 +582,11 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -654,7 +644,7 @@ func (s *resourceDefinition) PostOrgsOrgIDResourcesDefsDefIDCriteria(ctx context
 
 // PutOrgsOrgIDResourcesDefsDefID - Update a Resource Definition.
 func (s *resourceDefinition) PutOrgsOrgIDResourcesDefsDefID(ctx context.Context, request operations.PutOrgsOrgIDResourcesDefsDefIDRequest) (*operations.PutOrgsOrgIDResourcesDefsDefIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -673,11 +663,11 @@ func (s *resourceDefinition) PutOrgsOrgIDResourcesDefsDefID(ctx context.Context,
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

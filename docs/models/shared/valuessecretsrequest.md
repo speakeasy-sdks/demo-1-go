@@ -1,0 +1,11 @@
+# ValuesSecretsRequest
+
+ValuesSecrets stores data that should be passed around split by sensitivity.
+
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `Secrets`                                                                                                                          | map[string]*interface{}*                                                                                                           | :heavy_minus_sign:                                                                                                                 | Secrets section of the data set. Sensitive information is stored in the Vault and replaced with the Vault paths when sent outside. |
+| `Values`                                                                                                                           | map[string]*interface{}*                                                                                                           | :heavy_minus_sign:                                                                                                                 | Values section of the data set. Passed around as-is.                                                                               |

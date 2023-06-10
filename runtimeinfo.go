@@ -16,28 +16,18 @@ import (
 // runtimeInfo - RuntimeInfo object returned by the runtime endpoint. Represents a list post statuses grouped by modules and controllers (deployments and stateful sets).
 // <SchemaDefinition schemaRef="#/components/schemas/RuntimeInfoRequest" />
 type runtimeInfo struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newRuntimeInfo(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *runtimeInfo {
+func newRuntimeInfo(sdkConfig sdkConfiguration) *runtimeInfo {
 	return &runtimeInfo{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime - Get Runtime information about the environment.
 func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -48,9 +38,9 @@ func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime(ctx context.Context,
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -95,7 +85,7 @@ func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDEnvsEnvIDRuntime(ctx context.Context,
 
 // GetOrgsOrgIDAppsAppIDRuntime - Get Runtime information about specific environments.
 func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDRuntime(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDRuntimeRequest) (*operations.GetOrgsOrgIDAppsAppIDRuntimeResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/runtime", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -106,13 +96,13 @@ func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDRuntime(ctx context.Context, request 
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -157,7 +147,7 @@ func (s *runtimeInfo) GetOrgsOrgIDAppsAppIDRuntime(ctx context.Context, request 
 
 // PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas - Set number of replicas for an environment's modules.
 func (s *runtimeInfo) PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicasRequest) (*operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicasResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/replicas", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -176,11 +166,11 @@ func (s *runtimeInfo) PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas(ctx contex
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -236,7 +226,7 @@ func (s *runtimeInfo) PatchOrgsOrgIDAppsAppIDEnvsEnvIDRuntimeReplicas(ctx contex
 //
 // ```
 func (s *runtimeInfo) PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePausedRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePausedResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/paused", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -255,11 +245,11 @@ func (s *runtimeInfo) PutOrgsOrgIDAppsAppIDEnvsEnvIDRuntimePaused(ctx context.Co
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

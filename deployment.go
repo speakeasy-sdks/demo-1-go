@@ -18,29 +18,19 @@ import (
 // Deployments are made by applying _Deltas_ to a state defined by an existing Deployment. The Environment’s from_deploy property defines the Deployment. This Deployment is usually but not always in the current Environment. If the Deployment is from another Environment, the state of that Environment will be "cloned" into the current Environment with the option to apply a Delta.
 // <SchemaDefinition schemaRef="#/components/schemas/DeploymentRequest" />
 type deployment struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newDeployment(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *deployment {
+func newDeployment(sdkConfig sdkConfiguration) *deployment {
 	return &deployment{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys - List Deployments in an Environment.
 // List all of the Deployments that have been carried out in the current Environment. Deployments are returned with the newest first.
 func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -51,9 +41,9 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, 
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -106,7 +96,7 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID - Get a specific Deployment.
 // Gets a specific Deployment in an Application and an Environment.
 func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys/{deployId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -117,9 +107,9 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID(ctx context.C
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -171,7 +161,7 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployID(ctx context.C
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors - List errors that occurred in a Deployment.
 func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrorsRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrorsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys/{deployId}/errors", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -182,9 +172,9 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors(ctx con
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -235,7 +225,7 @@ func (s *deployment) GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDErrors(ctx con
 //
 // Directly setting a `set_id` in a deployment is not recommended as it will not record history of where the set came from. If the intention is to replicate an existing environment, use the environment rebasing approach described above.
 func (s *deployment) PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploysRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploysResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/deploys", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -254,11 +244,11 @@ func (s *deployment) PostOrgsOrgIDAppsAppIDEnvsEnvIDDeploys(ctx context.Context,
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

@@ -16,29 +16,19 @@ import (
 // artefactVersion - An Artefact Version represents a particular version of an Artefact that can be added to an Application.
 // <SchemaDefinition schemaRef="#/components/schemas/ArtefactVersionRequest" />
 type artefactVersion struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newArtefactVersion(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *artefactVersion {
+func newArtefactVersion(sdkConfig sdkConfiguration) *artefactVersion {
 	return &artefactVersion{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetOrgsOrgIDArtefactVersions - List all Artefacts Versions.
 // Returns the Artefact Versions registered with your organization. If no elements are found, an empty list is returned.
 func (s *artefactVersion) GetOrgsOrgIDArtefactVersions(ctx context.Context, request operations.GetOrgsOrgIDArtefactVersionsRequest) (*operations.GetOrgsOrgIDArtefactVersionsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -49,13 +39,13 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersions(ctx context.Context, requ
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -108,7 +98,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersions(ctx context.Context, requ
 // GetOrgsOrgIDArtefactVersionsArtefactVersionID - Get an Artefacts Versions.
 // Returns a specific Artefact Version.
 func (s *artefactVersion) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx context.Context, request operations.GetOrgsOrgIDArtefactVersionsArtefactVersionIDRequest) (*operations.GetOrgsOrgIDArtefactVersionsArtefactVersionIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions/{artefactVersionId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -119,9 +109,9 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx cont
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -176,7 +166,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactVersionsArtefactVersionID(ctx cont
 // GetOrgsOrgIDArtefactsArtefactIDVersions - List all Artefact Versions of an Artefact.
 // Returns the Artefact Versions of a specified Artefact registered with your organization. If no elements are found, an empty list is returned.
 func (s *artefactVersion) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Context, request operations.GetOrgsOrgIDArtefactsArtefactIDVersionsRequest) (*operations.GetOrgsOrgIDArtefactsArtefactIDVersionsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}/versions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -187,13 +177,13 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Co
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -248,7 +238,7 @@ func (s *artefactVersion) GetOrgsOrgIDArtefactsArtefactIDVersions(ctx context.Co
 // PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID - Update Version of an Artefact.
 // Update the version of a specified Artefact registered with your organization".
 func (s *artefactVersion) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx context.Context, request operations.PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionIDRequest) (*operations.PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}/versions/{versionId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -267,11 +257,11 @@ func (s *artefactVersion) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -329,7 +319,7 @@ func (s *artefactVersion) PatchOrgsOrgIDArtefactsArtefactIDVersionsVersionID(ctx
 
 // PostOrgsOrgIDArtefactVersions - Register a new Artefact Version with your organization.
 func (s *artefactVersion) PostOrgsOrgIDArtefactVersions(ctx context.Context, request operations.PostOrgsOrgIDArtefactVersionsRequest) (*operations.PostOrgsOrgIDArtefactVersionsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefact-versions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -348,7 +338,7 @@ func (s *artefactVersion) PostOrgsOrgIDArtefactVersions(ctx context.Context, req
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
@@ -356,7 +346,7 @@ func (s *artefactVersion) PostOrgsOrgIDArtefactVersions(ctx context.Context, req
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

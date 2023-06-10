@@ -17,28 +17,18 @@ import (
 // userProfile - UserProfile holds the profile information of a user
 // <SchemaDefinition schemaRef="#/components/schemas/UserProfileRequest" />
 type userProfile struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newUserProfile(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *userProfile {
+func newUserProfile(sdkConfig sdkConfiguration) *userProfile {
 	return &userProfile{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteTokensTokenID - DEPRECATED
 func (s *userProfile) DeleteTokensTokenID(ctx context.Context, request operations.DeleteTokensTokenIDRequest) (*operations.DeleteTokensTokenIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/tokens/{tokenId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -49,9 +39,9 @@ func (s *userProfile) DeleteTokensTokenID(ctx context.Context, request operation
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -84,7 +74,7 @@ func (s *userProfile) DeleteTokensTokenID(ctx context.Context, request operation
 
 // GetCurrentUser - Gets the extended profile of the current user
 func (s *userProfile) GetCurrentUser(ctx context.Context) (*operations.GetCurrentUserResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/current-user"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -92,9 +82,9 @@ func (s *userProfile) GetCurrentUser(ctx context.Context) (*operations.GetCurren
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -139,7 +129,7 @@ func (s *userProfile) GetCurrentUser(ctx context.Context) (*operations.GetCurren
 
 // GetTokens - DEPRECATED
 func (s *userProfile) GetTokens(ctx context.Context) (*operations.GetTokensResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/tokens"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -147,9 +137,9 @@ func (s *userProfile) GetTokens(ctx context.Context) (*operations.GetTokensRespo
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -191,7 +181,7 @@ func (s *userProfile) GetTokens(ctx context.Context) (*operations.GetTokensRespo
 
 // GetUsersMe - DEPRECATED
 func (s *userProfile) GetUsersMe(ctx context.Context) (*operations.GetUsersMeResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/users/me"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -199,9 +189,9 @@ func (s *userProfile) GetUsersMe(ctx context.Context) (*operations.GetUsersMeRes
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -246,7 +236,7 @@ func (s *userProfile) GetUsersMe(ctx context.Context) (*operations.GetUsersMeRes
 
 // PatchCurrentUser - Updates the extended profile of the current user.
 func (s *userProfile) PatchCurrentUser(ctx context.Context, request shared.UserProfileExtendedRequest) (*operations.PatchCurrentUserResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/current-user"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
@@ -262,11 +252,11 @@ func (s *userProfile) PatchCurrentUser(ctx context.Context, request shared.UserP
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -321,7 +311,7 @@ func (s *userProfile) PatchCurrentUser(ctx context.Context, request shared.UserP
 
 // PostOrgsOrgIDUsers - Creates a new service user.
 func (s *userProfile) PostOrgsOrgIDUsers(ctx context.Context, request operations.PostOrgsOrgIDUsersRequest) (*operations.PostOrgsOrgIDUsersResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -340,11 +330,11 @@ func (s *userProfile) PostOrgsOrgIDUsers(ctx context.Context, request operations
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

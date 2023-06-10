@@ -18,28 +18,18 @@ import (
 // Resource Accounts hold credentials that are required to provision and manage resources.
 // <SchemaDefinition schemaRef="#/components/schemas/ResourceAccountRequest" />
 type resourceAccount struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newResourceAccount(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *resourceAccount {
+func newResourceAccount(sdkConfig sdkConfiguration) *resourceAccount {
 	return &resourceAccount{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetOrgsOrgIDResourcesAccounts - List Resource Accounts in the organization.
 func (s *resourceAccount) GetOrgsOrgIDResourcesAccounts(ctx context.Context, request operations.GetOrgsOrgIDResourcesAccountsRequest) (*operations.GetOrgsOrgIDResourcesAccountsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -50,9 +40,9 @@ func (s *resourceAccount) GetOrgsOrgIDResourcesAccounts(ctx context.Context, req
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -104,7 +94,7 @@ func (s *resourceAccount) GetOrgsOrgIDResourcesAccounts(ctx context.Context, req
 
 // GetOrgsOrgIDResourcesAccountsAccID - Get a Resource Account.
 func (s *resourceAccount) GetOrgsOrgIDResourcesAccountsAccID(ctx context.Context, request operations.GetOrgsOrgIDResourcesAccountsAccIDRequest) (*operations.GetOrgsOrgIDResourcesAccountsAccIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts/{accId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -115,9 +105,9 @@ func (s *resourceAccount) GetOrgsOrgIDResourcesAccountsAccID(ctx context.Context
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -171,7 +161,7 @@ func (s *resourceAccount) GetOrgsOrgIDResourcesAccountsAccID(ctx context.Context
 
 // PatchOrgsOrgIDResourcesAccountsAccID - Update a Resource Account.
 func (s *resourceAccount) PatchOrgsOrgIDResourcesAccountsAccID(ctx context.Context, request operations.PatchOrgsOrgIDResourcesAccountsAccIDRequest) (*operations.PatchOrgsOrgIDResourcesAccountsAccIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts/{accId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -190,11 +180,11 @@ func (s *resourceAccount) PatchOrgsOrgIDResourcesAccountsAccID(ctx context.Conte
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -252,7 +242,7 @@ func (s *resourceAccount) PatchOrgsOrgIDResourcesAccountsAccID(ctx context.Conte
 
 // PostOrgsOrgIDResourcesAccounts - Create a new Resource Account in the organization.
 func (s *resourceAccount) PostOrgsOrgIDResourcesAccounts(ctx context.Context, request operations.PostOrgsOrgIDResourcesAccountsRequest) (*operations.PostOrgsOrgIDResourcesAccountsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/accounts", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -271,11 +261,11 @@ func (s *resourceAccount) PostOrgsOrgIDResourcesAccounts(ctx context.Context, re
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

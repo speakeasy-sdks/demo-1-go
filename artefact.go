@@ -16,29 +16,19 @@ import (
 // artefact - Artefacts can be registered with Humanitec. Continuous Integration (CI) pipelines notify Humanitec when a new version of an Artefact becomes available. Humanitec tracks the Artefact along with metadata about how it was built.
 // <SchemaDefinition schemaRef="#/components/schemas/ArtefactRequest" />
 type artefact struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newArtefact(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *artefact {
+func newArtefact(sdkConfig sdkConfiguration) *artefact {
 	return &artefact{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDArtefactsArtefactID - Delete Artefact and all related Artefact Versions
 // The specified Artefact and its Artefact Versions will be permanently deleted. Only Administrators can delete an Artefact.
 func (s *artefact) DeleteOrgsOrgIDArtefactsArtefactID(ctx context.Context, request operations.DeleteOrgsOrgIDArtefactsArtefactIDRequest) (*operations.DeleteOrgsOrgIDArtefactsArtefactIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts/{artefactId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -49,9 +39,9 @@ func (s *artefact) DeleteOrgsOrgIDArtefactsArtefactID(ctx context.Context, reque
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -97,7 +87,7 @@ func (s *artefact) DeleteOrgsOrgIDArtefactsArtefactID(ctx context.Context, reque
 // GetOrgsOrgIDArtefacts - List all Artefacts.
 // Returns the Artefacts registered with your organization. If no elements are found, an empty list is returned.
 func (s *artefact) GetOrgsOrgIDArtefacts(ctx context.Context, request operations.GetOrgsOrgIDArtefactsRequest) (*operations.GetOrgsOrgIDArtefactsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/artefacts", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -108,13 +98,13 @@ func (s *artefact) GetOrgsOrgIDArtefacts(ctx context.Context, request operations
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

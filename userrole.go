@@ -16,28 +16,18 @@ import (
 // userRole - UserRole holds the mapping of role to user for a particular object.
 // <SchemaDefinition schemaRef="#/components/schemas/UserRoleRequest" />
 type userRole struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newUserRole(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *userRole {
+func newUserRole(sdkConfig sdkConfiguration) *userRole {
 	return &userRole{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDAppsAppIDUsersUserID - Remove the role of a User on an Application
 func (s *userRole) DeleteOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -48,9 +38,9 @@ func (s *userRole) DeleteOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, requ
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -95,7 +85,7 @@ func (s *userRole) DeleteOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, requ
 
 // DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID - Remove the role of a User on an Environment Type
 func (s *userRole) DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -106,9 +96,9 @@ func (s *userRole) DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -153,7 +143,7 @@ func (s *userRole) DeleteOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context
 
 // DeleteOrgsOrgIDUsersUserID - Remove the role of a User on an Organization
 func (s *userRole) DeleteOrgsOrgIDUsersUserID(ctx context.Context, request operations.DeleteOrgsOrgIDUsersUserIDRequest) (*operations.DeleteOrgsOrgIDUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -164,9 +154,9 @@ func (s *userRole) DeleteOrgsOrgIDUsersUserID(ctx context.Context, request opera
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -211,7 +201,7 @@ func (s *userRole) DeleteOrgsOrgIDUsersUserID(ctx context.Context, request opera
 
 // GetOrgsOrgIDAppsAppIDUsers - List Users with roles in an App
 func (s *userRole) GetOrgsOrgIDAppsAppIDUsers(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDUsersRequest) (*operations.GetOrgsOrgIDAppsAppIDUsersResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -222,9 +212,9 @@ func (s *userRole) GetOrgsOrgIDAppsAppIDUsers(ctx context.Context, request opera
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -267,7 +257,7 @@ func (s *userRole) GetOrgsOrgIDAppsAppIDUsers(ctx context.Context, request opera
 
 // GetOrgsOrgIDAppsAppIDUsersUserID - Get the role of a User on an Application
 func (s *userRole) GetOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.GetOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -278,9 +268,9 @@ func (s *userRole) GetOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -333,7 +323,7 @@ func (s *userRole) GetOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request
 
 // GetOrgsOrgIDEnvTypesEnvTypeUsersUserID - Get the role of a User on an Environment Type
 func (s *userRole) GetOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.GetOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -344,9 +334,9 @@ func (s *userRole) GetOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, r
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -399,7 +389,7 @@ func (s *userRole) GetOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, r
 
 // GetOrgsOrgIDUsers - List Users with roles in an Organization
 func (s *userRole) GetOrgsOrgIDUsers(ctx context.Context, request operations.GetOrgsOrgIDUsersRequest) (*operations.GetOrgsOrgIDUsersResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -410,9 +400,9 @@ func (s *userRole) GetOrgsOrgIDUsers(ctx context.Context, request operations.Get
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -455,7 +445,7 @@ func (s *userRole) GetOrgsOrgIDUsers(ctx context.Context, request operations.Get
 
 // GetOrgsOrgIDUsersUserID - Get the role of a User on an Organization
 func (s *userRole) GetOrgsOrgIDUsersUserID(ctx context.Context, request operations.GetOrgsOrgIDUsersUserIDRequest) (*operations.GetOrgsOrgIDUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -466,9 +456,9 @@ func (s *userRole) GetOrgsOrgIDUsersUserID(ctx context.Context, request operatio
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -521,7 +511,7 @@ func (s *userRole) GetOrgsOrgIDUsersUserID(ctx context.Context, request operatio
 
 // PatchOrgsOrgIDAppsAppIDUsersUserID - Update the role of a User on an Application
 func (s *userRole) PatchOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDUsersUserIDRequest) (*operations.PatchOrgsOrgIDAppsAppIDUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -540,11 +530,11 @@ func (s *userRole) PatchOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, reque
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -597,7 +587,7 @@ func (s *userRole) PatchOrgsOrgIDAppsAppIDUsersUserID(ctx context.Context, reque
 
 // PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID - Update the role of a User on an Environment Type
 func (s *userRole) PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDEnvTypesEnvTypeUsersUserIDRequest) (*operations.PatchOrgsOrgIDEnvTypesEnvTypeUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -616,11 +606,11 @@ func (s *userRole) PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context,
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -673,7 +663,7 @@ func (s *userRole) PatchOrgsOrgIDEnvTypesEnvTypeUsersUserID(ctx context.Context,
 
 // PatchOrgsOrgIDUsersUserID - Update the role of a User on an Organization
 func (s *userRole) PatchOrgsOrgIDUsersUserID(ctx context.Context, request operations.PatchOrgsOrgIDUsersUserIDRequest) (*operations.PatchOrgsOrgIDUsersUserIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -692,11 +682,11 @@ func (s *userRole) PatchOrgsOrgIDUsersUserID(ctx context.Context, request operat
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -749,7 +739,7 @@ func (s *userRole) PatchOrgsOrgIDUsersUserID(ctx context.Context, request operat
 
 // PostOrgsOrgIDAppsAppIDUsers - Adds a User to an Application with a Role
 func (s *userRole) PostOrgsOrgIDAppsAppIDUsers(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDUsersRequest) (*operations.PostOrgsOrgIDAppsAppIDUsersResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/users", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -768,11 +758,11 @@ func (s *userRole) PostOrgsOrgIDAppsAppIDUsers(ctx context.Context, request oper
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -827,7 +817,7 @@ func (s *userRole) PostOrgsOrgIDAppsAppIDUsers(ctx context.Context, request oper
 
 // PostOrgsOrgIDEnvTypesEnvTypeUsers - Adds a User to an Environment Type with a Role
 func (s *userRole) PostOrgsOrgIDEnvTypesEnvTypeUsers(ctx context.Context, request operations.PostOrgsOrgIDEnvTypesEnvTypeUsersRequest) (*operations.PostOrgsOrgIDEnvTypesEnvTypeUsersResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envType}/users", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -846,11 +836,11 @@ func (s *userRole) PostOrgsOrgIDEnvTypesEnvTypeUsers(ctx context.Context, reques
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -903,7 +893,7 @@ func (s *userRole) PostOrgsOrgIDEnvTypesEnvTypeUsers(ctx context.Context, reques
 
 // PostOrgsOrgIDInvitations - Invites a user to an Organization with a specified role.
 func (s *userRole) PostOrgsOrgIDInvitations(ctx context.Context, request operations.PostOrgsOrgIDInvitationsRequest) (*operations.PostOrgsOrgIDInvitationsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/invitations", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -922,11 +912,11 @@ func (s *userRole) PostOrgsOrgIDInvitations(ctx context.Context, request operati
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

@@ -1,0 +1,12 @@
+# PostOrgsOrgIDAppsAppIDEnvsResponse
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `ContentType`                                                                   | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `EnvironmentResponse`                                                           | [*shared.EnvironmentResponse](../../models/shared/environmentresponse.md)       | :heavy_minus_sign:                                                              | The new Environment.<br/><br/>                                                  |
+| `HumanitecErrorResponse`                                                        | [*shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                              | The supplied `id` is an invalid ID or a required field is missing.<br/><br/>    |
+| `StatusCode`                                                                    | *int*                                                                           | :heavy_check_mark:                                                              | N/A                                                                             |
+| `RawResponse`                                                                   | [*http.Response](https://pkg.go.dev/net/http#Response)                          | :heavy_minus_sign:                                                              | N/A                                                                             |

@@ -16,28 +16,18 @@ import (
 // automationRule - An Automation Rule defining how and when artefacts in an environment should be updated.
 // <SchemaDefinition schemaRef="#/components/schemas/AutomationRuleRequest" />
 type automationRule struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newAutomationRule(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *automationRule {
+func newAutomationRule(sdkConfig sdkConfiguration) *automationRule {
 	return &automationRule{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Delete Automation Rule from an Environment.
 func (s *automationRule) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -48,9 +38,9 @@ func (s *automationRule) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx contex
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -85,7 +75,7 @@ func (s *automationRule) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx contex
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRules - List all Automation Rules in an Environment.
 func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -96,9 +86,9 @@ func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -141,7 +131,7 @@ func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Get a specific Automation Rule for an Environment.
 func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -152,9 +142,9 @@ func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.C
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -198,7 +188,7 @@ func (s *automationRule) GetOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.C
 // PostOrgsOrgIDAppsAppIDEnvsEnvIDRules - Create a new Automation Rule for an Environment.
 // Items marked as deprecated are still supported (however not recommended) for use and are incompatible with properties of the latest api version. In particular an error is raised if  `images_filter` (deprecated) and `artefacts_filter` are used in the same payload. The same is true for `exclude_images_filter` (deprecated) and `exclude_artefacts_filter`. `match` and `update_to` are still supported but will trigger an error if combined with `match_ref`.
 func (s *automationRule) PostOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDRulesRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDRulesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -217,11 +207,11 @@ func (s *automationRule) PostOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Contex
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -275,7 +265,7 @@ func (s *automationRule) PostOrgsOrgIDAppsAppIDEnvsEnvIDRules(ctx context.Contex
 // PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID - Update an existing Automation Rule for an Environment.
 // Items marked as deprecated are still supported (however not recommended) for use and are incompatible with properties of the latest api version. In particular an error is raised if  `images_filter` (deprecated) and `artefacts_filter` are used in the same payload. The same is true for `exclude_images_filter` (deprecated) and `exclude_artefacts_filter`. `match` and `update_to` are still supported but will trigger an error if combined with `match_ref`.
 func (s *automationRule) PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/rules/{ruleId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -294,11 +284,11 @@ func (s *automationRule) PutOrgsOrgIDAppsAppIDEnvsEnvIDRulesRuleID(ctx context.C
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

@@ -18,29 +18,19 @@ import (
 // Environment Types can be used with External Resources to manage where resources such as databases are provisioned or even which cluster to deploy to.
 // <SchemaDefinition schemaRef="#/components/schemas/EnvironmentTypeRequest" />
 type environmentType struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newEnvironmentType(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *environmentType {
+func newEnvironmentType(sdkConfig sdkConfiguration) *environmentType {
 	return &environmentType{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDEnvTypesEnvTypeID - Deletes an Environment Type
 // Deletes a specific Environment Type from an Organization. If there are Environments with this Type in the Organization, the operation will fail.
 func (s *environmentType) DeleteOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, request operations.DeleteOrgsOrgIDEnvTypesEnvTypeIDRequest) (*operations.DeleteOrgsOrgIDEnvTypesEnvTypeIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envTypeId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -51,9 +41,9 @@ func (s *environmentType) DeleteOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, 
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0.7, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -118,7 +108,7 @@ func (s *environmentType) DeleteOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, 
 // GetOrgsOrgIDEnvTypes - List all Environment Types
 // Lists all Environment Types in an Organization.
 func (s *environmentType) GetOrgsOrgIDEnvTypes(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesRequest) (*operations.GetOrgsOrgIDEnvTypesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -129,9 +119,9 @@ func (s *environmentType) GetOrgsOrgIDEnvTypes(ctx context.Context, request oper
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -174,7 +164,7 @@ func (s *environmentType) GetOrgsOrgIDEnvTypes(ctx context.Context, request oper
 // GetOrgsOrgIDEnvTypesEnvTypeID - Get an Environment Type
 // Gets a specific Environment Type within an Organization.
 func (s *environmentType) GetOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, request operations.GetOrgsOrgIDEnvTypesEnvTypeIDRequest) (*operations.GetOrgsOrgIDEnvTypesEnvTypeIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types/{envTypeId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -185,9 +175,9 @@ func (s *environmentType) GetOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, req
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -240,7 +230,7 @@ func (s *environmentType) GetOrgsOrgIDEnvTypesEnvTypeID(ctx context.Context, req
 // PostOrgsOrgIDEnvTypes - Add a new Environment Type
 // Adds a new Environment Type to an Organization.
 func (s *environmentType) PostOrgsOrgIDEnvTypes(ctx context.Context, request operations.PostOrgsOrgIDEnvTypesRequest) (*operations.PostOrgsOrgIDEnvTypesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/env-types", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -259,11 +249,11 @@ func (s *environmentType) PostOrgsOrgIDEnvTypes(ctx context.Context, request ope
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

@@ -18,28 +18,18 @@ import (
 // Active Resources are provisioned based on a Resource Definition. The Resource Definition describes how to provision a concrete resource based on a Resource Type and metadata about the Environment (for example the Environment Type or the Application ID). The criteria for how to choose a Resource Definition is known as a Matching Criteria. If the Matching Criteria changes or the Resource Definition is deleted, the concrete resource represented by an Active Resource might be deleted and reprovisioned when a deployment occurs in the Environment.
 // <SchemaDefinition schemaRef="#/components/schemas/ActiveResourceRequest" />
 type activeResource struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newActiveResource(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *activeResource {
+func newActiveResource(sdkConfig sdkConfiguration) *activeResource {
 	return &activeResource{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID - Delete Active Resources.
 func (s *activeResource) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources/{type}/{resId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -50,9 +40,9 @@ func (s *activeResource) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID(ctx
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -91,7 +81,7 @@ func (s *activeResource) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDResourcesTypeResID(ctx
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDResources - List Active Resources provisioned in an environment.
 func (s *activeResource) GetOrgsOrgIDAppsAppIDEnvsEnvIDResources(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDResourcesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDResourcesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -102,9 +92,9 @@ func (s *activeResource) GetOrgsOrgIDAppsAppIDEnvsEnvIDResources(ctx context.Con
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -156,7 +146,7 @@ func (s *activeResource) GetOrgsOrgIDAppsAppIDEnvsEnvIDResources(ctx context.Con
 
 // GetOrgsOrgIDResourcesDefsDefIDResources - List Active Resources provisioned via a specific Resource Definition.
 func (s *activeResource) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context.Context, request operations.GetOrgsOrgIDResourcesDefsDefIDResourcesRequest) (*operations.GetOrgsOrgIDResourcesDefsDefIDResourcesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/defs/{defId}/resources", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -167,9 +157,9 @@ func (s *activeResource) GetOrgsOrgIDResourcesDefsDefIDResources(ctx context.Con
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

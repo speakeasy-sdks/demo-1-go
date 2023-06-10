@@ -18,22 +18,12 @@ import (
 // Apps are the root of the configuration tree holding Environments, Deployments, Shared Values, and Secrets.
 // <SchemaDefinition schemaRef="#/components/schemas/ApplicationRequest" />
 type application struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newApplication(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *application {
+func newApplication(sdkConfig sdkConfiguration) *application {
 	return &application{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
@@ -42,7 +32,7 @@ func newApplication(defaultClient, securityClient HTTPClient, serverURL, languag
 //
 // _Deletions are currently irreversible._
 func (s *application) DeleteOrgsOrgIDAppsAppID(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDRequest) (*operations.DeleteOrgsOrgIDAppsAppIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -53,9 +43,9 @@ func (s *application) DeleteOrgsOrgIDAppsAppID(ctx context.Context, request oper
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -101,7 +91,7 @@ func (s *application) DeleteOrgsOrgIDAppsAppID(ctx context.Context, request oper
 // GetOrgsOrgIDApps - List all Applications in an Organization.
 // Listing or lists of all Applications that exist within a specific Organization.
 func (s *application) GetOrgsOrgIDApps(ctx context.Context, request operations.GetOrgsOrgIDAppsRequest) (*operations.GetOrgsOrgIDAppsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -112,9 +102,9 @@ func (s *application) GetOrgsOrgIDApps(ctx context.Context, request operations.G
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -157,7 +147,7 @@ func (s *application) GetOrgsOrgIDApps(ctx context.Context, request operations.G
 // GetOrgsOrgIDAppsAppID - Get an existing Application
 // Gets a specific Application in the specified Organization by ID.
 func (s *application) GetOrgsOrgIDAppsAppID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDRequest) (*operations.GetOrgsOrgIDAppsAppIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -168,9 +158,9 @@ func (s *application) GetOrgsOrgIDAppsAppID(ctx context.Context, request operati
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -223,7 +213,7 @@ func (s *application) GetOrgsOrgIDAppsAppID(ctx context.Context, request operati
 // PostOrgsOrgIDApps - Add a new Application to an Organization
 // Creates a new Application, then adds it to the specified Organization.
 func (s *application) PostOrgsOrgIDApps(ctx context.Context, request operations.PostOrgsOrgIDAppsRequest) (*operations.PostOrgsOrgIDAppsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -242,11 +232,11 @@ func (s *application) PostOrgsOrgIDApps(ctx context.Context, request operations.
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

@@ -1,0 +1,14 @@
+# ResourceDefinitionChangeResponse
+
+ResourceDefinitionChange describes the effects of a Resource Definition or Matching Criteria update/deletion.
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `AppID`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | The ID of the App the resource is associated with.                                         |
+| `EnvID`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | The ID of the Environment the resource is associated with.                                 |
+| `FromDef`                                                                                  | *string*                                                                                   | :heavy_check_mark:                                                                         | The Resource Definition that this resource was provisioned from.                           |
+| `ResID`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | The ID of the resource                                                                     |
+| `ToDef`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | The Resource Definition that resource *will be* provisioned from if the change is applied. |

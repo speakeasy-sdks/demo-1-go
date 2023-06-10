@@ -48,28 +48,18 @@ import (
 // For details about how the Humanitec provided profiles work, see (Deployment Set Profiles)[].
 // <SchemaDefinition schemaRef="#/components/schemas/SetRequest" />
 type set struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newSet(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *set {
+func newSet(sdkConfig sdkConfiguration) *set {
 	return &set{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetSets - Get all Deployment Sets
 func (s *set) GetSets(ctx context.Context, request operations.GetSetsRequest) (*operations.GetSetsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -80,9 +70,9 @@ func (s *set) GetSets(ctx context.Context, request operations.GetSetsRequest) (*
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -130,7 +120,7 @@ func (s *set) GetSets(ctx context.Context, request operations.GetSetsRequest) (*
 
 // GetOrgsOrgIDAppsAppIDSetsSetID - Get a Deployment Set
 func (s *set) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDSetsSetIDRequest) (*operations.GetOrgsOrgIDAppsAppIDSetsSetIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -141,13 +131,13 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operat
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -195,7 +185,7 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operat
 
 // GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID - Get the difference between 2 Deployment Sets
 func (s *set) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetIDRequest) (*operations.GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}/diff/{sourceSetId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -206,9 +196,9 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context,
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -256,7 +246,7 @@ func (s *set) GetOrgsOrgIDAppsAppIDSetsSetIDDiffSourceSetID(ctx context.Context,
 
 // PostOrgsOrgIDAppsAppIDSetsSetID - Apply a Deployment Delta to a Deployment Set
 func (s *set) PostOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDSetsSetIDRequest) (*operations.PostOrgsOrgIDAppsAppIDSetsSetIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/sets/{setId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -275,11 +265,11 @@ func (s *set) PostOrgsOrgIDAppsAppIDSetsSetID(ctx context.Context, request opera
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0.7, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

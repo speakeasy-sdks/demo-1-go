@@ -1,0 +1,13 @@
+# PostOrgsOrgIDWorkloadProfilesProfileQidVersionsRequestBody
+
+Workload profile version metadata.
+
+
+
+
+## Fields
+
+| Field                                                                                                                                                        | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `File`                                                                                                                                                       | [*PostOrgsOrgIDWorkloadProfilesProfileQidVersionsRequestBodyFile](../../models/operations/postorgsorgidworkloadprofilesprofileqidversionsrequestbodyfile.md) | :heavy_minus_sign:                                                                                                                                           | N/A                                                                                                                                                          |
+| `Metadata`                                                                                                                                                   | [*shared.WorkloadProfileVersionRequest](../../models/shared/workloadprofileversionrequest.md)                                                                | :heavy_minus_sign:                                                                                                                                           | Each Workload Profile has one or more Versions associated with it. In order to add a version, a Workload Profile must first be created.                      |

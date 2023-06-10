@@ -1,0 +1,12 @@
+# PostOrgsOrgIDResourcesAccountsResponse
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ContentType`                                                                     | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               |
+| `HumanitecErrorResponse`                                                          | [*shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md)   | :heavy_minus_sign:                                                                | One or more request parameters is missing or invalid.<br/><br/>                   |
+| `ResourceAccountResponse`                                                         | [*shared.ResourceAccountResponse](../../models/shared/resourceaccountresponse.md) | :heavy_minus_sign:                                                                | The newly created Resources Account details.<br/><br/>                            |
+| `StatusCode`                                                                      | *int*                                                                             | :heavy_check_mark:                                                                | N/A                                                                               |
+| `RawResponse`                                                                     | [*http.Response](https://pkg.go.dev/net/http#Response)                            | :heavy_minus_sign:                                                                | N/A                                                                               |

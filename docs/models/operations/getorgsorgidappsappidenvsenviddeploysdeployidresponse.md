@@ -1,0 +1,12 @@
+# GetOrgsOrgIDAppsAppIDEnvsEnvIDDeploysDeployIDResponse
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `ContentType`                                                                   | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `DeploymentResponse`                                                            | [*shared.DeploymentResponse](../../models/shared/deploymentresponse.md)         | :heavy_minus_sign:                                                              | The Deployment requested.<br/><br/>                                             |
+| `HumanitecErrorResponse`                                                        | [*shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                              | No Deployment with `deployId` in Application and Environment.<br/><br/>         |
+| `StatusCode`                                                                    | *int*                                                                           | :heavy_check_mark:                                                              | N/A                                                                             |
+| `RawResponse`                                                                   | [*http.Response](https://pkg.go.dev/net/http#Response)                          | :heavy_minus_sign:                                                              | N/A                                                                             |

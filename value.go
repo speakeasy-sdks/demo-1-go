@@ -20,29 +20,19 @@ import (
 // For example: There might be 2 API keys that are used in an application. One development key used in the development and staging environments and another used for production. The development API key would be set at the Application level. The value would then be overridden at the Environment level for the production Environment.
 // <SchemaDefinition schemaRef="#/components/schemas/ValueRequest" />
 type value struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newValue(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *value {
+func newValue(sdkConfig sdkConfiguration) *value {
 	return &value{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues - Delete all Shared Value for an Environment
 // All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
 func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -53,9 +43,9 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, req
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -89,7 +79,7 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, req
 // DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Delete Shared Value for an Environment
 // The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
 func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -100,9 +90,9 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, 
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -148,7 +138,7 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, 
 // DeleteOrgsOrgIDAppsAppIDValues - Delete all Shared Value for an App
 // All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
 func (s *value) DeleteOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDValuesRequest) (*operations.DeleteOrgsOrgIDAppsAppIDValuesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -159,9 +149,9 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDValues(ctx context.Context, request oper
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -195,7 +185,7 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDValues(ctx context.Context, request oper
 // DeleteOrgsOrgIDAppsAppIDValuesKey - Delete Shared Value for an Application
 // The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
 func (s *value) DeleteOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.DeleteOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.DeleteOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -206,9 +196,9 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request o
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -254,7 +244,7 @@ func (s *value) DeleteOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request o
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValues - List Shared Values in an Environment
 // The returned values will be the base Application values with the Environment overrides where applicable. The `source` field will specify the level from which the value is from.
 func (s *value) GetOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -265,9 +255,9 @@ func (s *value) GetOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, reques
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -310,7 +300,7 @@ func (s *value) GetOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, reques
 // GetOrgsOrgIDAppsAppIDValues - List Shared Values in an Application
 // The returned values will be the "base" values for the Application. The overridden value for the Environment can be retrieved via the `/orgs/{orgId}/apps/{appId}/envs/{envId}/values` endpoint.
 func (s *value) GetOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValuesRequest) (*operations.GetOrgsOrgIDAppsAppIDValuesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -321,9 +311,9 @@ func (s *value) GetOrgsOrgIDAppsAppIDValues(ctx context.Context, request operati
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -366,7 +356,7 @@ func (s *value) GetOrgsOrgIDAppsAppIDValues(ctx context.Context, request operati
 // PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Update Shared Value for an Environment
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
 func (s *value) PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -385,11 +375,11 @@ func (s *value) PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, r
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -444,7 +434,7 @@ func (s *value) PatchOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, r
 // PatchOrgsOrgIDAppsAppIDValuesKey - Update Shared Value for an Application
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
 func (s *value) PatchOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.PatchOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -463,11 +453,11 @@ func (s *value) PatchOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request op
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -524,7 +514,7 @@ func (s *value) PatchOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request op
 //
 // If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
 func (s *value) PostOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValuesRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValuesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -543,11 +533,11 @@ func (s *value) PostOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, reque
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -604,7 +594,7 @@ func (s *value) PostOrgsOrgIDAppsAppIDEnvsEnvIDValues(ctx context.Context, reque
 //
 // If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
 func (s *value) PostOrgsOrgIDAppsAppIDValues(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValuesRequest) (*operations.PostOrgsOrgIDAppsAppIDValuesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -623,11 +613,11 @@ func (s *value) PostOrgsOrgIDAppsAppIDValues(ctx context.Context, request operat
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -682,7 +672,7 @@ func (s *value) PostOrgsOrgIDAppsAppIDValues(ctx context.Context, request operat
 // PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey - Update Shared Value for an Environment
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
 func (s *value) PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyRequest) (*operations.PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -701,11 +691,11 @@ func (s *value) PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, req
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -760,7 +750,7 @@ func (s *value) PutOrgsOrgIDAppsAppIDEnvsEnvIDValuesKey(ctx context.Context, req
 // PutOrgsOrgIDAppsAppIDValuesKey - Update Shared Value for an Application
 // Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
 func (s *value) PutOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDValuesKeyRequest) (*operations.PutOrgsOrgIDAppsAppIDValuesKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/values/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -779,11 +769,11 @@ func (s *value) PutOrgsOrgIDAppsAppIDValuesKey(ctx context.Context, request oper
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

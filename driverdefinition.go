@@ -18,28 +18,18 @@ import (
 // Resource Drivers are code that fulfils the Humanitec Resource Driver Interface. This interface allows for certain actions to be performed on resources such as creation and destruction. Humanitec provides numerous Resource Drivers “out of the box”. It is also possible to use 3rd party Resource Drivers or write your own.
 // <SchemaDefinition schemaRef="#/components/schemas/DriverDefinitionRequest" />
 type driverDefinition struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newDriverDefinition(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *driverDefinition {
+func newDriverDefinition(sdkConfig sdkConfiguration) *driverDefinition {
 	return &driverDefinition{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDResourcesDriversDriverID - Delete a Resources Driver.
 func (s *driverDefinition) DeleteOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.DeleteOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.DeleteOrgsOrgIDResourcesDriversDriverIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -50,9 +40,9 @@ func (s *driverDefinition) DeleteOrgsOrgIDResourcesDriversDriverID(ctx context.C
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -95,7 +85,7 @@ func (s *driverDefinition) DeleteOrgsOrgIDResourcesDriversDriverID(ctx context.C
 
 // GetOrgsOrgIDResourcesDrivers - List Resource Drivers.
 func (s *driverDefinition) GetOrgsOrgIDResourcesDrivers(ctx context.Context, request operations.GetOrgsOrgIDResourcesDriversRequest) (*operations.GetOrgsOrgIDResourcesDriversResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -106,9 +96,9 @@ func (s *driverDefinition) GetOrgsOrgIDResourcesDrivers(ctx context.Context, req
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -161,7 +151,7 @@ func (s *driverDefinition) GetOrgsOrgIDResourcesDrivers(ctx context.Context, req
 // GetOrgsOrgIDResourcesDriversDriverID - Get a Resource Driver.
 // # Only drivers that belongs to the given organization or registered as `public` are accessible through this endpoint
 func (s *driverDefinition) GetOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.GetOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.GetOrgsOrgIDResourcesDriversDriverIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -172,9 +162,9 @@ func (s *driverDefinition) GetOrgsOrgIDResourcesDriversDriverID(ctx context.Cont
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -228,7 +218,7 @@ func (s *driverDefinition) GetOrgsOrgIDResourcesDriversDriverID(ctx context.Cont
 
 // PostOrgsOrgIDResourcesDrivers - Register a new Resource Driver.
 func (s *driverDefinition) PostOrgsOrgIDResourcesDrivers(ctx context.Context, request operations.PostOrgsOrgIDResourcesDriversRequest) (*operations.PostOrgsOrgIDResourcesDriversResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -247,11 +237,11 @@ func (s *driverDefinition) PostOrgsOrgIDResourcesDrivers(ctx context.Context, re
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -309,7 +299,7 @@ func (s *driverDefinition) PostOrgsOrgIDResourcesDrivers(ctx context.Context, re
 
 // PutOrgsOrgIDResourcesDriversDriverID - Update a Resource Driver.
 func (s *driverDefinition) PutOrgsOrgIDResourcesDriversDriverID(ctx context.Context, request operations.PutOrgsOrgIDResourcesDriversDriverIDRequest) (*operations.PutOrgsOrgIDResourcesDriversDriverIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/resources/drivers/{driverId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -328,11 +318,11 @@ func (s *driverDefinition) PutOrgsOrgIDResourcesDriversDriverID(ctx context.Cont
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

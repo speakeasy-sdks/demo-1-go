@@ -18,22 +18,12 @@ import (
 // Container Images (known simply as Images) can be registered with Humanitec. Continuous Integration (CI) pipelines can then notify Humanitec when a new build of a Container Image becomes available. Humanitec tracks the Image along with metadata about how it was built.
 // <SchemaDefinition schemaRef="#/components/schemas/ImageRequest" />
 type image struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newImage(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *image {
+func newImage(sdkConfig sdkConfiguration) *image {
 	return &image{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
@@ -42,7 +32,7 @@ func newImage(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 //
 // Lists all of the Container Images registered for this organization.
 func (s *image) GetOrgsOrgIDImages(ctx context.Context, request operations.GetOrgsOrgIDImagesRequest) (*operations.GetOrgsOrgIDImagesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -53,9 +43,9 @@ func (s *image) GetOrgsOrgIDImages(ctx context.Context, request operations.GetOr
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -102,7 +92,7 @@ func (s *image) GetOrgsOrgIDImages(ctx context.Context, request operations.GetOr
 //
 // Note, `imageId` may not be the same as the container name. `imageId` is determined by the system making notifications about new builds.
 func (s *image) GetOrgsOrgIDImagesImageID(ctx context.Context, request operations.GetOrgsOrgIDImagesImageIDRequest) (*operations.GetOrgsOrgIDImagesImageIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -113,9 +103,9 @@ func (s *image) GetOrgsOrgIDImagesImageID(ctx context.Context, request operation
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -170,7 +160,7 @@ func (s *image) GetOrgsOrgIDImagesImageID(ctx context.Context, request operation
 //
 // The response lists all available Image Builds of an Image.
 func (s *image) GetOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request operations.GetOrgsOrgIDImagesImageIDBuildsRequest) (*operations.GetOrgsOrgIDImagesImageIDBuildsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}/builds", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -181,9 +171,9 @@ func (s *image) GetOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request ope
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -240,7 +230,7 @@ func (s *image) GetOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request ope
 //
 // If there is no Image with ID `imageId`, it will be automatically created.
 func (s *image) PostOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request operations.PostOrgsOrgIDImagesImageIDBuildsRequest) (*operations.PostOrgsOrgIDImagesImageIDBuildsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/images/{imageId}/builds", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -259,11 +249,11 @@ func (s *image) PostOrgsOrgIDImagesImageIDBuilds(ctx context.Context, request op
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

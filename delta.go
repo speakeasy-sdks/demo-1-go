@@ -46,28 +46,18 @@ import (
 // ```
 // <SchemaDefinition schemaRef="#/components/schemas/DeltaRequest" />
 type delta struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newDelta(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *delta {
+func newDelta(sdkConfig sdkConfiguration) *delta {
 	return &delta{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetDelta - Fetch an existing Delta
 func (s *delta) GetDelta(ctx context.Context, request operations.GetDeltaRequest) (*operations.GetDeltaResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -78,9 +68,9 @@ func (s *delta) GetDelta(ctx context.Context, request operations.GetDeltaRequest
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -128,7 +118,7 @@ func (s *delta) GetDelta(ctx context.Context, request operations.GetDeltaRequest
 
 // GetOrgsOrgIDAppsAppIDDeltas - List Deltas in an Application
 func (s *delta) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDDeltasRequest) (*operations.GetOrgsOrgIDAppsAppIDDeltasResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -139,13 +129,13 @@ func (s *delta) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operati
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -187,7 +177,7 @@ func (s *delta) GetOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operati
 
 // PatchOrgsOrgIDAppsAppIDDeltasDeltaID - Update an existing Delta
 func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, request operations.PatchOrgsOrgIDAppsAppIDDeltasDeltaIDRequest) (*operations.PatchOrgsOrgIDAppsAppIDDeltasDeltaIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -206,11 +196,11 @@ func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, reques
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0.7, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -268,7 +258,7 @@ func (s *delta) PatchOrgsOrgIDAppsAppIDDeltasDeltaID(ctx context.Context, reques
 
 // PostOrgsOrgIDAppsAppIDDeltas - Create a new Delta
 func (s *delta) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDDeltasRequest) (*operations.PostOrgsOrgIDAppsAppIDDeltasResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -287,11 +277,11 @@ func (s *delta) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operat
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -343,7 +333,7 @@ func (s *delta) PostOrgsOrgIDAppsAppIDDeltas(ctx context.Context, request operat
 
 // PutDelta - Update an existing Delta
 func (s *delta) PutDelta(ctx context.Context, request operations.PutDeltaRequest) (*operations.PutDeltaResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -362,11 +352,11 @@ func (s *delta) PutDelta(ctx context.Context, request operations.PutDeltaRequest
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -416,7 +406,7 @@ func (s *delta) PutDelta(ctx context.Context, request operations.PutDeltaRequest
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived - Mark a Delta as "archived"
 // Archived Deltas are still accessible but can no longer be updated.
 func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchivedRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchivedResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/archived", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -435,11 +425,11 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.C
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -488,7 +478,7 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataArchived(ctx context.C
 
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID - Change the Environment of a Delta
 func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvIDRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/env_id", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -507,11 +497,11 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Cont
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -560,7 +550,7 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataEnvID(ctx context.Cont
 
 // PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName - Change the name of a Delta
 func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName(ctx context.Context, request operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataNameRequest) (*operations.PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataNameResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/deltas/{deltaId}/metadata/name", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -579,11 +569,11 @@ func (s *delta) PutOrgsOrgIDAppsAppIDDeltasDeltaIDMetadataName(ctx context.Conte
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

@@ -1,0 +1,11 @@
+# PatchOrgsOrgIDAppsAppIDValuesKeyRequest
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `ValuePatchPayloadRequest`                                                              | [shared.ValuePatchPayloadRequest](../../models/shared/valuepatchpayloadrequest.md)      | :heavy_check_mark:                                                                      | At least `value` or `description` must be supplied. All other fields will be ignored.<br/><br/> |
+| `AppID`                                                                                 | *string*                                                                                | :heavy_check_mark:                                                                      | The Application ID.<br/><br/>                                                           |
+| `Key`                                                                                   | *string*                                                                                | :heavy_check_mark:                                                                      | The key to update.<br/><br/>                                                            |
+| `OrgID`                                                                                 | *string*                                                                                | :heavy_check_mark:                                                                      | The Organization ID.<br/><br/>                                                          |

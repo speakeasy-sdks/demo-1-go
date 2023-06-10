@@ -1,0 +1,12 @@
+# GetOrgsOrgIDAppsAppIDEnvsEnvIDResponse
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `ContentType`                                                                   | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `EnvironmentResponse`                                                           | [*shared.EnvironmentResponse](../../models/shared/environmentresponse.md)       | :heavy_minus_sign:                                                              | The Environment requested.<br/><br/>                                            |
+| `HumanitecErrorResponse`                                                        | [*shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                              | No Environment with `id` in Application.<br/><br/>                              |
+| `StatusCode`                                                                    | *int*                                                                           | :heavy_check_mark:                                                              | N/A                                                                             |
+| `RawResponse`                                                                   | [*http.Response](https://pkg.go.dev/net/http#Response)                          | :heavy_minus_sign:                                                              | N/A                                                                             |

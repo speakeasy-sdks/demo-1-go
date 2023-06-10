@@ -1,0 +1,12 @@
+# GetOrgsOrgIDImagesImageIDBuildsResponse
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `ContentType`                                                                   | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `HumanitecErrorResponse`                                                        | [*shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                              | No Image with an ID of `imageId` found within the organization.<br/><br/>       |
+| `ImageBuildResponses`                                                           | [][shared.ImageBuildResponse](../../models/shared/imagebuildresponse.md)        | :heavy_minus_sign:                                                              | Possibly empty list of Builds of Container Images.<br/><br/>                    |
+| `StatusCode`                                                                    | *int*                                                                           | :heavy_check_mark:                                                              | N/A                                                                             |
+| `RawResponse`                                                                   | [*http.Response](https://pkg.go.dev/net/http#Response)                          | :heavy_minus_sign:                                                              | N/A                                                                             |

@@ -1,0 +1,17 @@
+# ResourceAccountResponse
+
+ResourceAccount represents the account being used to access a resource.
+
+Resource Accounts hold credentials that are required to provision and manage resources.
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `CreatedAt`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | The timestamp of when the account was created.                                   | 2020-06-22T09:37:23.523Z                                                         |
+| `CreatedBy`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | The ID of the user who created the account.                                      |                                                                                  |
+| `ID`                                                                             | *string*                                                                         | :heavy_check_mark:                                                               | Unique identifier for the account (in scope of the organization it belongs to).  |                                                                                  |
+| `IsUsed`                                                                         | *bool*                                                                           | :heavy_check_mark:                                                               | Indicates if this account is being used (referenced) by any resource definition. |                                                                                  |
+| `Name`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | Display name.                                                                    |                                                                                  |
+| `Type`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | The type of the account                                                          |                                                                                  |

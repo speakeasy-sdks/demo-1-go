@@ -3,6 +3,7 @@
 package test1
 
 import (
+	"fmt"
 	"net/http"
 	"test-1/pkg/utils"
 	"time"
@@ -36,7 +37,27 @@ func Float32(f float32) *float32 { return &f }
 // Float64 provides a helper function to return a pointer to a float64
 func Float64(f float64) *float64 { return &f }
 
-// Test1 - # Introduction
+type sdkConfiguration struct {
+	DefaultClient  HTTPClient
+	SecurityClient HTTPClient
+
+	ServerURL         string
+	ServerIndex       int
+	Language          string
+	OpenAPIDocVersion string
+	SDKVersion        string
+	GenVersion        string
+}
+
+func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
+	if c.ServerURL != "" {
+		return c.ServerURL, nil
+	}
+
+	return ServerList[c.ServerIndex], nil
+}
+
+// Test1 - Humanitec API: # Introduction
 // The *Humanitec API* allows you to automate and integrate Humanitec into your developer and operational workflows.
 // The API is a REST based API. It is based around a set of concepts:
 //
@@ -313,14 +334,7 @@ type Test1 struct {
 	WorkloadProfile *workloadProfile
 	Public          *public
 
-	// Non-idiomatic field names below are to namespace fields from the fields names above to avoid name conflicts
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-
-	_serverURL  string
-	_language   string
-	_sdkVersion string
-	_genVersion string
+	sdkConfiguration sdkConfiguration
 }
 
 type SDKOption func(*Test1)
@@ -328,7 +342,7 @@ type SDKOption func(*Test1)
 // WithServerURL allows the overriding of the default server URL
 func WithServerURL(serverURL string) SDKOption {
 	return func(sdk *Test1) {
-		sdk._serverURL = serverURL
+		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 }
 
@@ -339,291 +353,105 @@ func WithTemplatedServerURL(serverURL string, params map[string]string) SDKOptio
 			serverURL = utils.ReplaceParameters(serverURL, params)
 		}
 
-		sdk._serverURL = serverURL
+		sdk.sdkConfiguration.ServerURL = serverURL
+	}
+}
+
+// WithServerIndex allows the overriding of the default server by index
+func WithServerIndex(serverIndex int) SDKOption {
+	return func(sdk *Test1) {
+		if serverIndex < 0 || serverIndex >= len(ServerList) {
+			panic(fmt.Errorf("server index %d out of range", serverIndex))
+		}
+
+		sdk.sdkConfiguration.ServerIndex = serverIndex
 	}
 }
 
 // WithClient allows the overriding of the default HTTP client used by the SDK
 func WithClient(client HTTPClient) SDKOption {
 	return func(sdk *Test1) {
-		sdk._defaultClient = client
+		sdk.sdkConfiguration.DefaultClient = client
 	}
 }
 
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Test1 {
 	sdk := &Test1{
-		_language:   "go",
-		_sdkVersion: "1.3.0",
-		_genVersion: "2.34.2",
+		sdkConfiguration: sdkConfiguration{
+			Language:          "go",
+			OpenAPIDocVersion: "0.20.16",
+			SDKVersion:        "1.4.0",
+			GenVersion:        "2.39.0",
+		},
 	}
 	for _, opt := range opts {
 		opt(sdk)
 	}
 
 	// Use WithClient to override the default client if you would like to customize the timeout
-	if sdk._defaultClient == nil {
-		sdk._defaultClient = &http.Client{Timeout: 60 * time.Second}
+	if sdk.sdkConfiguration.DefaultClient == nil {
+		sdk.sdkConfiguration.DefaultClient = &http.Client{Timeout: 60 * time.Second}
 	}
-	if sdk._securityClient == nil {
-		sdk._securityClient = sdk._defaultClient
-	}
-
-	if sdk._serverURL == "" {
-		sdk._serverURL = ServerList[0]
+	if sdk.sdkConfiguration.SecurityClient == nil {
+		sdk.sdkConfiguration.SecurityClient = sdk.sdkConfiguration.DefaultClient
 	}
 
-	sdk.AccountType = newAccountType(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.AccountType = newAccountType(sdk.sdkConfiguration)
 
-	sdk.ActiveResource = newActiveResource(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.ActiveResource = newActiveResource(sdk.sdkConfiguration)
 
-	sdk.Application = newApplication(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Application = newApplication(sdk.sdkConfiguration)
 
-	sdk.Artefact = newArtefact(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Artefact = newArtefact(sdk.sdkConfiguration)
 
-	sdk.ArtefactVersion = newArtefactVersion(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.ArtefactVersion = newArtefactVersion(sdk.sdkConfiguration)
 
-	sdk.AutomationRule = newAutomationRule(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.AutomationRule = newAutomationRule(sdk.sdkConfiguration)
 
-	sdk.Delta = newDelta(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Delta = newDelta(sdk.sdkConfiguration)
 
-	sdk.Deployment = newDeployment(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Deployment = newDeployment(sdk.sdkConfiguration)
 
-	sdk.DriverDefinition = newDriverDefinition(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.DriverDefinition = newDriverDefinition(sdk.sdkConfiguration)
 
-	sdk.Environment = newEnvironment(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Environment = newEnvironment(sdk.sdkConfiguration)
 
-	sdk.EnvironmentType = newEnvironmentType(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.EnvironmentType = newEnvironmentType(sdk.sdkConfiguration)
 
-	sdk.Event = newEvent(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Event = newEvent(sdk.sdkConfiguration)
 
-	sdk.Image = newImage(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Image = newImage(sdk.sdkConfiguration)
 
-	sdk.MatchingCriteria = newMatchingCriteria(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.MatchingCriteria = newMatchingCriteria(sdk.sdkConfiguration)
 
-	sdk.Organization = newOrganization(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Organization = newOrganization(sdk.sdkConfiguration)
 
-	sdk.Registry = newRegistry(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Registry = newRegistry(sdk.sdkConfiguration)
 
-	sdk.ResourceAccount = newResourceAccount(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.ResourceAccount = newResourceAccount(sdk.sdkConfiguration)
 
-	sdk.ResourceDefinition = newResourceDefinition(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.ResourceDefinition = newResourceDefinition(sdk.sdkConfiguration)
 
-	sdk.ResourceType = newResourceType(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.ResourceType = newResourceType(sdk.sdkConfiguration)
 
-	sdk.RuntimeInfo = newRuntimeInfo(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.RuntimeInfo = newRuntimeInfo(sdk.sdkConfiguration)
 
-	sdk.Set = newSet(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Set = newSet(sdk.sdkConfiguration)
 
-	sdk.UserInvite = newUserInvite(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.UserInvite = newUserInvite(sdk.sdkConfiguration)
 
-	sdk.UserProfile = newUserProfile(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.UserProfile = newUserProfile(sdk.sdkConfiguration)
 
-	sdk.UserRole = newUserRole(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.UserRole = newUserRole(sdk.sdkConfiguration)
 
-	sdk.Value = newValue(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Value = newValue(sdk.sdkConfiguration)
 
-	sdk.ValueSetVersion = newValueSetVersion(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.ValueSetVersion = newValueSetVersion(sdk.sdkConfiguration)
 
-	sdk.WorkloadProfile = newWorkloadProfile(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.WorkloadProfile = newWorkloadProfile(sdk.sdkConfiguration)
 
-	sdk.Public = newPublic(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
+	sdk.Public = newPublic(sdk.sdkConfiguration)
 
 	return sdk
 }

@@ -18,29 +18,19 @@ import (
 // Humanitec supports all Docker compatible registries as well as the custom authentication formats used by AWS Elastic Container Registry and Google Container Registry. It also supports the injection of a specific secret to be copied from an existing namespace in the cluster.
 // <SchemaDefinition schemaRef="#/components/schemas/RegistryRequest" />
 type registry struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newRegistry(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *registry {
+func newRegistry(sdkConfig sdkConfiguration) *registry {
 	return &registry{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // DeleteOrgsOrgIDRegistriesRegID - Deletes an existing registry record and all associated credentials and secrets.
 // _Deletions are currently irreversible._
 func (s *registry) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.DeleteOrgsOrgIDRegistriesRegIDRequest) (*operations.DeleteOrgsOrgIDRegistriesRegIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -51,9 +41,9 @@ func (s *registry) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request o
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -100,7 +90,7 @@ func (s *registry) DeleteOrgsOrgIDRegistriesRegID(ctx context.Context, request o
 
 // GetOrgsOrgIDRegistries - Lists available registries for the organization.
 func (s *registry) GetOrgsOrgIDRegistries(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRequest) (*operations.GetOrgsOrgIDRegistriesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -111,9 +101,9 @@ func (s *registry) GetOrgsOrgIDRegistries(ctx context.Context, request operation
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -167,7 +157,7 @@ func (s *registry) GetOrgsOrgIDRegistries(ctx context.Context, request operation
 
 // GetOrgsOrgIDRegistriesRegID - Loads a registry record details.
 func (s *registry) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRegIDRequest) (*operations.GetOrgsOrgIDRegistriesRegIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -178,9 +168,9 @@ func (s *registry) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request oper
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -234,7 +224,7 @@ func (s *registry) GetOrgsOrgIDRegistriesRegID(ctx context.Context, request oper
 
 // GetOrgsOrgIDRegistriesRegIDCreds - Returns current account credentials or secret details for the registry.
 func (s *registry) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request operations.GetOrgsOrgIDRegistriesRegIDCredsRequest) (*operations.GetOrgsOrgIDRegistriesRegIDCredsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}/creds", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -245,9 +235,9 @@ func (s *registry) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -303,7 +293,7 @@ func (s *registry) GetOrgsOrgIDRegistriesRegIDCreds(ctx context.Context, request
 
 // PatchOrgsOrgIDRegistriesRegID - Updates (patches) an existing registry record.
 func (s *registry) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request operations.PatchOrgsOrgIDRegistriesRegIDRequest) (*operations.PatchOrgsOrgIDRegistriesRegIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries/{regId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -322,11 +312,11 @@ func (s *registry) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request op
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -384,7 +374,7 @@ func (s *registry) PatchOrgsOrgIDRegistriesRegID(ctx context.Context, request op
 
 // PostOrgsOrgIDRegistries - Creates a new registry record.
 func (s *registry) PostOrgsOrgIDRegistries(ctx context.Context, request operations.PostOrgsOrgIDRegistriesRequest) (*operations.PostOrgsOrgIDRegistriesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/registries", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -403,11 +393,11 @@ func (s *registry) PostOrgsOrgIDRegistries(ctx context.Context, request operatio
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

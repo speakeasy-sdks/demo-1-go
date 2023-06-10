@@ -1,0 +1,16 @@
+# ApplicationResponse
+
+An Application is a collection of Workloads that work together. When deployed, all Workloads in an Application are deployed to the same namespace.
+
+Apps are the root of the configuration tree holding Environments, Deployments, Shared Values, and Secrets.
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `CreatedAt`                                                                 | *string*                                                                    | :heavy_check_mark:                                                          | The timestamp in UTC indicates when the Application was created.            | 2020-06-22T09:37:23.523Z                                                    |
+| `CreatedBy`                                                                 | *string*                                                                    | :heavy_check_mark:                                                          | The user who created the Application.                                       |                                                                             |
+| `Envs`                                                                      | [][EnvironmentBaseResponse](../../models/shared/environmentbaseresponse.md) | :heavy_check_mark:                                                          | The Environments associated with the Application.                           |                                                                             |
+| `ID`                                                                        | *string*                                                                    | :heavy_check_mark:                                                          | The ID which refers to a specific application.                              |                                                                             |
+| `Name`                                                                      | *string*                                                                    | :heavy_check_mark:                                                          | The Human-friendly name for the Application.                                |                                                                             |

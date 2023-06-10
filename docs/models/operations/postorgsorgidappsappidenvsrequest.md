@@ -1,0 +1,10 @@
+# PostOrgsOrgIDAppsAppIDEnvsRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `EnvironmentDefinitionRequest`                                                             | [shared.EnvironmentDefinitionRequest](../../models/shared/environmentdefinitionrequest.md) | :heavy_check_mark:                                                                         | The ID, Name, Type, and Deployment the Environment will be derived from.<br/><br/>         |
+| `AppID`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | The Application ID.<br/><br/>                                                              |
+| `OrgID`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | The Organization ID.<br/><br/>                                                             |

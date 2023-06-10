@@ -16,29 +16,19 @@ import (
 // valueSetVersion - A Value Set Version can be used as a track record of Shared Values changes, to restore a previous version of a Shared Value or Value Set, or to purge a Shared Value if it shouldn't be accessible anymore.
 // <SchemaDefinition schemaRef="#/components/schemas/ValueSetVersionResponse" />
 type valueSetVersion struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newValueSetVersion(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *valueSetVersion {
+func newValueSetVersion(sdkConfig sdkConfiguration) *valueSetVersion {
 	return &valueSetVersion{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions - List Value Set Versions in an Environment of an App
 // A new Value Set Version is created on every modification of a Value inside the an Environment of an App. In case this environment has no overrides the response is the same as the App level endpoint.
 func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -49,13 +39,13 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions(ctx con
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -97,7 +87,7 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersions(ctx con
 
 // GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID - Get a single Value Set Version in an Environment of an App
 func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRequest) (*operations.GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -108,9 +98,9 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSet
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -163,7 +153,7 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSet
 // GetOrgsOrgIDAppsAppIDValueSetVersions - List Value Set Versions in the App
 // A new Value Set Version is created on every modification of a Value inside the app.
 func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersions(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValueSetVersionsRequest) (*operations.GetOrgsOrgIDAppsAppIDValueSetVersionsResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -174,13 +164,13 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersions(ctx context.Cont
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -222,7 +212,7 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersions(ctx context.Cont
 
 // GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID - Get a single Value Set Version from the App
 func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID(ctx context.Context, request operations.GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRequest) (*operations.GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -233,9 +223,9 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -291,7 +281,7 @@ func (s *valueSetVersion) GetOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionID
 //
 // Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDPurgeKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/purge/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -310,11 +300,11 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -362,7 +352,7 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestore(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -381,11 +371,11 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -440,7 +430,7 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSetVersionIDRestoreKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -459,11 +449,11 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -521,7 +511,7 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDEnvsEnvIDValueSetVersionsValueSe
 //
 // Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDPurgeKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/purge/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -540,11 +530,11 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionI
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -592,7 +582,7 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionI
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestore(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -611,11 +601,11 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionI
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -670,7 +660,7 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionI
 //
 // Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
 func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKey(ctx context.Context, request operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKeyRequest) (*operations.PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionIDRestoreKeyResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -689,11 +679,11 @@ func (s *valueSetVersion) PostOrgsOrgIDAppsAppIDValueSetVersionsValueSetVersionI
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.defaultClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

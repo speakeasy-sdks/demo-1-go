@@ -1,0 +1,12 @@
+# GetOrgsOrgIDResourcesDriversResponse
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ContentType`                                                                        | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `DriverDefinitionResponses`                                                          | [][shared.DriverDefinitionResponse](../../models/shared/driverdefinitionresponse.md) | :heavy_minus_sign:                                                                   | A possibly empty list of Resources Drivers.<br/><br/>                                |
+| `HumanitecErrorResponse`                                                             | [*shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md)      | :heavy_minus_sign:                                                                   | Internal application error.<br/><br/>                                                |
+| `StatusCode`                                                                         | *int*                                                                                | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `RawResponse`                                                                        | [*http.Response](https://pkg.go.dev/net/http#Response)                               | :heavy_minus_sign:                                                                   | N/A                                                                                  |

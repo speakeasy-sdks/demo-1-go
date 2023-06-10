@@ -1,0 +1,12 @@
+# GetOrgsOrgIDResponse
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `ContentType`                                                               | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `ErrorInfoResponse`                                                         | [*shared.ErrorInfoResponse](../../models/shared/errorinforesponse.md)       | :heavy_minus_sign:                                                          | Invalid request parameters or payload. E.g. invalid `orgId` format.<br/><br/> |
+| `OrganizationResponse`                                                      | [*shared.OrganizationResponse](../../models/shared/organizationresponse.md) | :heavy_minus_sign:                                                          | Returns organization details.<br/><br/>                                     |
+| `StatusCode`                                                                | *int*                                                                       | :heavy_check_mark:                                                          | N/A                                                                         |
+| `RawResponse`                                                               | [*http.Response](https://pkg.go.dev/net/http#Response)                      | :heavy_minus_sign:                                                          | N/A                                                                         |
